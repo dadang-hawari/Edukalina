@@ -1,0 +1,144 @@
+:root {
+    --main: #00A9FF;
+    --secondary: #CDF5FD;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    margin: 0 auto;
+    height: 800px;
+}
+
+nav-bar {
+    position: fixed;
+    max-width: 1200px;
+    width: 100%;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+a.skip-link {
+    position: absolute;
+    z-index: 9999;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--main);
+    color: white;
+    padding: 15px 10px;
+    border-radius: var(--main-radius);
+}
+
+a.skip-link:focus {
+    top: 80px;
+}
+
+header {
+    width: 100%;
+    z-index: 999;
+}
+
+nav-bar {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40PX;
+}
+
+nav-bar ul {
+    display: flex;
+    align-items: center;
+}
+
+
+ul li {
+    list-style-type: none;
+}
+
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+ul li a {
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+}
+
+button#btn-menu {
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.main-btn {
+    background-color: var(--main);
+    padding: 10px 15px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+
+main {
+    height: 100vh;
+}
+
+.flex-column {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+hr {
+    border-top: 1px solid black;
+    border-bottom: 0px solid;
+}
+
+footer {
+    background-color: var(--secondary);
+    width: 100%;
+}
+
+footer h2 {
+    font-weight: 500;
+}
+
+footer p {
+    text-align: center;
+    padding-block: 20px;
+}
+
+.flex-wrapper {
+    display: flex;
+    justify-content: space-between;    
+    padding: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.brand-footer {
+    align-self: center;
+}
+
+.brand-footer h2 {
+    font-size: 3em;
+    font-weight: bold;
+}
+
+.brand-footer p {
+    margin-top: -40px;
+    text-align: center;
+}
+
+
