@@ -13,7 +13,7 @@ const app = new App({
   menusvg: document.querySelector('.menu'),
   timessvg: document.querySelector('.times'),
 });
-
+// berfungsi saat link berubah
 window.addEventListener('hashchange', () => {
   app.renderPage();
 });
