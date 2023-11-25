@@ -26,7 +26,7 @@
         height: 50px;
     }
 
-    button#btn-menu {
+    button#btnMenu {
         display: none;
     }
 
@@ -62,5 +62,5 @@
 }
 
 @media screen and (min-width: 1200px) {
-   
+
 }
