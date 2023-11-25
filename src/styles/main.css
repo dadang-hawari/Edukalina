@@ -13,16 +13,11 @@ body {
     font-weight: 300;
     margin: 0 auto;
     height: 800px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
-nav-bar {
-    position: fixed;
-    max-width: 1200px;
-    width: 100%;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
-}
 
 a.skip-link {
     position: absolute;
@@ -33,34 +28,65 @@ a.skip-link {
     background: var(--main);
     color: white;
     padding: 15px 10px;
-    border-radius: var(--main-radius);
-}
+    }
 
 a.skip-link:focus {
     top: 80px;
 }
 
+.logo {
+    padding-top: 2px;
+}
+
 header {
+    position: fixed;
     width: 100%;
-    z-index: 999;
+    z-index: 9999;
+    backdrop-filter: blur(5px);
+    box-shadow: 0px 1px 1px 0 #ababab;
 }
 
 nav-bar {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
     display: flex;
+    padding: 5px 5px 5px 15px;
     justify-content: space-between;
-    padding: 10px 40PX;
+    height: 50px;
+    transition: height 0.3s;
 }
 
-nav-bar ul {
-    display: flex;
+nav-bar.open {
+    height: 100vh;
+}
+
+nav-bar ul.list-nav {
+    position: absolute;
+    display: none;
+    flex-direction: column;
     align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    margin-top: 80px;
 }
 
+.hidden-menu {
+    display: none;
+}
+
+.hidden {
+    display: flex!important;
+}
+
+ul.list-nav li {
+    margin-bottom: 20px;
+}
 
 ul li {
     list-style-type: none;
 }
-
 
 a {
     text-decoration: unset;
@@ -70,18 +96,22 @@ a {
 ul li a {
     color: black;
     text-decoration: none;
-    padding: 10px;
 }
 
-button#btn-menu {
+button#btnMenu {
+    position: absolute;
     background-color: transparent;
     border: 1px solid transparent;
     cursor: pointer;
+    top: 10px;
+    right: 15px;
+    min-width: 44px;
+    min-height: 44px;
 }
 
 .main-btn {
     background-color: var(--main);
-    padding: 10px 15px;
+    padding: 10px 20px;
     font-family: inherit;
     cursor: pointer;
     border-radius: 20px;
@@ -90,19 +120,16 @@ button#btn-menu {
 }
 
 main {
-    height: 100vh;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 100px;
+    text-align: center;
+    flex: 1;
 }
-
-.flex-column {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
 
 hr {
     border-top: 1px solid black;
-    border-bottom: 0px solid;
+    border-bottom: 0;
 }
 
 footer {
@@ -112,33 +139,44 @@ footer {
 
 footer h2 {
     font-weight: 500;
+    color: var(--main);
 }
 
-footer p {
+footer ul li a, footer ul li {
+    padding-block: 10px;
+}
+
+app-footer > p {
     text-align: center;
-    padding-block: 20px;
+    padding-block: 30px;
 }
 
-.flex-wrapper {
-    display: flex;
-    justify-content: space-between;    
-    padding: 40px;
+.flex-footer {
     max-width: 1200px;
     margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+}
+
+.flex-footer h2 {
+    margin-bottom: 5px;
+}
+
+.navigasi-ft, .kontak-ft, .alamat-ft, .brand-footer {
+    min-width: 240px;
+    max-width: 240px;
+    margin-top: 10px;
 }
 
 .brand-footer {
-    align-self: center;
+    margin-bottom: 10px;
+    margin-right: 80px;
 }
 
 .brand-footer h2 {
-    font-size: 3em;
+    font-size: 2em;
     font-weight: bold;
 }
-
-.brand-footer p {
-    margin-top: -40px;
-    text-align: center;
-}
-
 

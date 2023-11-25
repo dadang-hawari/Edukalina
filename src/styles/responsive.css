@@ -1,0 +1,66 @@
+
+@media screen and (max-width: 400px) {
+    ul.list-nav li a {
+        padding: 15px;
+    }
+
+    .main-btn {
+        min-width: 44px;
+        min-height: 44px;
+        font-size: 1rem;
+    }
+
+    .navigasi-ft, .kontak-ft, .alamat-ft, .brand-footer {
+        max-width: 300px;
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+
+@media screen and (min-width: 800px) {
+ 
+}
+
+@media screen and (min-width: 650px) {
+    nav-bar.open {
+        height: 50px;
+    }
+
+    button#btnMenu {
+        display: none;
+    }
+
+
+    nav-bar ul.list-nav {
+        position: relative;
+        left: unset;
+        transform: unset;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        width: fit-content;
+        align-items: center;
+    }
+
+    ul.list-nav li {
+        font-size: 0.9rem;
+    }
+
+    ul.list-nav li a {
+        padding: 10px 15px;
+        
+    }
+
+    .main-btn {
+        padding: 5px 15px;
+        margin-inline: 5px 30px;
+    }
+
+    .flex-footer {
+        padding: 60px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+
+}
