@@ -1,6 +1,9 @@
 import App from './views/app';
 import '../styles/main.css';
 import '../styles/responsive.css';
+import '../styles/tips-n-trick.css';
+import '../styles/responsiveTips.css';
+import '../styles/event.css';
 
 import './components/nav-bar';
 import './components/app-footer';
@@ -13,10 +16,10 @@ const app = new App({
   menusvg: document.querySelector('.menu'),
   timessvg: document.querySelector('.times'),
 });
-// berfungsi saat link berubah
+
 window.addEventListener('hashchange', () => {
   app.renderPage();
 });
-window.addEventListener('load', () => {
-  app.renderPage();
-});
+// window.addEventListener('load', () => {
+//   app.renderPage();
+// });

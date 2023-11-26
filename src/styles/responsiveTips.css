@@ -1,0 +1,94 @@
+@media screen and (max-width: 1200px) {
+    .tipsTrick, .event {
+        padding: 20px;
+    }
+
+    .imageTipsTrick, .imageEvent {
+        width: 35%;
+    }
+    
+    .descGropTipsTrick, .descGropEvent {
+        width: 65%;
+    }
+
+    .descGropTipsTrick p, .descGropEvent p {
+        -webkit-line-clamp: 3;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    
+    .cardTipsTrick, .cardEvent {
+        min-height: 206px;
+    }
+    
+    .imageTipsTrick, .imageEvent {
+        width: 40%;
+    }
+    
+    .descGropTipsTrick, .descGropEvent {
+        width: 60%;
+    }
+
+    .descGropTipsTrick, .descGropEvent {
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .tipsTrick h2, .event h2 {
+        font-size: 46px;
+    }
+
+    .tipsTrick > p, .event > p {
+        font-size: 20px;
+    }
+
+    .cardTipsTrick, .cardEvent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .imageTipsTrick, .cardEvent .imageEvent {
+        width: 100%;
+        height: 200px;
+    }
+
+    .descGropTipsTrick, .descGropEvent {
+        width: 100%;
+        padding: 30px;
+        box-sizing: border-box;
+    }
+    
+    .descGropTipsTrick h3, .descGropEvent h3 {
+        font-size: 18px;
+    }
+
+    .descGropTipsTrick p, .descGropEvent p {
+        font-size: 16px;
+        -webkit-line-clamp: 4;
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .tipsTrick h2, .event h2 {
+        font-size: 44px;
+    }
+
+    .tipsTrick > p, .event > p {
+        font-size: 18px;
+    }
+    
+    .imageTipsTrick, .imageEvent {
+        height: 150px;
+    }
+
+    .descGropTipsTrick h3, .descGropEvent h3 {
+        font-size: 16px;
+    }
+
+    .descGropTipsTrick p, .descGropEvent p {
+        font-size: 14px;
+        -webkit-line-clamp: 4;
+    }
+}
