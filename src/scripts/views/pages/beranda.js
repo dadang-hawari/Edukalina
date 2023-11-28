@@ -49,7 +49,7 @@ const Beranda = {
 <h2> Bagaimana Kami <span class="blue"> Membantu </span></h2>
   <div class="membantu-container">
     <div class="membantu-wrapper">
-      <img src="./images/home/diskusi.png" alt="Diskusi" class="">
+      <img src="./images/home/diskusi.png" alt="Diskusi">
       <div class="membantu-desk">
         <h3><u>Diskusi</u></h3>
         <p>Membantu para tenaga pengajar untuk saling berbagi pengalaman dan bertukar informasi terkait masalah atau solusi saat mengajar.</p>
@@ -58,7 +58,7 @@ const Beranda = {
   </div>
   <div class="membantu-container">
     <div class="membantu-wrapper">
-      <img src="./images/home/event.png" alt="Event" class="">
+      <img src="./images/home/event.png" alt="Event">
       <div class="membantu-desk">
         <h3><u>Event</u></h3>
         <p>Megninfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
@@ -67,7 +67,7 @@ const Beranda = {
   </div>
   <div class="membantu-container">
     <div class="membantu-wrapper">
-      <img src="./images/home/tips.png" alt="Tips" class="">
+      <img src="./images/home/tips.png" alt="Tips" class="tips-img">
       <div class="membantu-desk last">
         <h3><u>Tips</u></h3>
         <p>Menyediakan berbagai macam Tips bagaimana cara mengajar atau menyelesaikan masalah saat proses mengajar.</p>

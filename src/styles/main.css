@@ -314,7 +314,7 @@ main {
 }
 
 .membantu-desk {
-    border-bottom: 1px solid black;
+    border-bottom: 0.7px solid black;
 }
 
 .membantu-desk h3 {
@@ -339,6 +339,44 @@ hr {
     border-top: 1px solid black;
     border-bottom: 0;
 }
+
+a.kembali-a {
+    display: block;
+    text-align: left;
+    margin-block: 90px 10px;
+    color: var(--main);
+    text-decoration: underline;
+    padding: 10px;
+    max-width: fit-content;
+}
+
+article h1 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+article {
+    max-width: 800px;
+    text-align: justify;
+    margin: 0 auto;
+    padding-bottom: 30px;
+
+}
+
+article figure {
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+figure img {
+    max-width: 800px;
+    width: 100%;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+
 
 footer {
     background-color: var(--secondary);
