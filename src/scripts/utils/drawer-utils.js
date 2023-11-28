@@ -20,6 +20,7 @@ const drawerUtils = {
     drawer.classList.remove('hidden');
     navbar.classList.remove('open');
   },
+
 };
 
 export default drawerUtils;

@@ -1,20 +1,23 @@
 :root {
     --main: #00A9FF;
     --secondary: #CDF5FD;
+    --oranye: #FDEDCD;
+    --scroll-bg: #ffffffd1;
 }
 
-* {
+*:not(nav-bar) {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: 'Poppins', sans-serif;
     font-weight: 300;
     margin: 0 auto;
-    height: 800px;
     min-height: 100vh;
     display: flex;
+    min-width: 250px;
     flex-direction: column;
 }
 
@@ -42,8 +45,13 @@ header {
     position: fixed;
     width: 100%;
     z-index: 9999;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(16px);
     box-shadow: 0px 1px 1px 0 #ababab;
+    transition: 0.4s ease-out;
+}
+
+.scroll {
+    background-color: var(--scroll-bg);
 }
 
 nav-bar {
@@ -108,7 +116,6 @@ button#btnMenu {
     min-width: 44px;
     min-height: 44px;
 }
-
 .main-btn {
     background-color: var(--main);
     padding: 10px 20px;
@@ -120,11 +127,212 @@ button#btnMenu {
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 100px;
     text-align: center;
     flex: 1;
+    margin-top: -10px;
+}
+
+.ma-min-3 {
+    margin-top: -25px;
+}
+
+.ma-1 {
+    margin-top: 10px;
+}
+
+.ma-2 {
+    margin-top: 15px;
+}
+
+.blue {
+    color: var(--main);
+}
+
+.img-hero-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.img-hero {
+    max-width: 450px;
+}
+
+.hero {
+    margin: 0 auto;
+    max-width: 1200px;
+    margin-top: 90px;
+    padding: 10px 0 10px 0;
+    flex-wrap: wrap-reverse;
+    display: flex;
+    width: 100%;
+}
+
+.hero-p {
+    width: 90%;
+    text-align: left;
+    padding: 0 50px 80px 50px;
+}
+
+.hero-p h1 {
+    font-weight: normal;
+}
+
+.hero-btn {
+    background-color: var(--main);
+    max-width: 100px;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+
+#mainContent {
+    position: relative;
+    width: 100%;
+    background: var(--oranye);
+    z-index: 1;
+    padding-bottom: 50px;
+}
+
+.edukalina {
+    display: flex;
+    height: fit-content;
+    padding: 50px 0;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.edukalina img {
+    width: 200px;
+    margin-inline: auto;
+    border-radius: 40px;
+}
+
+.edukalina h2 {
+    font-weight: 800!important;
+    font-size: 30px;
+}
+
+.edukalina-desk p {
+    letter-spacing: 1px;
+    background-color: rgba(255, 255, 255, 0.495);
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1em !important;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.pendidikan-indonesia {
+    position: relative;
+    background: url(../public/images/home/wave.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+    margin-top: -240px;
+    padding-block: 800px 300px;
+}
+
+.pendidikan-content {
+    display: flex; max-height: 216px; max-width: 1200px; margin: 0 auto; justify-content: space-around; align-items: center
+}
+
+.pendidikan-desk {
+    font-size: 22px;
+}
+
+.pendidikan-p {
+    max-width: 1200px;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    padding-inline: 20px;
+}
+
+.pendidikan-indonesia h2 {
+    font-size: 50px;
+    padding-top: 200px;
+}
+
+.pendidikan-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.limit-icon {
+    background: url(../public/images/home/limit.svg) no-repeat;
+    background-size: 100%;
+    min-width: 80px;
+    max-width: 80px;
+    background-position: center;
+    min-height: 300px;
+}
+
+.pendidikan-container {
+    max-width: 1200px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%; transform: translateX(-50%);
+}
+
+.membantu {
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.membantu-container {
+    display: flex;
+}
+
+.membantu-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+
+.membantu-wrapper img {
+    max-width: 180px;
+    width: 100%;
+    padding: 20px;
+}
+
+.membantu-desk {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.membantu-desk {
+    border-bottom: 1px solid black;
+}
+
+.membantu-desk h3 {
+    font-size: 1.5em;
+    padding-bottom: 15px;
+}
+
+.membantu {
+    box-sizing: border-box;
+    padding-inline: 20px;
+}
+
+.membantu h2 {
+    font-size: 33px;
+}
+
+.last {
+    margin-bottom: 60px;
 }
 
 hr {
