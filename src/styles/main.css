@@ -246,3 +246,134 @@ app-footer > p {
 .sosmedTentang > a {
     margin: 0 10px;
 }
+
+/* Login & Register */
+
+.bungkus h2,
+.formSide h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.bungkus h3,
+.formSide h3 {
+    font-size: 40px;
+    color: black;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+.input {
+    width: 100%;
+}
+
+label{
+    font-size: 24px;    
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+input{
+    border: #00A9FF solid 1px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    color: black;
+    height: 57px;
+    width: 400px;
+    font-size: 24px;
+    margin: 15px 0 18px 0;
+}
+
+.btnLogin,
+.btnRegister { 
+    background-color: #00A9FF;
+    width: 441.8px;
+    height: 68.8px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    font-size: 24px;
+    border: none;
+    margin: 20px 0;
+    color: white;
+    cursor: pointer;
+}
+
+/* Login */
+
+.login{
+    width: 100%;
+    width: 1200px;
+    display: flex;
+    text-align: left;
+    position: relative;
+    margin-bottom: 57px;
+}
+
+.bgLogin {
+    z-index: -1;
+    right: -168px;
+    top: -100px;
+    width: 55%;
+    height: 750px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+}
+
+.formSide > p {
+    text-align: center;
+}
+
+.spanLogin {
+    color: #00A9FF;
+}
+
+/* Register */
+
+.register {
+    width: 1100px;
+    text-align: left;
+    background-color: #CDF5FD;
+    border-radius: 40px;
+    padding: 40px 40px 20px 40px; 
+    margin-bottom: 57px;
+}
+
+.flexForm {
+    display: flex;
+}
+
+.sideRegister{
+    width: 100%;
+    padding-top: 50px;
+    text-align: center;
+}
+
+.formSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgSide {
+    margin: 0 100px;
+}
+
+.imgRegister {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    justify-items: center;
+}
+
+.btnRegister {
+    width: 600px;
+}
+
+.containerBtnRegister {
+    width: 100%;
+    text-align: center;
+}
+
+
+
