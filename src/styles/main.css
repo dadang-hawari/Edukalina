@@ -164,14 +164,12 @@ app-footer > p {
 }
 
 .navigasi-ft, .kontak-ft, .alamat-ft, .brand-footer {
-    min-width: 240px;
-    max-width: 240px;
     margin-top: 10px;
 }
 
 .brand-footer {
-    margin-bottom: 10px;
-    margin-right: 80px;
+    text-align: center;
+    padding: inherit;
 }
 
 .brand-footer h2 {
@@ -179,3 +177,72 @@ app-footer > p {
     font-weight: bold;
 }
 
+/* Tentang */
+
+.tentang {
+    width: 100%;
+    text-align: left;
+    margin-bottom: 57px;
+    text-align: center;
+}
+
+.tentang h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 50px;
+}
+
+.tentang > p {
+    font-size: 22px;
+    margin-bottom: 53px;
+    padding: 0px 100px;
+}
+
+.gropCardTentang {
+    width: 100%;
+    display: flex;
+    gap: 50px;
+    justify-content: center;
+}
+
+.cardTentang1, 
+.cardTentang2,
+.cardTentang3,
+.cardTentang4,
+.cardTentang5 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.imageTentang{
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+    border-radius: 50%;
+}
+
+.imageTentang > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.cardTentang > p {
+    height: 20px;
+    margin-top: 10px;
+}
+
+.sosmedTentang{
+    display: flex;
+    color: #00A9FF;
+    padding: 10px;
+    justify-content: center;
+}
+
+.sosmedTentang > a {
+    margin: 0 10px;
+}
