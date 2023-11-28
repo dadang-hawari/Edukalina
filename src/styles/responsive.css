@@ -184,6 +184,51 @@
     } 
 }
 
+
+@media screen and (min-width: 650px) {
+    nav-bar.open {
+        height: 50px;
+    }
+
+    button#btnMenu {
+        display: none;
+    }
+
+    nav-bar ul.list-nav {
+        position: relative;
+        left: unset;
+        transform: unset;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        width: fit-content;
+        align-items: center;
+    }
+
+    ul.list-nav li {
+        font-size: 0.9rem;
+    }
+
+    ul.list-nav li a {
+        padding: 10px 15px;
+        
+    }
+
+    .main-btn {
+        padding: 5px 15px;
+        margin-inline: 5px 30px;
+    }
+
+    .flex-footer {
+        padding: 60px;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+}
+
+
 @media screen and (min-width: 800px) {
     .hero {
         margin-top: unset;
@@ -299,51 +344,6 @@
 
 }
 
-@media screen and (min-width: 650px) {
-    nav-bar.open {
-        height: 50px;
-    }
-
-    button#btnMenu {
-        display: none;
-    }
-
-    nav-bar ul.list-nav {
-        position: relative;
-        left: unset;
-        transform: unset;
-        display: flex;
-        flex-direction: row;
-        margin-top: 20px;
-        width: fit-content;
-        align-items: center;
-    }
-
-    ul.list-nav li {
-        font-size: 0.9rem;
-    }
-
-    ul.list-nav li a {
-        padding: 10px 15px;
-        
-    }
-
-    .main-btn {
-        padding: 5px 15px;
-        margin-inline: 5px 30px;
-    }
-
-    .flex-footer {
-        padding: 60px;
-    }
-
-    .hero h1 {
-        font-size: 35px;
-    }
-
-
-}
-
 @media screen and (min-width: 1000px) {
     .hero h1 {
        font-size: 45px;
@@ -369,6 +369,14 @@
     .membantu-container {
         border-bottom: 1px solid black;
         padding-bottom: 10px;
+    }
+
+    .membantu-container:nth-child(4) {
+        border-bottom: none;
+    }
+
+    img.tips-img {
+        height: 230px;
     }
     
 }
