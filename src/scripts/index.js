@@ -1,6 +1,8 @@
 import App from './views/app';
 import '../styles/main.css';
 import '../styles/responsive.css';
+import '../styles/login-register.css';
+import '../styles/responsive-login.css';
 
 import './components/nav-bar';
 import './components/app-footer';
