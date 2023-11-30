@@ -41,7 +41,7 @@ const Beranda = {
       <img src="./images/home/teacher.png" class="icon-section">
     </div>
     </div>
-    <p class="pendidikan-p">Dengan banyaknya peserta didik maka tentunya diperlukan juga pengajar-pengajar berkualitas.</p>
+    <p class="pendidikan-p">Dengan banyaknya peserta didik maka tentunya diperlukan juga pengajar yang berkualitas.</p>
   </div>
 </div>
 
