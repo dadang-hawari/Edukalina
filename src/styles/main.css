@@ -220,13 +220,14 @@ main {
 }
 
 .edukalina-desk p {
-    letter-spacing: 1px;
     background-color: rgba(255, 255, 255, 0.495);
     border-radius: 10px;
     width: 100%;
     font-size: 1em !important;
+    font-weight: 500;
     box-sizing: border-box;
     padding: 20px;
+    font-size: 29px;
 }
 
 .pendidikan-indonesia {
@@ -375,7 +376,114 @@ figure img {
     max-height: 400px;
 }
 
+.diskusi-desk {
+    margin-top: 90px;
+    padding-inline: 20px;
 
+}
+
+.diskusi-desk {
+    max-width: 1000px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left;
+}
+
+.diskusi-container {
+    margin-inline: auto;
+    max-width: 1000px;
+    padding-inline: 20px;
+    margin-bottom: 25px;
+}
+
+.form-diskusi {
+    max-width: 950px;
+    text-align: left;
+    padding: 25px;
+    margin: 0 auto; 
+}
+
+.form-diskusi label {
+    font-size: 1em;
+}
+
+.form-diskusi input, textarea {
+    margin-top: -8px;
+    max-width: 950px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 0.4px solid rgba(0, 0, 0, 0.693);
+    outline: none;
+    border-width: 0.4px;
+}
+
+.form-diskusi textarea {
+    resize: vertical;
+}
+
+.form-diskusi input:focus, .form-diskusi textarea:focus {
+    outline: none;
+    border-width: 0.4px;
+    border: 0.5px solid var(--main);
+}
+
+.form-diskusi label {
+    display: block;
+}
+
+.btn-diskusi {
+    max-width: 150px;
+    width: 100%;
+    background-color: var(--main);
+    padding: 10px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: 1px solid transparent;
+    color: white;
+    margin-block: 10px;
+}
+
+
+.diskusi-card {
+    max-width: 950px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left; 
+}
+
+.diskusi-card {
+    padding: 15px;
+    box-shadow: 0 1px 3px 0.1px var(--main);
+    border-radius: 10px;
+}
+
+.profile {
+    margin-bottom: 5px;
+}
+
+.diskusi-point b {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.diskusi-point {
+    margin-bottom: 10px;
+}
+
+.profile i {
+    color: grey;
+}
+
+.diskusi-card {
+    padding-inline: 30px;
+}
 
 footer {
     background-color: var(--secondary);
@@ -416,8 +524,9 @@ app-footer > p {
 }
 
 .brand-footer {
-    margin-bottom: 10px;
-    margin-right: 80px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-right: 100px;
 }
 
 .brand-footer h2 {

@@ -133,6 +133,10 @@
         margin-top: 430px;
         font-size: 1em;
     }
+
+    .brand-footer {
+        text-align: left;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -327,7 +331,6 @@
     .membantu-desk {
         width: 100%;
         max-width: 850px;
-        border: none;
         padding: 30px 0 30px 30px;
         font-size: 25px;
         text-align: left;
@@ -366,10 +369,6 @@
         margin-top: -20px!important;
     }
 
-    .membantu-container {
-        border-bottom: 1px solid black;
-        padding-bottom: 10px;
-    }
 
     .membantu-container:nth-child(4) {
         border-bottom: none;
