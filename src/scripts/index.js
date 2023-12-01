@@ -1,6 +1,9 @@
 import App from './views/app';
 import '../styles/main.css';
 import '../styles/responsive.css';
+import '../styles/tips-n-trick.css';
+import '../styles/responsiveTips.css';
+import '../styles/event.css';
 import '../styles/login-register.css';
 import '../styles/responsive-login.css';
 
@@ -20,6 +23,10 @@ window.addEventListener('hashchange', () => {
   app.renderPage();
   window.scrollTo(0, 0);
 });
+// window.addEventListener('load', () => {
+//   app.renderPage();
+// });
+
 window.addEventListener('load', () => {
   app.renderPage();
 });
