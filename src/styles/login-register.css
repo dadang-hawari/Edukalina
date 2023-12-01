@@ -57,7 +57,7 @@ input.input-register {
 
 button.btnRegister {
     background-color: #00A9FF;
-    max-width: 200px;
+    max-width: 300px;
     width: 100%;
     border-radius: 40px;
     padding: 10px;
@@ -169,11 +169,6 @@ p a {
     padding-block: 10px;
 }
 
-.btnRegister {
-    max-width: 600px;
-    width: 100%;
-}
-
 .containerBtnRegister {
     width: 100%;
     text-align: center;
@@ -185,4 +180,8 @@ p a {
     max-width: 1200px;
     margin-inline: auto;
     padding-left: 40px;
+}
+
+.bungkus {
+    margin-top: 100px;
 }

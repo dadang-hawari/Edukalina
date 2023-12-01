@@ -1,9 +1,10 @@
 .tipsTrick, 
 .event {
+    margin-inline: auto;
+    max-width: 1200px;
     width: 90%;
     margin-top: 90px;
     text-align: left;
-    margin: 0 auto 57px auto;
     box-sizing: border-box;
 }
 

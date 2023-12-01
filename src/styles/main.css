@@ -536,6 +536,8 @@ app-footer > p {
 /* Tentang */
 
 .tentang {
+    margin-inline: auto;
+    max-width: 1200px;
     width: 100%;
     text-align: left;
     margin-top: 90px;
