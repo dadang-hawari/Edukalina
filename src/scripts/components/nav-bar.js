@@ -1,6 +1,7 @@
 class NavBar extends HTMLElement {
   connectedCallback() {
     this.render();
+    this.setupEventListeners();
   }
 
   render() {
@@ -78,6 +79,14 @@ class NavBar extends HTMLElement {
                 <li><button type="button" id="loginBtn" class="main-btn">Login</button></li>
             </ul>
    `;
+  }
+
+  setupEventListeners() {
+    const loginBtn = this.querySelector('#loginBtn');
+
+    loginBtn.addEventListener('click', () => {
+      window.location.hash = '#/login';
+    });
   }
 }
 
