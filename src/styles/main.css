@@ -1,11 +1,14 @@
 :root {
     --main: #00A9FF;
     --secondary: #CDF5FD;
+    --oranye: #FDEDCD;
+    --scroll-bg: #ffffffd1;
 }
 
-* {
+*:not(nav-bar) {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -14,6 +17,7 @@ body {
     margin: 0 auto;
     min-height: 100vh;
     display: flex;
+    min-width: 250px;
     flex-direction: column;
 }
 
@@ -41,8 +45,13 @@ header {
     position: fixed;
     width: 100%;
     z-index: 9999;
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(16px);
     box-shadow: 0px 1px 1px 0 #ababab;
+    transition: 0.4s ease-out;
+}
+
+.scroll {
+    background-color: var(--scroll-bg);
 }
 
 nav-bar {
@@ -107,7 +116,6 @@ button#btnMenu {
     min-width: 44px;
     min-height: 44px;
 }
-
 .main-btn {
     background-color: var(--main);
     padding: 10px 20px;
@@ -119,16 +127,362 @@ button#btnMenu {
 }
 
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding-top: 100px;
     text-align: center;
     flex: 1;
+    margin-top: -10px;
+}
+
+.ma-min-3 {
+    margin-top: -25px;
+}
+
+.ma-1 {
+    margin-top: 10px;
+}
+
+.ma-2 {
+    margin-top: 15px;
+}
+
+.blue {
+    color: var(--main);
+}
+
+.img-hero-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.img-hero {
+    max-width: 450px;
+}
+
+.hero {
+    margin: 0 auto;
+    max-width: 1200px;
+    margin-top: 90px;
+    padding: 10px 0 10px 0;
+    flex-wrap: wrap-reverse;
+    display: flex;
+    width: 100%;
+}
+
+.hero-p {
+    width: 90%;
+    text-align: left;
+    padding: 0 50px 80px 50px;
+}
+
+.hero-p h1 {
+    font-weight: normal;
+}
+
+.hero-btn {
+    background-color: var(--main);
+    max-width: 100px;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+
+#mainContent {
+    position: relative;
+    width: 100%;
+    background: var(--oranye);
+    z-index: 1;
+    padding-bottom: 50px;
+}
+
+.edukalina {
+    display: flex;
+    height: fit-content;
+    padding: 50px 0;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.edukalina img {
+    width: 200px;
+    margin-inline: auto;
+    border-radius: 40px;
+}
+
+.edukalina h2 {
+    font-weight: 800!important;
+    font-size: 30px;
+}
+
+.edukalina-desk p {
+    background-color: rgba(255, 255, 255, 0.495);
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1em !important;
+    font-weight: 500;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 29px;
+}
+
+.pendidikan-indonesia {
+    position: relative;
+    background: url(../public/images/home/wave.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+    margin-top: -240px;
+    padding-block: 800px 300px;
+}
+
+.pendidikan-content {
+    display: flex; max-height: 216px; max-width: 1200px; margin: 0 auto; justify-content: space-around; align-items: center
+}
+
+.pendidikan-desk {
+    font-size: 22px;
+}
+
+.pendidikan-p {
+    max-width: 1200px;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    padding-inline: 20px;
+}
+
+.pendidikan-indonesia h2 {
+    font-size: 50px;
+    padding-top: 200px;
+}
+
+.pendidikan-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+.limit-icon {
+    background: url(../public/images/home/limit.svg) no-repeat;
+    background-size: 100%;
+    min-width: 80px;
+    max-width: 80px;
+    background-position: center;
+    min-height: 300px;
+}
+
+.pendidikan-container {
+    max-width: 1200px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%; transform: translateX(-50%);
+}
+
+.membantu {
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.membantu-container {
+    display: flex;
+}
+
+.membantu-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+
+.membantu-wrapper img {
+    max-width: 180px;
+    width: 100%;
+    padding: 20px;
+}
+
+.membantu-desk {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.membantu-desk {
+    border-bottom: 0.7px solid black;
+}
+
+.membantu-desk h3 {
+    font-size: 1.5em;
+    padding-bottom: 15px;
+}
+
+.membantu {
+    box-sizing: border-box;
+    padding-inline: 20px;
+}
+
+.membantu h2 {
+    font-size: 33px;
+}
+
+.last {
+    margin-bottom: 60px;
 }
 
 hr {
     border-top: 1px solid black;
     border-bottom: 0;
+}
+
+a.kembali-a {
+    display: block;
+    text-align: left;
+    margin-block: 90px 10px;
+    color: var(--main);
+    text-decoration: underline;
+    padding: 10px;
+    max-width: fit-content;
+}
+
+article h1 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+article {
+    max-width: 800px;
+    text-align: justify;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+article figure {
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+figure img {
+    max-width: 800px;
+    width: 100%;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+.diskusi-desk {
+    margin-top: 90px;
+    padding-inline: 20px;
+
+}
+
+.diskusi-desk {
+    max-width: 1000px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left;
+}
+
+.diskusi-container {
+    margin-inline: auto;
+    max-width: 1000px;
+    padding-inline: 20px;
+    margin-bottom: 25px;
+}
+
+.form-diskusi {
+    max-width: 950px;
+    text-align: left;
+    padding: 25px;
+    margin: 0 auto; 
+}
+
+.form-diskusi label {
+    font-size: 1em;
+}
+
+.form-diskusi input, textarea {
+    margin-top: -8px;
+    max-width: 950px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 0.4px solid rgba(0, 0, 0, 0.693);
+    outline: none;
+    border-width: 0.4px;
+}
+
+.form-diskusi textarea {
+    resize: vertical;
+}
+
+.form-diskusi input:focus, .form-diskusi textarea:focus {
+    outline: none;
+    border-width: 0.4px;
+    border: 0.5px solid var(--main);
+}
+
+.form-diskusi label {
+    display: block;
+}
+
+.btn-diskusi {
+    max-width: 150px;
+    width: 100%;
+    background-color: var(--main);
+    padding: 10px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: 1px solid transparent;
+    color: white;
+    margin-block: 10px;
+}
+
+
+.diskusi-card {
+    max-width: 950px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left; 
+}
+
+.diskusi-card {
+    padding: 15px;
+    box-shadow: 0 1px 3px 0.1px var(--main);
+    border-radius: 10px;
+}
+
+.profile {
+    margin-bottom: 5px;
+}
+
+.diskusi-point b {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.diskusi-point {
+    margin-bottom: 10px;
+}
+
+.profile i {
+    color: grey;
+}
+
+.diskusi-card {
+    padding-inline: 30px;
 }
 
 footer {
@@ -170,8 +524,9 @@ app-footer > p {
 }
 
 .brand-footer {
-    margin-bottom: 10px;
-    margin-right: 80px;
+    text-align: center;
+    margin-bottom: 40px;
+    margin-right: 100px;
 }
 
 .brand-footer h2 {

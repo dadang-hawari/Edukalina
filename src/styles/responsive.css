@@ -1,5 +1,35 @@
 
+@media screen and (max-width: 300px) {
+    .limit-icon {
+        padding-block: 20px;
+        min-height: 250px;
+    }
+}
+
 @media screen and (max-width: 400px) {
+    
+    header {
+        backdrop-filter: blur(40px);
+    }
+
+    .img-hero-container {
+        text-align: center;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+    
+    .hero-p {
+        padding: 0 20px 80px 20px;
+    }
+
+    .hero-p h1 {
+        font-size: 27px!important;
+    }
+
+    .img-hero {
+        width: 100%;
+    }
+
     ul.list-nav li a {
         padding: 15px;
     }
@@ -15,11 +45,149 @@
         width: 100%;
         margin-top: 20px;
     }
+
+    p.pendidikan-p {
+        font-size: 1.2em;
+    }
 }
 
-@media screen and (min-width: 800px) {
- 
+
+@media screen and (max-width: 450px) {
+    
+    .img-hero-container img{
+        width: 90%;
+        margin-inline: auto;
+        margin-top: -40px;
+    }
 }
+
+@media screen and (max-width: 800px) {
+
+    .hero-p {
+        margin: 0 auto;
+    }
+    .img-hero-container {
+        text-align: center;
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+    }
+
+    .edukalina {
+        flex-wrap: wrap;
+        padding-bottom: 150px;
+    }
+
+    .edukalina-img {
+        width: 100%;
+        text-align: center;
+        margin-inline: auto;
+    }
+
+    .edukalina h2 {
+        font-weight: normal;
+    }
+
+    .pendidikan-indonesia {
+        padding-bottom: 450px;
+    }
+
+    .pendidikan-content {
+        flex-wrap: wrap;
+    }
+
+    .pendidikan-container h2 {
+        margin-top: 29px;
+        padding-inline: 10px;
+        font-size: 33px;
+        margin-bottom: 15px;
+    }
+
+    .pendidikan-wrapper {
+        text-align: center;
+        justify-content: center;
+        width: 100%;
+    }
+    .pendidikan-wrapper {
+        flex-wrap: wrap;
+    }
+    .pendidikan-wrapper:last-child {
+        flex-wrap: wrap-reverse;
+    }
+
+    .pendidikan-desk {
+        width: 100%;
+        max-width: 900px;
+        margin-top: 10px;
+        padding-inline: 10px;
+        font-size: 30px;
+    }
+
+    .limit-icon {
+        background-size: 70%;
+        margin-block: -90px -90px;
+        transform: rotate(90deg);
+    }
+
+    .pendidikan-p {
+        margin-top: 430px;
+        font-size: 1em;
+    }
+
+    .brand-footer {
+        text-align: left;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    img.icon-section {
+        max-width: 150px;
+    }
+
+    .pendidikan-indonesia {
+        margin-bottom: -60px;
+    }
+
+    .edukalina-desk p {
+        padding-inline: 30px;
+    }
+
+    p.pendidikan-desk {
+        font-size: 17px;
+        text-decoration: underline;
+    }
+
+    .pendidikan-p {
+        margin-top: 350px;
+        font-size: 1em;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .hero-p h1 {
+        font-size: 37px;
+    }
+
+    .hero img {
+        max-width: 400px;
+    }
+
+    .edukalina-img img {
+        padding-left: 40px;
+    }
+
+    .pendidikan-desk {
+        font-size: 20px;
+        text-decoration: underline;
+    }
+}
+
+@media screen and (min-width: 500px) {
+    p.pendidikan-p {
+        font-size: 1.2em;
+    } 
+}
+
 
 @media screen and (min-width: 650px) {
     nav-bar.open {
@@ -29,7 +197,6 @@
     button#btnMenu {
         display: none;
     }
-
 
     nav-bar ul.list-nav {
         position: relative;
@@ -59,8 +226,162 @@
     .flex-footer {
         padding: 60px;
     }
+
+    .hero h1 {
+        font-size: 35px;
+    }
 }
 
-@media screen and (min-width: 1200px) {
 
+@media screen and (min-width: 800px) {
+    .hero {
+        margin-top: unset;
+        align-items: center;
+        margin-top: unset;
+        flex-wrap: nowrap;
+        height: 700px;
+    }
+
+    .hero img {
+        padding-right: 30px;
+    }
+
+    .hero h1 {
+        line-height: 55px;
+    }
+
+    .hero-p {
+        width: 90%;
+        text-align: left;
+        padding: 80px 50px 80px 50px;
+    }
+
+    .edukalina {
+        padding: 80px 0 200px 0;
+        width: 100%;
+    }
+
+    .edukalina-img {
+        margin: 0 auto;
+    }
+
+    .edukalina-img img {
+        max-width: 300px!important;
+        width: 100%;
+    }
+
+    .edukalina-desk {
+        margin: 0 auto;
+        max-width: 600px;
+        width: 100%;
+        font-size: 20px;
+    }
+
+    .pendidikan-container {
+        margin-top: 100px;
+    }
+
+    .pendidikan-content {
+        margin-bottom: 80px;
+        padding-inline: 40px;
+    }
+
+    .pendidikan-container h2 {
+        margin-bottom: 50px;
+    }
+
+    p.pendidikan-p {
+        font-size: 30px;
+    }
+
+    .pendidikan-desk img{
+        font-size: 20px;
+    }
+
+    p.pendidikan-desk {
+        font-size: 25px;
+        text-decoration: underline;
+        font-weight: 500;
+        padding: 20px;
+    }
+
+    .membantu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .membantu h2 {
+        font-size: 50px;
+    }
+
+    .membantu-container {
+        width: 100%;
+    }
+
+    .membantu-wrapper {
+        width: 1200px;
+        gap: 50px;
+        margin: 0 auto;
+    }
+    .membantu-wrapper img {
+        max-width: 216px;
+        max-height: 250px;
+    }
+
+    .membantu-desk {
+        width: 100%;
+        max-width: 850px;
+        padding: 30px 0 30px 30px;
+        font-size: 25px;
+        text-align: left;
+    }
+
+    .pendidikan-wrapper:nth-child(1) {
+        flex-direction: column-reverse;
+    }
+
+    .column {
+        flex-direction: column;
+    }
+
+
+}
+
+@media screen and (min-width: 1000px) {
+    .hero h1 {
+       font-size: 45px;
+    }
+
+    .hero img {
+        padding-right: 0;
+    }
+    .edukalina-img h2{
+        font-size: 3em;
+    }
+
+    .edukalina-desk {
+        font-size: 20px;
+    }
+}
+
+@media screen and (min-width: 1200px)  {
+    .hero {
+        margin-top: -20px!important;
+    }
+
+
+    .membantu-container:nth-child(4) {
+        border-bottom: none;
+    }
+
+    img.tips-img {
+        height: 230px;
+    }
+    
+}
+
+
+@media screen and (min-width: 1300px)  {
+
+  
 }
