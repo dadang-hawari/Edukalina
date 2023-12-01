@@ -538,6 +538,7 @@ app-footer > p {
 .tentang {
     width: 100%;
     text-align: left;
+    margin-top: 90px;
     margin-bottom: 57px;
     text-align: center;
 }
