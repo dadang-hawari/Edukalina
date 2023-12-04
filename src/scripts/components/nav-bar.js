@@ -72,7 +72,7 @@ class NavBar extends HTMLElement {
             </button>
             <ul class='list-nav'>
                 <li><a href="#/beranda">Beranda</a></li>
-                <li><a href="#/tips">Tips & Trick</a></li>
+                <li><a href="#/tips">Tips</a></li>
                 <li><a href="#/event">Event</a></li>
                 <li><a href="#/diskusi">Diskusi</a></li>
                 <li><a href="#/tentang">Tentang</a></li>

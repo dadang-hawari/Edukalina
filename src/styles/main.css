@@ -392,7 +392,7 @@ figure img {
 .diskusi-form {
     margin-inline: auto;
     max-width: 1200px;
-    padding-inline: 20px;
+    /* padding-inline: 20px; */
     margin-bottom: 25px;
 }
 
@@ -405,7 +405,7 @@ figure img {
 .form-diskusi {
     max-width: 1200px;
     text-align: left;
-    padding: 25px;
+    padding: 25px 0 0 0;
     margin: 0 auto; 
 }
 
@@ -457,6 +457,35 @@ figure img {
     margin-block: 10px;
 }
 
+.formRegister button#pwEye{
+    position: absolute; 
+    right: 0; 
+    top: 33px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+form #pwEye {
+    position: absolute; 
+    right: 0; 
+    top: 50px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEye svg.hidenSvg {
+    display: none;
+}
 
 .diskusi-card {
     max-width: 1200px;
@@ -657,7 +686,6 @@ app-footer > p {
 
 .sideRegister{
     width: 100%;
-    padding-top: 50px;
     text-align: center;
 }
 

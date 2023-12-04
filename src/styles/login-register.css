@@ -9,7 +9,7 @@
 .bungkus h3,
 .formSide h3 {
     font-size: 40px;
-    color: black;
+    color: #00A9FF;
     margin-bottom: 25px;
     text-align: left;
 }
@@ -35,8 +35,8 @@ input{
     width: 100%;
     height: 57px;
     max-width: 400px;
-    font-size: 15px;
-    margin: 15px 0 18px 0;
+    font-size: 17px;
+    margin: 10px 0 15px 0;
 }
 
 .formRegister {
@@ -61,18 +61,32 @@ button.btnRegister {
     width: 100%;
     border-radius: 40px;
     padding: 10px;
-    font-size: 24px;
+    font-size: 22px;
     border: none;
     margin: 20px 0;
     color: white;
     cursor: pointer;
 }
 
+button.btnRegisterGoogle {
+    background-color: white;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 40px;
+    padding: 10px;
+    font-size: 22px;
+    border: none;
+    margin: 20px 0;
+    color: black;
+    cursor: pointer;
+    border: 2px #00A9FF solid;
+}
+
 .btnLogin { 
     background-color: #00A9FF;
     max-width: 441.8px;
     width: 100%;
-    height: 68.8px;
+    height: 55px;
     border-radius: 40px;
     padding: 5px 20px;
     font-size: 24px;
@@ -80,6 +94,21 @@ button.btnRegister {
     margin: 20px 0;
     color: white;
     cursor: pointer;
+}
+
+.btnLoginGoogle { 
+    background-color: white;
+    max-width: 441.8px;
+    width: 100%;
+    height: 55px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    font-size: 24px;
+    border: none;
+    margin: 20px 0;
+    color: black;
+    cursor: pointer;
+    border: 2px #00A9FF solid;
 }
 
 /* Login */
@@ -110,6 +139,10 @@ button.btnRegister {
 .formSide > p {
     text-align: center;
     font-size: 18px;
+}
+
+form p {
+    text-align: center;
 }
 
 .spanLogin {
@@ -175,6 +208,10 @@ p a {
 .containerBtnRegister {
     width: 100%;
     text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
 }
 
 .bungkus h3 {
