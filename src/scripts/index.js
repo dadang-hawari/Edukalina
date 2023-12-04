@@ -3,6 +3,7 @@ import '../styles/main.css';
 import '../styles/responsive.css';
 import '../styles/tips-n-trick.css';
 import '../styles/responsiveTips.css';
+import '../styles/responsiveTentang.css';
 import '../styles/event.css';
 import '../styles/login-register.css';
 import '../styles/responsive-login.css';

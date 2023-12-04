@@ -145,6 +145,8 @@ main {
 }
 
 .blue {
+    font-size: 48px;
+    margin-bottom: 53px;
     color: var(--main);
 }
 
@@ -376,28 +378,32 @@ figure img {
     max-height: 400px;
 }
 
+/* Diskusi */
+
 .diskusi-desk {
     margin-top: 90px;
-    padding-inline: 20px;
-
-}
-
-.diskusi-desk {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     margin-inline: auto;
     text-align: left;
+    font-size: 22px;
 }
 
-.diskusi-container {
+.diskusi-form {
     margin-inline: auto;
-    max-width: 1000px;
+    max-width: 1200px;
     padding-inline: 20px;
     margin-bottom: 25px;
 }
 
+.diskusi-container {
+    margin-inline: auto;
+    max-width: 1200px;
+    margin-bottom: 25px;
+}
+
 .form-diskusi {
-    max-width: 950px;
+    max-width: 1200px;
     text-align: left;
     padding: 25px;
     margin: 0 auto; 
@@ -408,8 +414,9 @@ figure img {
 }
 
 .form-diskusi input, textarea {
+    justify-content: center;
     margin-top: -8px;
-    max-width: 950px;
+    max-width: 1200px;
     margin-bottom: 15px;
     width: 100%;
     padding: 10px;
@@ -452,10 +459,11 @@ figure img {
 
 
 .diskusi-card {
-    max-width: 950px;
+    max-width: 1200px;
     width: 100%;
     margin-inline: auto;
     text-align: left; 
+    margin: 30px 0px
 }
 
 .diskusi-card {
@@ -484,6 +492,8 @@ figure img {
 .diskusi-card {
     padding-inline: 30px;
 }
+
+/* footer */
 
 footer {
     background-color: var(--secondary);
@@ -523,9 +533,7 @@ app-footer > p {
 
 .brand-footer {
     text-align: center;
-    padding: inherit;
-    margin-bottom: 40px;
-    margin-right: 100px;
+    align-items: center;
 }
 
 .brand-footer h2 {
@@ -536,11 +544,10 @@ app-footer > p {
 /* Tentang */
 
 .tentang {
-    margin-inline: auto;
-    max-width: 1200px;
-    width: 100%;
-    text-align: left;
     margin-top: 90px;
+    max-width: 1200px;
+    margin-inline: auto;
+    width: 100%;
     margin-bottom: 57px;
     text-align: center;
 }
@@ -560,8 +567,7 @@ app-footer > p {
 .gropCardTentang {
     width: 100%;
     display: flex;
-    gap: 50px;
-    justify-content: center;
+    gap: 10px;
 }
 
 .cardTentang1, 
@@ -599,64 +605,10 @@ app-footer > p {
     display: flex;
     color: #00A9FF;
     padding: 10px;
-    justify-content: center;
 }
 
 .sosmedTentang > a {
     margin: 0 10px;
-}
-
-/* Login & Register */
-
-.bungkus h2,
-.formSide h2 {
-    font-size: 48px;
-    color: #00A9FF;
-    margin-bottom: 40px;
-    text-align: left;
-}
-
-.bungkus h3,
-.formSide h3 {
-    font-size: 40px;
-    color: black;
-    margin-bottom: 25px;
-    text-align: left;
-}
-
-.input {
-    width: 100%;
-}
-
-label{
-    font-size: 24px;    
-    font-weight: 600;
-    margin-bottom: 15px;
-}
-
-input{
-    border: #00A9FF solid 1px;
-    border-radius: 40px;
-    padding: 5px 20px;
-    color: black;
-    height: 57px;
-    width: 400px;
-    font-size: 24px;
-    margin: 15px 0 18px 0;
-}
-
-.btnLogin,
-.btnRegister { 
-    background-color: #00A9FF;
-    width: 441.8px;
-    height: 68.8px;
-    border-radius: 40px;
-    padding: 5px 20px;
-    font-size: 24px;
-    border: none;
-    margin: 20px 0;
-    color: white;
-    cursor: pointer;
 }
 
 /* Login */

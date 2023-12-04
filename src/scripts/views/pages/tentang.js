@@ -6,9 +6,9 @@ const Tentang = {
             <p>Kami adalah orang orang yang peduli akan pendidikan dan pentingnya tenaga pengejar dalam mendidik para penerus bangsa agar dapat memliki sifat yang berbudi pekerti luhur dan meningkatkan nama negara ke  jenjang internasional</p>
             <h2> Tim </h2>
             <div class="gropCardTentang">
-                <div class="cardTentang">
+                <div class="cardTentang1">
                     <div class="imageTentang">
-                        <img src="" alt="Dadang">
+                        <img src="./image/member/dadang1.png" alt="">
                     </div>
                     <p> Muh. Dadang Hawari</p>
                     <div class="sosmedTentang">
@@ -23,9 +23,9 @@ const Tentang = {
                         </a>
                     </div>
                 </div>
-                <div class="cardTentang">
+                <div class="cardTentang2">
                     <div class="imageTentang">
-                        <img src="./image/member/aryandhi1.png" alt="Aryandhi">
+                        <img src="./image/member/aryandhi1.png" alt="">
                     </div>
                     <p> Aryandhi Alhaqam</p>
                     <div class="sosmedTentang">
@@ -40,9 +40,9 @@ const Tentang = {
                         </a>
                     </div>
                 </div>
-                <div class="cardTentang">
+                <div class="cardTentang3">
                     <div class="imageTentang">
-                        <img src="./image/member/azzm1.png" alt="Azzm">
+                        <img src="./image/member/azzm1.png" alt="">
                     </div>
                     <p> Moh. Azzam Al Husaini</p>
                     <div class="sosmedTentang">
@@ -57,9 +57,9 @@ const Tentang = {
                         </a>
                     </div>
                 </div>
-                <div class="cardTentang">
+                <div class="cardTentang4">
                     <div class="imageTentang">
-                        <img src="./image/member//mario1.png" alt="Mario">
+                        <img src="./image/member/mario1.png" alt="">
                     </div>
                     <p> Mario Alfredo Bawu</p>
                     <div class="sosmedTentang">
@@ -74,9 +74,9 @@ const Tentang = {
                         </a>
                     </div>
                 </div>
-                <div class="cardTentang">
+                <div class="cardTentang5">
                     <div class="imageTentang">
-                        <img src="./image/member/rama1.png" alt="Rama">
+                        <img src="./image/member/rama1.png" alt="">
                     </div>
                     <p> Rama Indrawan</p>
                     <div class="sosmedTentang">
@@ -92,7 +92,7 @@ const Tentang = {
                     </div>
                 </div>
             </div>
-      </div>
+        </div>
     `;
   },
 

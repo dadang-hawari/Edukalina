@@ -15,7 +15,7 @@ const Login = {
             </div>   
             <button class="btnLogin" type="submit">Masuk</button>
         </form>
-        <p>Belum mempunyai akun? <a href="#/daftar"><span class="spanLogin">Daftar Sekarang</span></a></p>
+        <p>Belum mempunyai akun? <a href="#/daftar"><span class="spanLogin">Daftar disini</span></a></p>
     </div>
     <div class="imgSide">
     <img src="./images/login-register/side-login.png">

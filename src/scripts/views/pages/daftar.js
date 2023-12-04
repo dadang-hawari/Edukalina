@@ -29,6 +29,7 @@ const Daftar = {
             <div class="containerBtnRegister">
                 <button class="btnRegister" type="submit">Daftar</button>
             </div>
+            <p>Sudah mempunyai akun? <a href="#/login"><span class="spanLogin">Login disini</span></a></p>
         </div>
         </div>
           `;
