@@ -76,9 +76,6 @@ const Beranda = {
   </div>
 </div>
 
-
-
-
     `;
   },
 
