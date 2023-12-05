@@ -29,9 +29,12 @@ const Daftar = {
                     <img src="./images/login-register/avatar-register.png" alt="Avatar Register">
                 </div>
             </form>
-            <div class="containerBtnRegister"><button class="btnRegister" type="button">Daftar</button>
-
+            <div class="containerBtnRegister">
+                <button class="btnRegister" type="submit">Daftar</button>
+                <p>atau</p>
+                <button class="btnRegisterGoogle" type="submit">Google</button>    
             </div>
+            <p>Sudah mempunyai akun? <a href="#/login"><span class="spanLogin">Login disini</span></a></p>
         </div>
         </div>
           `;

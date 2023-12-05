@@ -145,6 +145,8 @@ main {
 }
 
 .blue {
+    font-size: 48px;
+    margin-bottom: 53px;
     color: var(--main);
 }
 
@@ -376,30 +378,34 @@ figure img {
     max-height: 400px;
 }
 
+/* Diskusi */
+
 .diskusi-desk {
     margin-top: 90px;
-    padding-inline: 20px;
-
-}
-
-.diskusi-desk {
-    max-width: 1000px;
+    max-width: 1200px;
     width: 100%;
     margin-inline: auto;
     text-align: left;
+    font-size: 22px;
+}
+
+.diskusi-form {
+    margin-inline: auto;
+    max-width: 1200px;
+    /* padding-inline: 20px; */
+    margin-bottom: 25px;
 }
 
 .diskusi-container {
     margin-inline: auto;
-    max-width: 1000px;
-    padding-inline: 20px;
+    max-width: 1200px;
     margin-bottom: 25px;
 }
 
 .form-diskusi {
-    max-width: 950px;
+    max-width: 1200px;
     text-align: left;
-    padding: 25px;
+    padding: 25px 0 0 0;
     margin: 0 auto; 
 }
 
@@ -408,8 +414,9 @@ figure img {
 }
 
 .form-diskusi input, textarea {
+    justify-content: center;
     margin-top: -8px;
-    max-width: 950px;
+    max-width: 1200px;
     margin-bottom: 15px;
     width: 100%;
     padding: 10px;
@@ -450,11 +457,42 @@ figure img {
     margin-block: 10px;
 }
 
+.formRegister button#pwEye{
+    position: absolute; 
+    right: 0; 
+    top: 33px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+form #pwEye {
+    position: absolute; 
+    right: 0; 
+    top: 50px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEye svg.hidenSvg {
+    display: none;
+}
+
 .diskusi-card {
-    max-width: 950px;
+    max-width: 1200px;
     width: 100%;
     margin-inline: auto;
     text-align: left; 
+    margin: 30px 0px
 }
 
 .diskusi-card {
@@ -483,6 +521,8 @@ figure img {
 .diskusi-card {
     padding-inline: 30px;
 }
+
+/* footer */
 
 footer {
     background-color: var(--secondary);
@@ -517,19 +557,162 @@ app-footer > p {
 }
 
 .navigasi-ft, .kontak-ft, .alamat-ft, .brand-footer {
-    min-width: 240px;
-    max-width: 240px;
     margin-top: 10px;
 }
 
 .brand-footer {
     text-align: center;
-    margin-bottom: 40px;
-    margin-right: 100px;
+    align-items: center;
 }
 
 .brand-footer h2 {
     font-size: 2em;
     font-weight: bold;
 }
+
+/* Tentang */
+
+.tentang {
+    margin-top: 90px;
+    max-width: 1200px;
+    margin-inline: auto;
+    width: 100%;
+    margin-bottom: 57px;
+    text-align: center;
+}
+
+.tentang h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 50px;
+}
+
+.tentang > p {
+    font-size: 22px;
+    margin-bottom: 53px;
+    padding: 0px 100px;
+}
+
+.gropCardTentang {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.cardTentang1, 
+.cardTentang2,
+.cardTentang3,
+.cardTentang4,
+.cardTentang5 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.imageTentang{
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+    border-radius: 50%;
+}
+
+.imageTentang > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.cardTentang > p {
+    height: 20px;
+    margin-top: 10px;
+}
+
+.sosmedTentang{
+    display: flex;
+    color: #00A9FF;
+    padding: 10px;
+}
+
+.sosmedTentang > a {
+    margin: 0 10px;
+}
+
+/* Login */
+
+.login{
+    width: 100%;
+    width: 1200px;
+    display: flex;
+    text-align: left;
+    position: relative;
+    margin-bottom: 57px;
+}
+
+.bgLogin {
+    z-index: -1;
+    right: -168px;
+    top: -100px;
+    width: 55%;
+    height: 750px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+}
+
+.formSide > p {
+    text-align: center;
+}
+
+.spanLogin {
+    color: #00A9FF;
+}
+
+/* Register */
+
+.register {
+    width: 1100px;
+    text-align: left;
+    background-color: #CDF5FD;
+    border-radius: 40px;
+    padding: 40px 40px 20px 40px; 
+    margin-bottom: 57px;
+}
+
+.flexForm {
+    display: flex;
+}
+
+.sideRegister{
+    width: 100%;
+    text-align: center;
+}
+
+.formSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgSide {
+    margin: 0 100px;
+}
+
+.imgRegister {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    justify-items: center;
+}
+
+.btnRegister {
+    width: 600px;
+}
+
+.containerBtnRegister {
+    width: 100%;
+    text-align: center;
+}
+
+
 

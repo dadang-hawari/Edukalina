@@ -3,10 +3,9 @@ const Diskusi = {
     return `
     <div class="diskusi-desk">
     <h2 class="blue">Diskusi</h2>
-    <p>Silahkan melakukan diskusi jika Anda memiliki pertanyaan, seperti bertanya mengenai masalah saat mengajar
-        ataupun bertanya mengenai hal-hal yang memerlukan pandangan dari banyak orang. </p>
+    <p>FItur ini merupakan sarana dimana para tenaga pengajar dapat saling berbagi informasi terkait apasih yang menjadi masalah saat mengajar atau bertanya terkait hal-hal yang memerlukan pandangan dari banyak orang</p>
 </div>
-<div class="diskusi-container">
+<div class="diskusi-form">
 
     <form action="" class="form-diskusi">
         <label for="title">Subjek</label>
@@ -15,6 +14,10 @@ const Diskusi = {
         <textarea type="text" id="pertanyaan" required></textarea>
         <button class="btn-diskusi">Kirim</button>
     </form>
+
+    
+</div>
+<div class="diskusi-container">
 
     <a href="">
     <div class="diskusi-card">
@@ -32,8 +35,7 @@ const Diskusi = {
             </div>
         </div>
     </a>
-</div>
-<div class="diskusi-container">
+
     <a href="">
     <div class="diskusi-card">
             <div class="profile">
