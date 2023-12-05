@@ -14,6 +14,21 @@
     text-align: left;
 }
 
+button#pwEye{
+    position: absolute; right: 0; top: 34px; padding-inline: 15px; padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+
+
+button#pwEye svg.hidenSvg {
+    display: none;
+}
+
 .input {
     width: 100%;
 }

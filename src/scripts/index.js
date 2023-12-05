@@ -7,6 +7,7 @@ import '../styles/responsiveTentang.css';
 import '../styles/event.css';
 import '../styles/login-register.css';
 import '../styles/responsive-login.css';
+import '../styles/toasts.scss';
 
 import './components/nav-bar';
 import './components/app-footer';
