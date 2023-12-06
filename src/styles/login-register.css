@@ -28,7 +28,7 @@ button#pwEye svg.hidenSvg {
 }
 
 button#pwEyeLogin{
-    position: absolute; right: 0; top: 40px; padding-inline: 15px; padding-block: 20px;
+    position: absolute; right: 0; padding-inline: 15px; padding-block: 20px;
     background: transparent;
     border: none;
     cursor: pointer;
@@ -69,7 +69,6 @@ input{
 .formRegister {
     padding-left: 50px;
 }
-
 
 input.input-register {
     width: 400px;
