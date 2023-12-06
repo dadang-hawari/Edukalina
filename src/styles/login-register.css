@@ -23,11 +23,23 @@ button#pwEye{
     align-items: center;    
 }
 
-
-
 button#pwEye svg.hidenSvg {
     display: none;
 }
+
+button#pwEyeLogin{
+    position: absolute; right: 0; top: 40px; padding-inline: 15px; padding-block: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEyeLogin svg.hidenSvg {
+    display: none;
+}
+
 
 .input {
     width: 100%;
@@ -64,6 +76,14 @@ input.input-register {
     margin-top: 5px;
     max-height: 50px;
     font-size: 15px;
+}
+
+.input.pw-login {
+    position: relative;
+}
+
+.input.relative {
+    position: relative;
 }
 
 .formRegister .input label {

@@ -21,7 +21,6 @@ body {
     flex-direction: column;
 }
 
-
 a.skip-link {
     position: absolute;
     z-index: 9999;
