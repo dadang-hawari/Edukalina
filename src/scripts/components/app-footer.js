@@ -14,7 +14,7 @@ class AppFooter extends HTMLElement {
         <h2>Navigasi</h2>
         <ul>
             <li><a href="">Beranda</a></li>
-            <li><a href="">Tips & Trick</a></li>
+            <li><a href="">Tips</a></li>
             <li><a href="">Diskusi</a></li>
             <li><a href="">Tentang</a></li>
         </ul>

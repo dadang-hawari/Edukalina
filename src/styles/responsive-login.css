@@ -1,10 +1,12 @@
 @media screen and (max-width: 1200px) {
-
-  
-
     .imgSide {
         display: none;
     }
+
+    button#pwEyeLogin{
+     top: 40px;
+    }
+    
 
     .login {
         justify-content: center;
@@ -49,5 +51,19 @@
 
     .btnRegister {
         width: 441.6px;
+    }
+
+    .containerBtnRegister {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    button.btnRegister {
+        margin: 10px 0;
+    }
+
+    button.btnRegisterGoogle {
+        margin: 10px 0;
     }
 }

@@ -15,7 +15,7 @@ const Daftar = {
                         <label for="emailRegist">Email</label><br>
                         <input id="emailRegist" class="input-register" type="text" placeholder="Masukkan Email" name="Email" required>
                     </div>
-                    <div class="input" style="position: relative;">
+                    <div class="input relative">
                         <label for="passwordRegist">Password</label><br>
                         <input id="passwordRegist" class="input-register" type="password" placeholder="Masukkan Password" name="Password" required>
 
@@ -29,9 +29,12 @@ const Daftar = {
                     <img src="./images/login-register/avatar-register.png" alt="Avatar Register">
                 </div>
             </form>
-            <div class="containerBtnRegister"><button class="btnRegister" type="button">Daftar</button>
-
+            <div class="containerBtnRegister">
+                <button class="btnRegister" type="submit">Daftar</button>
+                <p>atau</p>
+                <button class="btnRegisterGoogle" type="submit">Google</button>    
             </div>
+            <p>Sudah mempunyai akun? <a href="#/login"><span class="spanLogin">Login disini</span></a></p>
         </div>
         </div>
           `;
@@ -39,6 +42,7 @@ const Daftar = {
   async afterRender() {
     const registerButton = document.querySelector('.btnRegister');
     registerButton.addEventListener('click', register);
+
     const pwEye = document.getElementById('pwEye');
     const passwordInput = document.getElementById('passwordRegist');
     pwEye.addEventListener('click', () => {
