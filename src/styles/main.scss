@@ -1,8 +1,11 @@
+@use 'animation.scss';
+
 :root {
     --main: #00A9FF;
     --secondary: #CDF5FD;
     --oranye: #FDEDCD;
     --scroll-bg: #ffffffd1;
+    --success: #50f050;
 }
 
 *:not(nav-bar) {
@@ -20,7 +23,6 @@ body {
     min-width: 250px;
     flex-direction: column;
 }
-
 
 a.skip-link {
     position: absolute;
@@ -145,7 +147,6 @@ main {
 }
 
 .blue {
-    font-size: 48px;
     margin-bottom: 53px;
     color: var(--main);
 }
@@ -714,5 +715,49 @@ app-footer > p {
     text-align: center;
 }
 
+.success-container {  
+    min-width: 100px;
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    right: 10px;
+    top: 20px;
+    animation: myFade 3s ease-out;
+    border-radius: 20px;
+    box-shadow: 0 0 3px 1px #c7c7c7;
+    background-color: white;
+    padding: 20px 20px;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    color: var(--success);
+    opacity: 0;
+}
 
+.success-icon {
+    padding-inline: 3px;
+    border: 2px solid  var(--success);
+    border-radius: 100px;
+}
 
+.success-p p {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.success-p {
+    min-width: 150px;
+}
+
+.info-icon {
+    margin-right: 5px;
+}
+
+.info-p p {
+    color: var(--main);
+}
+
+.error {
+    color: red;
+}
