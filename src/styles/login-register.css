@@ -257,5 +257,6 @@ p a {
 }
 
 .bungkus {
+    position: relative;
     margin-top: 100px;
 }
