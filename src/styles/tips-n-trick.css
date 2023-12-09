@@ -1,0 +1,65 @@
+.tipsTrick, 
+.event {
+    margin-inline: auto;
+    max-width: 1200px;
+    width: 90%;
+    margin-top: 90px;
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.tipsTrick h2, .event h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 53px;
+}
+
+.tipsTrick > p, .event > p {
+    font-size: 22px;
+    margin-bottom: 53px;
+}
+
+.gropCardTipsTrick, .gropCardEvent{
+    width: 100%;
+}
+
+.cardTipsTrick, .cardEvent {
+    width: 100%;
+    display: flex;
+    border-radius: 20px;
+    margin-bottom: 30px;
+    overflow: hidden;
+    box-shadow: 2px 4px 10px rgba(0, 169, 255, 0.40);
+    min-height: 236px;
+    cursor: pointer;
+}
+
+.imageTipsTrick{
+    width: 30%;
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../public/powerPoint.png');
+}
+
+.descGropTipsTrick, .descGropEvent {
+    width: 70%;
+    padding: 35px;
+    box-sizing: border-box;
+}
+
+.descGropTipsTrick h3, .descGropEvent h3 {
+    font-size: 20px;
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+
+.descGropTipsTrick p, .descGropEvent p {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.7;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}

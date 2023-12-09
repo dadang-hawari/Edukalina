@@ -50,4 +50,18 @@
     .btnRegister {
         width: 441.6px;
     }
+
+    .containerBtnRegister {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    button.btnRegister {
+        margin: 10px 0;
+    }
+
+    button.btnRegisterGoogle {
+        margin: 10px 0;
+    }
 }
