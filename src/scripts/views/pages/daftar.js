@@ -44,7 +44,6 @@ const Daftar = {
     const passwordInput = document.getElementById('passwordRegist');
 
     pwEye.addEventListener('click', () => {
-      console.log('Pweye clicked');
       const openSvg = document.getElementById('openSvg');
       const hiddenSvg = document.getElementById('hiddenSvg');
       const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';

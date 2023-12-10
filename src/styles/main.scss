@@ -8,6 +8,13 @@
     --success: #50f050;
 }
 
+// Transparant untuk warna highlight saat button dan anchor dikil
+button, a {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent; 
+}
+  
+
 *:not(nav-bar) {
     margin: 0;
     padding: 0;
@@ -624,6 +631,10 @@ app-footer > p {
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+#diskusi {
+    font-size: 44px;
 }
 
 .cardTentang > p {

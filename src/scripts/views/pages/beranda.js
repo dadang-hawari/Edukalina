@@ -61,7 +61,7 @@ const Beranda = {
       <img src="./images/home/event.png" alt="Event">
       <div class="membantu-desk">
         <h3><u>Event</u></h3>
-        <p>Megninfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
+        <p>Menginfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
       </div>
     </div>
   </div>
