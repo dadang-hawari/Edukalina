@@ -92,6 +92,13 @@ const Tentang = {
                     </div>
                 </div>
             </div>
+            <h2>Credits</h2>
+            <a class="credit" href="https://www.flaticon.com/free-icons/teacher" title="teacher icons">Teacher icons created by Nikita Golubev - Flaticon</a>
+            <a class="credit" href="https://www.flaticon.com/free-icons/back-to-school" title="back to school icons">Back to school icons created by Flat Icons - Flaticon</a>
+            <a class="credit" href="https://www.flaticon.com/free-icons/teacher" title="teacher icons">Teacher icons created by monkik - Flaticon</a>
+            <a class="credit" href="https://www.flaticon.com/free-icons/discussion" title="discussion icons">Discussion icons created by Freepik - Flaticon</a>
+            <a class="credit" href="https://www.flaticon.com/free-icons/information" title="information icons">Information icons created by Freepik - Flaticon</a>
+            <a class="credit" href="https://www.flaticon.com/free-icons/tips" title="tips icons">Tips icons created by Freepik - Flaticon</a>
         </div>
     `;
   },

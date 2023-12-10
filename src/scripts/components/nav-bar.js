@@ -87,8 +87,8 @@ class NavBar extends HTMLElement {
       logoutBtn.addEventListener('click', () => {
         this.handleLogout();
         location.assign('/#/login');
-      });
-    } else {
+      }); 4;
+    } else if (!loggedIn) {
       const loginBtn = this.querySelector('#loginBtn');
       loginBtn.addEventListener('click', () => this.handleLogin());
     }
@@ -105,7 +105,9 @@ class NavBar extends HTMLElement {
   }
 
   setupEventListeners() {
-    const loginBtn = this.querySelector('#loginBtn');
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const loggedIn = userData !== null;
+    const loginBtn = loggedIn ? this.querySelector('#logoutBtn') : this.querySelector('#loginBtn');
     loginBtn.addEventListener('click', () => {
       window.location.hash = '#/login';
     });
