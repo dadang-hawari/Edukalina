@@ -1,5 +1,7 @@
+import { initializeApp } from 'firebase/app';
+
 const firebaseConfig = {
-  apiKey: 'AIzaSyBD2xyyTd30Sil2migTquZMif_1xy8Whg4',
+  apiKey: process.env.FIREBASE_KEY,
   authDomain: 'edukalina-account.firebaseapp.com',
   databaseURL: 'https://edukalina-account-default-rtdb.asia-southeast1.firebasedatabase.app',
   projectId: 'edukalina-account',
@@ -9,4 +11,6 @@ const firebaseConfig = {
   measurementId: 'G-4Q1XSJKKC1',
 };
 
-export default firebaseConfig;
+const firebase = initializeApp(firebaseConfig);
+
+export default firebase;

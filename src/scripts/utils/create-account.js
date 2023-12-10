@@ -1,19 +1,19 @@
 // Import necessary functions from Firebase
-import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from 'firebase/database';
 import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import {
   successPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, infoPopUp,
 } from '../views/templates/page-creator';
 
+import NavBar from '../components/nav-bar';
+
 // Import Firebase configuration
-import firebaseConfig from '../global/DB_CONFIG';
+import firebase from '../global/DB_CONFIG';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth(app);
-
+const database = getDatabase(firebase);
+const auth = getAuth(firebase);
+const navBar = new NavBar();
 // Validate email and password functions remain the same
 const validateEmail = (email) => {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -65,6 +65,9 @@ const register = () => {
       return;
     }
     inputUsername.appendChild(divElement);
+    setTimeout(() => {
+      inputUsername.removeChild(divElement);
+    }, 4000);
     return;
   }
 
@@ -76,6 +79,9 @@ const register = () => {
       return;
     }
     inputEmail.appendChild(divElement);
+    setTimeout(() => {
+      inputEmail.removeChild(divElement);
+    }, 4000);
     return;
   }
 
@@ -87,6 +93,10 @@ const register = () => {
       return;
     }
     inputPassword.appendChild(divElement);
+    inputPassword.appendChild(divElement);
+    setTimeout(() => {
+      inputPassword.removeChild(divElement);
+    }, 4000);
     return;
   }
 
@@ -108,21 +118,14 @@ const register = () => {
       // Gunakan user.uid sebagai bagian dari path di database
       set(ref(database, `users/${user.uid}`), userData);
       sendEmailVerification(auth.currentUser);
-      const usernya = auth.currentUser;
-      console.log(usernya);
-      console.log(`nama display: ${usernya.uid}`);
-      console.log(`nama display: ${usernya.email}`);
-      console.log(`nama display: ${usernya.displayName}`);
-      console.log(`verifikasi: ${usernya.emailVerified}`);
-      console.log(`verifikasi: ${usernya.uid}`);
     })
     .then(() => {
+      wrapper.innerHTML += successPopUp;
       if (inputUsername.innerHTML.includes(divElement)) { inputUsername.removeChild(divElement); }
       if (inputPassword.innerHTML.includes(divElement)) { inputPassword.removeChild(divElement); }
       if (inputEmail.innerHTML.includes(divElement)) { inputEmail.removeChild(divElement); }
-      wrapper.innerHTML += successPopUp;
       setTimeout(() => {
-        if (auth) { location.assign('/#/beranda'); }
+        if (auth) { navBar.render(); location.assign('/'); }
       }, 2000);
     }).catch((error) => {
       inputUsername.value = data.usernameInput;

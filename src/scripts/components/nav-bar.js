@@ -5,6 +5,8 @@ class NavBar extends HTMLElement {
   }
 
   render() {
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const loggedIn = userData !== null;
     this.innerHTML = `
     <a class="skip-link" id="toContent" href='#main'>To Content</a>
             <div class="logo">
@@ -76,18 +78,38 @@ class NavBar extends HTMLElement {
                 <li><a href="#/event">Event</a></li>
                 <li><a href="#/diskusi">Diskusi</a></li>
                 <li><a href="#/tentang">Tentang</a></li>
-                <li><button type="button" id="loginBtn" class="main-btn">Login</button></li>
+                ${loggedIn ? '<li><button type="button" id="logoutBtn" class="main-btn">Logout</button></li>' : '<li><button type="button" id="loginBtn" class="main-btn">Login</button></li>'}
             </ul>
    `;
+
+    if (loggedIn) {
+      const logoutBtn = this.querySelector('#logoutBtn');
+      logoutBtn.addEventListener('click', () => {
+        this.handleLogout();
+        location.assign('/#/login');
+      });
+    } else {
+      const loginBtn = this.querySelector('#loginBtn');
+      loginBtn.addEventListener('click', () => this.handleLogin());
+    }
+  }
+
+  handleLogin() {
+    window.location.hash = '#/login';
+    this.render();
+  }
+
+  handleLogout() {
+    localStorage.removeItem('user');
+    this.render();
   }
 
   setupEventListeners() {
     const loginBtn = this.querySelector('#loginBtn');
-
     loginBtn.addEventListener('click', () => {
       window.location.hash = '#/login';
     });
   }
 }
-
+export default NavBar;
 customElements.define('nav-bar', NavBar);

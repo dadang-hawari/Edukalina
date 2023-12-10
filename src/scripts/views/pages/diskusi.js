@@ -2,7 +2,7 @@ const Diskusi = {
   async render() {
     return `
     <div class="diskusi-desk">
-    <h2 class="blue">Diskusi</h2>
+    <h2 class="blue" id="diskusi">Diskusi</h2>
     <p>FItur ini merupakan sarana dimana para tenaga pengajar dapat saling berbagi informasi terkait apasih yang menjadi masalah saat mengajar atau bertanya terkait hal-hal yang memerlukan pandangan dari banyak orang</p>
 </div>
 <div class="diskusi-form">
@@ -18,7 +18,6 @@ const Diskusi = {
     
 </div>
 <div class="diskusi-container">
-
     <a href="">
     <div class="diskusi-card">
             <div class="profile">
