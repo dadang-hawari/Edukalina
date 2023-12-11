@@ -103,13 +103,11 @@ const register = () => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const { user } = userCredential;
-      auth.currentUser.displayName = username;
 
       // Simpan informasi pengguna ke Realtime Database
       const userData = {
         username,
         email,
-        displayName: username,
         uid: user.uid,
       };
 
