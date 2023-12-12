@@ -4,22 +4,26 @@ const Hapi = require('@hapi/hapi');
 const Jwt = require('@hapi/jwt');
 const Inert = require('@hapi/inert');
 const path = require('path');
-const articles = require('./api/authentications');
+const users = require('./api/users');
+const articles = require('./api/articles');
 const authentications = require('./api/authentications');
 const ArticlesService = require('./services/postgres/ArticlesService');
+const UsersService = require('./services/postgres/UsersService');
 const AuthenticationsService = require('./services/postgres/AuthenticationsService');
 const StorageService = require('./services/storage/StorageService');
 const CacheService = require('./services/redis/CacheService');
 const producerService = require('./services/rabbitmq/ProducerService');
 const TokenManager = require('./tokenize/TokenManager');
-const SongsValidator = require('./validator/songs/index');
+const UsersValidator = require('./validator/users/index');
+const ArticlesValidator = require('./validator/articles/index');
+const AuthenticationsValidator = require('./validator/authentications/index');
 
 const init = async () => {
   // const songsService = new SongsService();
   // const cacheService = new CacheService();
   // const albumsService = new AlbumsService(cacheService, songsService);
   const storageService = new StorageService(path.resolve(__dirname, 'api/uploads/file/images'));
-  // const usersService = new UsersService();
+  const usersService = new UsersService();
   const articlesService = new ArticlesService();
   const authenticationsService = new AuthenticationsService();
   // const collaborationsService = new CollaborationsService();
@@ -93,13 +97,13 @@ const init = async () => {
     //     validator: AlbumsValidator,
     //   },
     // },
-    // {
-    //   plugin: users,
-    //   options: {
-    //     service: usersService,
-    //     validator: UsersValidator,
-    //   },
-    // },
+    {
+      plugin: users,
+      options: {
+        service: usersService,
+        validator: UsersValidator,
+      },
+    },
     // {
     //   plugin: collaborations,
     //   options: {

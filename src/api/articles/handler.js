@@ -20,10 +20,10 @@ class ArticlesHandler {
         title, author, body, tags, category, thumbnail, creditThumbnail,
       } = request.payload;
 
-      this._validator.validateImageHeaders(thumbnail.hapi.headers);
+      this._validator.validateArticlesHeaders(thumbnail.hapi.headers);
 
       const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
-      const articleId = await this.articlesService.addArticle({
+      const articleId = await this._articlesService.addArticle({
         title, author, body, tags, category, thumbnail: `http://${process.env.HOST}:${process.env.PORT}/articles/cover/${filename}`, creditThumbnail,
       });
 
@@ -58,7 +58,8 @@ class ArticlesHandler {
 
   async getAllArticlesHandler(request) {
     this._validator.validateArticlesPayload(request.payload);
-    const articles = await this.articlesService.getArticles();
+    const { title, author } = request.query;
+    const articles = await this._articlesService.getArticles({ title, author });
 
     return {
       status: 'success',
@@ -71,7 +72,7 @@ class ArticlesHandler {
   async getArticleByIdHandler(request, h) {
     try {
       const { id } = request.params;
-      const article = await this.articlesService.getArticleById(id);
+      const article = await this._articlesService.getArticleById(id);
 
       return {
         status: 'success',
@@ -93,7 +94,7 @@ class ArticlesHandler {
     try {
       this._validator.validateArticlePayload(request.payload);
       const { id } = request.params;
-      await this.articlesService.editArticleById(id, request.payload);
+      await this._articlesService.editArticleById(id, request.payload);
       return {
         status: 'success',
         message: 'Article berhasil diperbarui',
@@ -120,7 +121,7 @@ class ArticlesHandler {
   async deleteArticleByIdHandler(request, h) {
     try {
       const { id } = request.params;
-      await this.articlesService.deleteArticleById(id);
+      await this._articlesService.deleteArticleById(id);
 
       return {
         status: 'success',
@@ -143,7 +144,7 @@ class ArticlesHandler {
       this._validator.validateImageHeaders(cover.hapi.headers);
 
       const filename = await this._storageService.writeFile(cover, cover.hapi);
-      await this.articlesService.updateCoverUrl(id, `http://${process.env.HOST}:${process.env.PORT}/articles/cover/${filename}`);
+      await this._articlesService.updateCoverUrl(id, `http://${process.env.HOST}:${process.env.PORT}/articles/cover/${filename}`);
       const response = h.response({
         status: 'success',
         message: 'Sampul berhasil diunggah',
@@ -174,7 +175,7 @@ class ArticlesHandler {
     try {
       const { id } = request.params;
       const { id: credentialId } = request.auth.credentials;
-      const { message, statusCode } = await this.articlesService.likeOrDislike(id, credentialId);
+      const { message, statusCode } = await this._articlesService.likeOrDislike(id, credentialId);
       const response = h.response({
         status: 'success',
         message,
@@ -204,7 +205,7 @@ class ArticlesHandler {
   async getUserArticleLikesHandler(request, h) {
     try {
       const { id } = request.params;
-      const { mappedResult, dataSource = 'database' } = await this.articlesService.getNumberOfLikes(id);
+      const { mappedResult, dataSource = 'database' } = await this._articlesService.getNumberOfLikes(id);
       const response = h.response({
         status: 'success',
         data: mappedResult,
