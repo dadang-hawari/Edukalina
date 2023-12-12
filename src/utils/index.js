@@ -55,7 +55,29 @@ const mapDBToModelAlbumLikes = ({
 }) => ({
   likes: parseInt(likes, 36),
 });
+
+const mapDBToModelArticles = ({
+  id,
+  title,
+  author,
+  body,
+  tags,
+  category,
+  thumbnail,
+  credit_thumbnail,
+}) => ({
+  id,
+  title,
+  author,
+  body,
+  tags,
+  category,
+  thumbnail,
+  creditThumbnail: credit_thumbnail,
+});
+
 module.exports = {
+  mapDBToModelArticles,
   mapDBToModelAlbums,
   mapDBToModelAlbum,
   mapDBToModelSong,

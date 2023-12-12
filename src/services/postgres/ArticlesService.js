@@ -2,7 +2,7 @@ const { nanoid } = require('nanoid');
 const { Pool } = require('pg');
 const InvariantError = require('../../exceptions/InvariantError');
 const NotFoundError = require('../../exceptions/NotFoundError');
-const { mapDBToModelSong } = require('../../utils');
+const { mapDBToModelArticle } = require('../../utils');
 
 class ArticlesService {
   constructor() {
@@ -10,12 +10,12 @@ class ArticlesService {
   }
 
   async addArticle({
-    title, author, body, tags, thumbnail, category,
+    title, author, body, tags, category, thumbnail, creditThumbnail,
   }) {
     const id = `article-${nanoid(16)}`;
     const query = {
-      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7) RETURNING id',
-      values: [id, title, author, body, tags, thumbnail, category],
+      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
+      values: [id, title, author, body, tags, category, thumbnail, creditThumbnail],
     };
     const result = await this._pool.query(query);
     if (!result.rows[0].id) {
@@ -25,31 +25,31 @@ class ArticlesService {
     return result.rows[0].id;
   }
 
-  async getSongs({ title, performer }) {
-    let query = 'SELECT id, title, performer FROM songs';
-    if (title && !performer) {
-      query = `SELECT id, title, performer FROM songs WHERE LOWER(title) LIKE LOWER('%${title}%')`;
-    } else if (performer && !title) {
-      query = `SELECT id, title, performer FROM songs WHERE LOWER(performer) LIKE LOWER('%${performer}%')`;
-    } else if (title && performer) {
-      query = `SELECT id, title, performer FROM songs WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(performer) LIKE LOWER('%${performer}%')`;
+  async getArticles({ title, author }) {
+    let query = 'SELECT id, title, author FROM articles';
+    if (title && !author) {
+      query = `SELECT id, title, author FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%')`;
+    } else if (author && !title) {
+      query = `SELECT id, title, author FROM articles WHERE LOWER(author) LIKE LOWER('%${author}%')`;
+    } else if (title && author) {
+      query = `SELECT id, title, author FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(author) LIKE LOWER('%${author}%')`;
     }
     const result = await this._pool.query(query);
     return result.rows;
   }
 
-  async getSongsByAlbumId(albumId) {
-    const query = {
-      text: 'SELECT id, title, performer FROM songs WHERE album_id = $1',
-      values: [albumId],
-    };
-    const result = await this._pool.query(query);
-    return result.rows;
-  }
+  // async getarticlesByAlbumId(albumId) {
+  //   const query = {
+  //     text: 'SELECT id, title, author FROM articles WHERE album_id = $1',
+  //     values: [albumId],
+  //   };
+  //   const result = await this._pool.query(query);
+  //   return result.rows;
+  // }
 
-  async getSongById(id) {
+  async getArticleById(id) {
     const query = {
-      text: 'SELECT * FROM songs WHERE id = $1',
+      text: 'SELECT * FROM articles WHERE id = $1',
       values: [id],
     };
     const result = await this._pool.query(query);
@@ -57,15 +57,15 @@ class ArticlesService {
       throw new NotFoundError('Lagu tidak ditemukan');
     }
 
-    return result.rows.map(mapDBToModelSong)[0];
+    return result.rows.map(mapDBToModelArticle)[0];
   }
 
-  async editSongById(id, {
-    title, performer, category,
+  async editArticleById(id, {
+    title, author, category,
   }) {
     const query = {
-      text: 'UPDATE songs SET id = $1, title = $2, year = $3, performer = $4, category = $5, duration = $6, album_id = $7 WHERE id = $1 RETURNING id',
-      values: [id, title, performer, category, ],
+      text: 'UPDATE articles SET id = $1, title = $2, year = $3, author = $4, category = $5, duration = $6, album_id = $7 WHERE id = $1 RETURNING id',
+      values: [id, title, author, category],
     };
     const result = await this._pool.query(query);
     if (!result.rows.length) {
@@ -73,9 +73,9 @@ class ArticlesService {
     }
   }
 
-  async deleteSongById(id) {
+  async deleteArticleById(id) {
     const query = {
-      text: 'DELETE FROM songs WHERE id = $1 RETURNING id',
+      text: 'DELETE FROM articles WHERE id = $1 RETURNING id',
       values: [id],
     };
     const result = await this._pool.query(query);
@@ -85,4 +85,4 @@ class ArticlesService {
   }
 }
 
-module.exports = SongsService;
+module.exports = ArticlesService;
