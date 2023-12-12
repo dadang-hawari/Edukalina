@@ -29,7 +29,3 @@ window.addEventListener('load', () => {
   app.renderPage();
   swRegister();
 });
-
-window.onscroll = () => {
-  document.querySelector('header').classList.toggle('scroll', window.scrollY > 10);
-};

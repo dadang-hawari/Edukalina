@@ -1,10 +1,10 @@
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import {
-  emptyField, wrongFormatEmail, wrongFormatUsername,
-} from '../views/templates/page-creator';
+import { emptyField, wrongFormatEmail, wrongFormatUsername } from '../views/templates/page-creator';
 import firebase from '../global/DB_CONFIG';
+import { getDatabase, ref, get } from 'firebase/database';
 
 const auth = getAuth(firebase);
+const database = getDatabase(firebase);
 
 const validateEmail = (email) => {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -22,8 +22,7 @@ const login = () => {
   if (email.length === 0 || password.length === 0) {
     divElement.innerHTML = emptyField;
 
-    if (Array.from(inputPassword.children)
-      .some((child) => child.innerHTML === divElement.innerHTML)) {
+    if (Array.from(inputPassword.children).some((child) => child.innerHTML === divElement.innerHTML)) {
       return;
     }
     inputPassword.appendChild(divElement);
@@ -36,8 +35,7 @@ const login = () => {
   if (validateEmail(email) === false) {
     divElement.innerHTML = wrongFormatEmail;
 
-    if (Array.from(inputEmail.children)
-      .some((child) => child.innerHTML === divElement.innerHTML)) {
+    if (Array.from(inputEmail.children).some((child) => child.innerHTML === divElement.innerHTML)) {
       return;
     }
     inputEmail.appendChild(divElement);
@@ -49,26 +47,21 @@ const login = () => {
 
   // Melakukan proses autentikasi menggunakan Firebase
   signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      // Login berhasil, userCredential.user berisi informasi user yang telah login
+    .then(async (userCredential) => {
       const { user } = userCredential;
-      localStorage.setItem('user', JSON.stringify(user));
+
+      const userRef = ref(database, `users/${user.uid}`);
+      const snapshot = await get(userRef);
+
+      localStorage.setItem('user', JSON.stringify(snapshot.val()));
+
       location.assign('/');
     })
     .catch((error) => {
-      // Menangani kesalahan pada proses autentikasi
       const errorCode = error.code;
       const errorMessage = error.message;
 
-      if (errorCode === 'auth/user-not-found') {
-        // Kasus ketika akun belum terdaftar
-        divElement.innerHTML = wrongFormatEmail;
-        inputPassword.appendChild(divElement);
-        setTimeout(() => {
-          inputPassword.removeChild(divElement);
-        }, 4000);
-      } else if (errorCode === 'auth/wrong-password') {
-        // Kasus ketika password salah
+      if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
         divElement.innerHTML = wrongFormatEmail;
         inputPassword.appendChild(divElement);
         setTimeout(() => {
