@@ -1,0 +1,28 @@
+@keyframes myFade {
+    0% {
+        opacity: 0;
+    } 
+    33% {
+        opacity: 1;
+    }
+    66% {
+        opacity: 1;
+    }
+    99% {
+        opacity: 0;
+    }
+}
+
+@keyframes fold-out {
+    0% {
+      opacity: 0;
+      margin-top: -1rem;
+    }
+    
+    100% {
+      opacity: 1;
+      margin-top: 0;
+    }
+  }
+  
+  

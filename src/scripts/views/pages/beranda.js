@@ -3,7 +3,7 @@ const Beranda = {
     return `
   <section class="hero">
     <div class="hero-p">
-        <h1>Mari belajar bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
+        <h1>Mari bergabung bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
         <p class="ma-1">Bergabung bersama kami dengan daftar secara gratis</p>
         <button class="hero-btn ma-2">Daftar</button>
     </div>
@@ -61,7 +61,7 @@ const Beranda = {
       <img src="./images/home/event.png" alt="Event">
       <div class="membantu-desk">
         <h3><u>Event</u></h3>
-        <p>Megninfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
+        <p>Menginfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
       </div>
     </div>
   </div>

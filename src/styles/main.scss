@@ -1,9 +1,19 @@
+@use 'animation.scss';
+
 :root {
     --main: #00A9FF;
     --secondary: #CDF5FD;
     --oranye: #FDEDCD;
     --scroll-bg: #ffffffd1;
+    --success: #50f050;
 }
+
+// Transparant untuk warna highlight saat button dan anchor diklik
+button, a {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent; 
+}
+  
 
 *:not(nav-bar) {
     margin: 0;
@@ -20,7 +30,6 @@ body {
     min-width: 250px;
     flex-direction: column;
 }
-
 
 a.skip-link {
     position: absolute;
@@ -46,12 +55,9 @@ header {
     width: 100%;
     z-index: 9999;
     backdrop-filter: blur(16px);
+    background-color: var(--scroll-bg);
     box-shadow: 0px 1px 1px 0 #ababab;
     transition: 0.4s ease-out;
-}
-
-.scroll {
-    background-color: var(--scroll-bg);
 }
 
 nav-bar {
@@ -145,7 +151,6 @@ main {
 }
 
 .blue {
-    font-size: 48px;
     margin-bottom: 53px;
     color: var(--main);
 }
@@ -268,6 +273,64 @@ main {
     align-items: center;
 }
 
+details{
+    max-width: 960px;
+    margin: 1rem auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    &:not([open]){
+      animation-name: fold-in;
+      animation-duration: .2s;
+    }
+    
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 5px;
+      font-weight: 600;
+      padding: 15px;
+    }
+    
+    // Disable browser default marker
+    summary::-webkit-details-marker,
+    summary::marker{
+      content: "";
+      display: none;
+    }
+    
+    // Custom marker
+    summary::after{
+      content: url(../public/chevron-down.svg);
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1;
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    
+    .content{
+      position: absolute;
+      padding: 0 1.5rem 1.5rem;
+    }
+  }
+  
+  // Collapsible OPEN
+  details[open]{
+    
+    // Custom marker
+    summary::after{
+      content: url(../public/chevron-down.svg);
+    }
+    
+    .content{
+      animation-name: fold-out;
+      animation-duration: .2s;
+    }
+  }
+  
 .limit-icon {
     background: url(../public/images/home/limit.svg) no-repeat;
     background-size: 100%;
@@ -593,6 +656,10 @@ app-footer > p {
     padding: 0px 100px;
 }
 
+.credit {
+    display: block;
+}
+
 .gropCardTentang {
     width: 100%;
     display: flex;
@@ -611,6 +678,10 @@ app-footer > p {
     gap: 10px;
 }
 
+.credit {
+    display: block;
+}
+
 .imageTentang{
     height: 200px;
     width: 200px;
@@ -623,6 +694,10 @@ app-footer > p {
     width: 100%;
     object-fit: cover;
     border-radius: 50%;
+}
+
+#diskusi {
+    font-size: 44px;
 }
 
 .cardTentang > p {
@@ -714,5 +789,49 @@ app-footer > p {
     text-align: center;
 }
 
+.success-container {  
+    min-width: 100px;
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    right: 10px;
+    top: 20px;
+    animation: myFade 3s ease-out;
+    border-radius: 20px;
+    box-shadow: 0 0 3px 1px #c7c7c7;
+    background-color: white;
+    padding: 20px 20px;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    color: var(--success);
+    opacity: 0;
+}
 
+.success-icon {
+    padding-inline: 3px;
+    border: 2px solid  var(--success);
+    border-radius: 100px;
+}
 
+.success-p p {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.success-p {
+    min-width: 150px;
+}
+
+.info-icon {
+    margin-right: 5px;
+}
+
+.info-p p {
+    color: var(--main);
+}
+
+.error {
+    color: red;
+}

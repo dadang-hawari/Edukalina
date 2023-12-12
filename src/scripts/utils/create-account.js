@@ -1,16 +1,19 @@
 // Import necessary functions from Firebase
-import { initializeApp } from 'firebase/app';
 import { getDatabase, ref, set } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import {
+  successPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, infoPopUp,
+} from '../views/templates/page-creator';
+
+import NavBar from '../components/nav-bar';
 
 // Import Firebase configuration
-import firebaseConfig from '../global/DB_CONFIG';
+import firebase from '../global/DB_CONFIG';
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-const auth = getAuth(app);
-
+const database = getDatabase(firebase);
+const auth = getAuth(firebase);
+const navBar = new NavBar();
 // Validate email and password functions remain the same
 const validateEmail = (email) => {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -19,13 +22,81 @@ const validateEmail = (email) => {
 
 const validatePassword = (password) => password.length >= 6;
 
+const validateUsername = (username) => username.length >= 6;
+
 const register = () => {
+  const wrapper = document.querySelector('.bungkus');
   const username = document.getElementById('usernameRegist').value;
   const email = document.getElementById('emailRegist').value;
   const password = document.getElementById('passwordRegist').value;
 
-  if (validateEmail(email) === false || validatePassword(password) === false) {
-    alert('Email atau password salah');
+  const data = {
+    usernameInput: username,
+    emailInput: email,
+    passwordInput: password,
+  };
+
+  const inputUsername = document.getElementById('inputUsername');
+  const inputEmail = document.getElementById('inputEmail');
+  const inputPassword = document.getElementById('inputPassword');
+  const divElement = document.createElement('div');
+
+  if (username.length === 0 || password.length === 0 || email.length === 0) {
+    divElement.innerHTML = emptyField;
+
+    // Memeriksa apakah inputPassword memiliki anak elemen dengan konten divElement
+    if (Array.from(inputPassword.children)
+      .some((child) => child.innerHTML === divElement.innerHTML)) {
+      return;
+    }
+
+    inputPassword.appendChild(divElement);
+    setTimeout(() => {
+      inputPassword.removeChild(divElement);
+    }, 2000);
+    return;
+  }
+
+  if (validateUsername(username) === false) {
+    divElement.innerHTML = wrongFormatUsername;
+
+    if (Array.from(inputUsername.children)
+      .some((child) => child.innerHTML === divElement.innerHTML)) {
+      return;
+    }
+    inputUsername.appendChild(divElement);
+    setTimeout(() => {
+      inputUsername.removeChild(divElement);
+    }, 4000);
+    return;
+  }
+
+  if (validateEmail(email) === false) {
+    divElement.innerHTML = wrongFormatEmail;
+
+    if (Array.from(inputEmail.children)
+      .some((child) => child.innerHTML === divElement.innerHTML)) {
+      return;
+    }
+    inputEmail.appendChild(divElement);
+    setTimeout(() => {
+      inputEmail.removeChild(divElement);
+    }, 4000);
+    return;
+  }
+
+  if (validatePassword(password) === false) {
+    divElement.innerHTML = wrongFormatPass;
+
+    if (Array.from(inputPassword.children)
+      .some((child) => child.innerHTML === divElement.innerHTML)) {
+      return;
+    }
+    inputPassword.appendChild(divElement);
+    inputPassword.appendChild(divElement);
+    setTimeout(() => {
+      inputPassword.removeChild(divElement);
+    }, 4000);
     return;
   }
 
@@ -37,21 +108,43 @@ const register = () => {
       const userData = {
         username,
         email,
+        uid: user.uid,
       };
+
+      localStorage.setItem('user', JSON.stringify(userData));
 
       // Gunakan user.uid sebagai bagian dari path di database
       set(ref(database, `users/${user.uid}`), userData);
+      sendEmailVerification(auth.currentUser);
     })
     .then(() => {
-      alert('User created');
-    })
-    .catch((error) => {
+      wrapper.innerHTML += successPopUp;
+      if (inputUsername.innerHTML.includes(divElement)) { inputUsername.removeChild(divElement); }
+      if (inputPassword.innerHTML.includes(divElement)) { inputPassword.removeChild(divElement); }
+      if (inputEmail.innerHTML.includes(divElement)) { inputEmail.removeChild(divElement); }
+      setTimeout(() => {
+        if (auth) { navBar.render(); location.assign('/'); }
+      }, 2000);
+    }).catch((error) => {
+      inputUsername.value = data.usernameInput;
+      inputPassword.value = data.passwordInput;
+      inputEmail.value = data.emailInput;
       const errorMessage = error.message;
       if (errorMessage === 'Firebase: Error (auth/email-already-in-use).') {
-        alert('Email telah terdaftar');
-      } else {
-        console.error('Error creating account:', error);
+        divElement.innerHTML = infoPopUp;
+
+        if (Array.from(wrapper.children)
+          .some((child) => child.innerHTML === divElement.innerHTML)) {
+          return;
+        }
+        wrapper.appendChild(divElement);
+
+        setTimeout(() => {
+          wrapper.removeChild(divElement);
+        }, 3000);
+        return;
       }
+      console.error('Error creating account:', error);
     });
 };
 
