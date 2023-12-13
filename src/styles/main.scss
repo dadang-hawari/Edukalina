@@ -274,6 +274,7 @@ main {
 }
 
 details{
+    position: relative;
     max-width: 960px;
     margin: 1rem auto;
     background-color: #fff;
@@ -285,9 +286,9 @@ details{
       display: flex;
       align-items: center;
       justify-content: space-between;
+      font-weight: 500;
       gap: 5px;
-      font-weight: 600;
-      padding: 15px;
+      padding: 5px;
     }
     
     // Disable browser default marker
@@ -302,25 +303,24 @@ details{
       font-size: 1rem;
       font-weight: 400;
       line-height: 1;
+      content: url(../public/chevron-down.svg);
       margin-right: 1rem;
       cursor: pointer;
     }
     
     .content{
+      width: 100%;
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      top: 40px;
+      z-index: -99;
       position: absolute;
-      padding: 0 1.5rem 1.5rem;
     }
   }
 
-  details[close] {
-    summary::after{
-        content: url(../public/chevron-down.svg);
-      }
-    animation-name: fold-in;
-    animation-duration: .2s;
-    content: url(../public/chevron-up.svg);
-
-  }
   
   // Collapsible OPEN
   details[open]{
