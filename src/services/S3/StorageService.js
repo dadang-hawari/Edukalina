@@ -1,4 +1,5 @@
 const AWS = require('aws-sdk');
+const AmazonS3URI = require('amazon-s3-uri');
 
 class StorageService {
   constructor() {
@@ -18,15 +19,23 @@ class StorageService {
         if (error) {
           return reject(error);
         }
-        console.log('resolve', data.location);
+        console.log('resolve', data.Location);
         return resolve(data.Location);
       });
     });
   }
 
-  //   deleteFile(fileName) {
-
-//   }
+  deleteFile(uri) {
+    const { bucket, key } = AmazonS3URI(uri);
+    const parameter = { Bucket: bucket, Key: key };
+    return new Promise((resolve, reject) => {
+      this._S3.deleteObject(parameter, (error, data) => {
+        if (error) return reject(error);
+        console.log('resolve', data);
+        return resolve();
+      });
+    });
+  }
 }
 
 module.exports = StorageService;

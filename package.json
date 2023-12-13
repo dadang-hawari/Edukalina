@@ -31,6 +31,7 @@
     "@hapi/hapi": "^20.1.0",
     "@hapi/inert": "^6.0.5",
     "@hapi/jwt": "^2.1.1",
+    "amazon-s3-uri": "^0.1.1",
     "amqplib": "^0.8.0",
     "aws-sdk": "^2.1517.0",
     "bcrypt": "^5.0.1",
