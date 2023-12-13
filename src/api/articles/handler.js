@@ -57,17 +57,21 @@ class ArticlesHandler {
   }
 
   async getAllArticlesHandler(request) {
-    this._validator.validateArticlesPayload(request.payload);
-    console.log("get article working");
-    const { title, author } = request.query;
-    const articles = await this._articlesService.getArticles({ title, author });
-
-    return {
-      status: 'success',
-      data: {
-        articles,
-      },
-    };
+    try {
+      this._validator.validateArticlesPayload(request.payload);
+      const { title, author } = request.query;
+      console.log('get article working');
+      const articles = await this._articlesService.getArticles({ title, author });
+      return {
+        status: 'success',
+        data: {
+          articles,
+        },
+      };
+    } catch (err) {
+      console.error(err);
+      return err;
+    }
   }
 
   async getArticleByIdHandler(request, h) {
