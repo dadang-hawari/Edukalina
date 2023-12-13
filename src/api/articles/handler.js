@@ -107,13 +107,14 @@ class ArticlesHandler {
 
       this._validator.validateArticlesHeaders(thumbnail.hapi.headers);
 
-      const oldThumbnail = await this._articlesService.getThumbnailById(id);
+      // const oldThumbnail = await this._articlesService.getThumbnailById(id);
       const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
-      const publicPath = `http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/`;
-      await this._storageService.deleteFile(oldThumbnail.split(publicPath)[1]);
+      // const publicPath = `http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/`;
+      // await this._storageService.deleteFile(oldThumbnail.split(publicPath)[1]);
 
       await this._articlesService.editArticleById(id, {
-        title, author, body, tags, category, thumbnail: `${publicPath}${filename}`, creditThumbnail,
+        // title, author, body, tags, category, thumbnail: `${publicPath}${filename}`, creditThumbnail,
+        title, author, body, tags, category, thumbnail: filename, creditThumbnail,
       });
       return {
         status: 'success',
