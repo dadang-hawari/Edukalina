@@ -194,34 +194,7 @@
 
 
 @media screen and (min-width: 650px) {
-    nav-bar.open {
-        height: 50px;
-    }
-
-    button#btnMenu {
-        display: none;
-    }
-
-    nav-bar ul.list-nav {
-        position: relative;
-        left: unset;
-        transform: unset;
-        display: flex;
-        flex-direction: row;
-        margin-top: 20px;
-        width: fit-content;
-        align-items: center;
-    }
-
-    ul.list-nav li {
-        font-size: 0.9rem;
-    }
-
-    ul.list-nav li a {
-        padding: 10px 15px;
-        
-    }
-
+   
     .main-btn {
         padding: 5px 15px;
         margin-inline: 5px 30px;
@@ -303,6 +276,34 @@
 }
 
 @media screen and (min-width: 800px) {
+    nav-bar.open {
+        height: 50px;
+    }
+
+    button#btnMenu {
+        display: none;
+    }
+
+    nav-bar ul.list-nav {
+        position: relative;
+        left: unset;
+        transform: unset;
+        display: flex;
+        flex-direction: row;
+        margin-top: 20px;
+        width: fit-content;
+        align-items: center;
+    }
+
+    ul.list-nav li {
+        font-size: 0.9rem;
+    }
+
+    ul.list-nav li a {
+        padding: 10px 15px;
+        
+    }
+
     .hero {
         margin-top: unset;
         align-items: center;
@@ -412,8 +413,6 @@
     .column {
         flex-direction: column;
     }
-
-
 }
 
 @media screen and (min-width: 1000px) {
