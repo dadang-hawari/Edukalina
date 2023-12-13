@@ -24,7 +24,7 @@ class ArticlesHandler {
 
       const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
       const articleId = await this._articlesService.addArticle({
-        title, author, body, tags, category, thumbnail: `http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/${filename}`, creditThumbnail,
+        title, author, body, tags, category, thumbnail: filename, creditThumbnail,
       });
 
       const response = h.response({

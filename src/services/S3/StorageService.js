@@ -18,12 +18,13 @@ class StorageService {
         if (error) {
           return reject(error);
         }
+        console.log('resolve', data.location);
         return resolve(data.Location);
       });
     });
   }
 
-//   deleteFile(fileName) {
+  //   deleteFile(fileName) {
 
 //   }
 }
