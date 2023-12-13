@@ -65,6 +65,8 @@ const mapDBToModelArticles = ({
   category,
   thumbnail,
   credit_thumbnail,
+  created_at,
+  updated_at,
 }) => ({
   id,
   title,
@@ -74,6 +76,8 @@ const mapDBToModelArticles = ({
   category,
   thumbnail,
   creditThumbnail: credit_thumbnail,
+  createdAt: created_at,
+  updatedAt: updated_at,
 });
 
 module.exports = {

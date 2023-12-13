@@ -11,7 +11,7 @@ const ArticlePayloadSchema = Joi.object({
   tags: Joi.array().items(Joi.string()).required(),
   category: Joi.string().required(),
   thumbnail: Joi.object().required(),
-  credit_thumbnail: Joi.string().required(),
+  creditThumbnail: Joi.string().required(),
 });
 
 const ArticlesPayloadSchema = Joi.object({

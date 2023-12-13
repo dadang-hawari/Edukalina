@@ -2,7 +2,7 @@ const { nanoid } = require('nanoid');
 const { Pool } = require('pg');
 const InvariantError = require('../../exceptions/InvariantError');
 const NotFoundError = require('../../exceptions/NotFoundError');
-const { mapDBToModelArticle } = require('../../utils');
+const { mapDBToModelArticles } = require('../../utils');
 
 class ArticlesService {
   constructor() {
@@ -13,9 +13,11 @@ class ArticlesService {
     title, author, body, tags, category, thumbnail, creditThumbnail,
   }) {
     const id = `article-${nanoid(16)}`;
+    const createdAt = new Date().toISOString();
+    const updatedAt = createdAt;
     const query = {
-      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8) RETURNING id',
-      values: [id, title, author, body, tags, category, thumbnail, creditThumbnail],
+      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id',
+      values: [id, title, author, body, tags, category, thumbnail, creditThumbnail, createdAt, updatedAt],
     };
     const result = await this._pool.query(query);
     if (!result.rows[0].id) {
@@ -26,16 +28,16 @@ class ArticlesService {
   }
 
   async getArticles({ title, author }) {
-    let query = 'SELECT id, title, author FROM articles';
+    let query = 'SELECT * FROM articles';
     if (title && !author) {
-      query = `SELECT id, title, author FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%')`;
+      query = `SELECT * FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%')`;
     } else if (author && !title) {
-      query = `SELECT id, title, author FROM articles WHERE LOWER(author) LIKE LOWER('%${author}%')`;
+      query = `SELECT * FROM articles WHERE LOWER(author) LIKE LOWER('%${author}%')`;
     } else if (title && author) {
-      query = `SELECT id, title, author FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(author) LIKE LOWER('%${author}%')`;
+      query = `SELECT * FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(author) LIKE LOWER('%${author}%')`;
     }
     const result = await this._pool.query(query);
-    return result.rows;
+    return result.rows.map(mapDBToModelArticles);
   }
 
   // async getarticlesByAlbumId(albumId) {
@@ -57,7 +59,7 @@ class ArticlesService {
       throw new NotFoundError('Lagu tidak ditemukan');
     }
 
-    return result.rows.map(mapDBToModelArticle)[0];
+    return result.rows.map(mapDBToModelArticles)[0];
   }
 
   async editArticleById(id, {
