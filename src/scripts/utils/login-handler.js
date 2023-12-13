@@ -2,7 +2,7 @@ import {
   getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
-import { emptyField, wrongFormatEmail } from '../views/templates/page-creator';
+import { emptyField, wrongFormatEmail, wrongFormatUsername } from '../views/templates/page-creator';
 import firebase from '../global/DB_CONFIG';
 
 const auth = getAuth(firebase);
@@ -21,7 +21,7 @@ const loginWithGoogle = () => {
       // This gives you a Google Access Token.
       // You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
-      // const token = credential.accessToken;
+      const token = credential.accessToken;
 
       // The signed-in user info.
       const { user } = result;
@@ -30,13 +30,14 @@ const loginWithGoogle = () => {
       // Handle your logic after successful Google login
       // For example, you can save user data to Firebase Realtime Database
       const userRef = ref(database, `users/${user.uid}`);
-      // const snapshot = await get(userRef);
+      const snapshot = await get(userRef);
 
       // Additional user information
       const additionalUserInfo = {
         email: user.email,
         name: user.displayName,
         userId: user.uid,
+        verified: user.emailVerified,
       };
 
       console.log(additionalUserInfo);
@@ -62,7 +63,6 @@ const login = () => {
   const password = document.getElementById('password').value;
   const inputPassword = document.getElementById('inputPassword');
   const divElement = document.createElement('div');
-  console.log(`email anda ${email}`);
 
   if (email.length === 0 || password.length === 0) {
     divElement.innerHTML = emptyField;
