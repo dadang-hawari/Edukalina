@@ -7,7 +7,6 @@ class NavBar extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupEventListeners();
-    console.log('connectedCallback executed');
   }
 
   render() {
@@ -78,11 +77,11 @@ class NavBar extends HTMLElement {
                 </svg>
             </button>
             <ul class='list-nav'>
-                <li><a href="#/beranda">Beranda</a></li>
-                <li><a href="#/tips">Tips</a></li>
-                <li><a href="#/event">Event</a></li>
-                <li><a href="#/diskusi">Diskusi</a></li>
-                <li><a href="#/tentang">Tentang</a></li>
+                <li><a id="beranda" href="#/beranda">Beranda</a></li>
+                <li><a id="tips" href="#/tips">Tips</a></li>
+                <li><a id="event" href="#/event">Event</a></li>
+                <li><a id="diskusii" href="#/diskusi">Diskusi</a></li>
+                <li><a id="tentang" href="#/tentang">Tentang</a></li>
 
                 ${loggedIn ? `<li><details class="user-login">
                 <summary> 
@@ -107,6 +106,26 @@ class NavBar extends HTMLElement {
       const loginBtn = this.querySelector('#loginBtn');
       loginBtn.addEventListener('click', () => this.handleLogin());
     }
+
+    const loginBtn = loggedIn ? 'logoutBtn' : 'loginBtn';
+
+    const elementIds = ['event', 'tips', 'beranda', 'diskusii', 'tentang', loginBtn];
+
+    elementIds.forEach((elementId) => {
+      const element = document.querySelector(`#${elementId}`);
+      element.addEventListener('click', () => {
+        const navbar = document.querySelector('nav-bar');
+        const listItem = document.querySelector('.list-nav');
+        const svgMenu = document.querySelector('.menu');
+        const svgTimes = document.querySelector('.times');
+
+        svgMenu.classList.toggle('hidden-menu');
+        svgTimes.classList.toggle('hidden-menu');
+
+        navbar.classList.remove('open');
+        listItem.classList.remove('hidden');
+      });
+    });
   }
 
   // eslint-disable-next-line class-methods-use-this
@@ -127,7 +146,7 @@ class NavBar extends HTMLElement {
   setupEventListeners() {
     const userData = JSON.parse(localStorage.getItem('user'));
     const loggedIn = userData !== null;
-    console.log('Button clicked!');
+
     const loginBtn = loggedIn ? this.querySelector('#logoutBtn') : this.querySelector('#loginBtn');
     loginBtn.addEventListener('click', () => {
       window.location.hash = '#/login';
