@@ -58,6 +58,7 @@ class ArticlesHandler {
 
   async getAllArticlesHandler(request) {
     this._validator.validateArticlesPayload(request.payload);
+    console.log("get article working");
     const { title, author } = request.query;
     const articles = await this._articlesService.getArticles({ title, author });
 
