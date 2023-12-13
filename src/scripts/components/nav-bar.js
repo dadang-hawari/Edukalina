@@ -1,7 +1,13 @@
+import { getAuth, signOut } from 'firebase/auth';
+import firebase from '../global/DB_CONFIG';
+
+const auth = getAuth(firebase);
+
 class NavBar extends HTMLElement {
   connectedCallback() {
     this.render();
     this.setupEventListeners();
+    console.log('connectedCallback executed');
   }
 
   render() {
@@ -83,12 +89,11 @@ class NavBar extends HTMLElement {
                     <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2);">
                     <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
                     </svg>
-                    ${userData.username}
+                    ${userData.name}
                 </summary>
                 <div class="content">
                     <button type="button" id="logoutBtn" class="main-btn">Logout</button></details></li>
-                </div>`
-                : '<li><button type="button" id="loginBtn" class="main-btn">Login</button></li>'}
+                </div>` : '<li><button type="button" id="loginBtn" class="main-btn">Login</button></li>'}
             </ul>
    `;
 
@@ -97,26 +102,32 @@ class NavBar extends HTMLElement {
       logoutBtn.addEventListener('click', () => {
         this.handleLogout();
         location.assign('/#/login');
-      }); 4;
+      });
     } else if (!loggedIn) {
       const loginBtn = this.querySelector('#loginBtn');
       loginBtn.addEventListener('click', () => this.handleLogin());
     }
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleLogin() {
     window.location.hash = '#/login';
-    this.render();
   }
 
   handleLogout() {
-    localStorage.removeItem('user');
-    this.render();
+    signOut(auth).then(() => {
+      localStorage.removeItem('user');
+      this.render();
+    })
+      .catch((e) => {
+        console.error('Error during logout:', e.code, e.message);
+      });
   }
 
   setupEventListeners() {
     const userData = JSON.parse(localStorage.getItem('user'));
     const loggedIn = userData !== null;
+    console.log('Button clicked!');
     const loginBtn = loggedIn ? this.querySelector('#logoutBtn') : this.querySelector('#loginBtn');
     loginBtn.addEventListener('click', () => {
       window.location.hash = '#/login';

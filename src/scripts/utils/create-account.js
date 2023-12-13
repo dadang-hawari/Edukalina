@@ -1,6 +1,8 @@
 // Import necessary functions from Firebase
 import { getDatabase, ref, set } from 'firebase/database';
-import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
+import {
+  getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword,
+} from 'firebase/auth';
 import {
   successPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, infoPopUp,
 } from '../views/templates/page-creator';
@@ -26,12 +28,12 @@ const validateUsername = (username) => username.length >= 6;
 
 const register = () => {
   const wrapper = document.querySelector('.bungkus');
-  const username = document.getElementById('usernameRegist').value;
+  const name = document.getElementById('usernameRegist').value;
   const email = document.getElementById('emailRegist').value;
   const password = document.getElementById('passwordRegist').value;
 
   const data = {
-    usernameInput: username,
+    usernameInput: name,
     emailInput: email,
     passwordInput: password,
   };
@@ -41,7 +43,7 @@ const register = () => {
   const inputPassword = document.getElementById('inputPassword');
   const divElement = document.createElement('div');
 
-  if (username.length === 0 || password.length === 0 || email.length === 0) {
+  if (name.length === 0 || password.length === 0 || email.length === 0) {
     divElement.innerHTML = emptyField;
 
     // Memeriksa apakah inputPassword memiliki anak elemen dengan konten divElement
@@ -57,7 +59,7 @@ const register = () => {
     return;
   }
 
-  if (validateUsername(username) === false) {
+  if (validateUsername(name) === false) {
     divElement.innerHTML = wrongFormatUsername;
 
     if (Array.from(inputUsername.children)
@@ -106,7 +108,7 @@ const register = () => {
 
       // Simpan informasi pengguna ke Realtime Database
       const userData = {
-        username,
+        name,
         email,
         uid: user.uid,
       };
@@ -116,6 +118,7 @@ const register = () => {
       // Gunakan user.uid sebagai bagian dari path di database
       set(ref(database, `users/${user.uid}`), userData);
       sendEmailVerification(auth.currentUser);
+      signInWithEmailAndPassword(auth, email, password);
     })
     .then(() => {
       wrapper.innerHTML += successPopUp;
