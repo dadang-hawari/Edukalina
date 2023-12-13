@@ -17,7 +17,9 @@ class ArticlesService {
     const updatedAt = createdAt;
     const query = {
       text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id',
-      values: [id, title, author, body, tags, category, thumbnail, creditThumbnail, createdAt, updatedAt],
+      values: [
+        id, title, author, body, tags, category, thumbnail, creditThumbnail, createdAt, updatedAt,
+      ],
     };
     const result = await this._pool.query(query);
     if (!result.rows[0].id) {
@@ -40,15 +42,6 @@ class ArticlesService {
     return result.rows.map(mapDBToModelArticles);
   }
 
-  // async getarticlesByAlbumId(albumId) {
-  //   const query = {
-  //     text: 'SELECT id, title, author FROM articles WHERE album_id = $1',
-  //     values: [albumId],
-  //   };
-  //   const result = await this._pool.query(query);
-  //   return result.rows;
-  // }
-
   async getArticleById(id) {
     const query = {
       text: 'SELECT * FROM articles WHERE id = $1',
@@ -56,22 +49,36 @@ class ArticlesService {
     };
     const result = await this._pool.query(query);
     if (!result.rows[0]) {
-      throw new NotFoundError('Lagu tidak ditemukan');
+      throw new NotFoundError('Artikel tidak ditemukan');
     }
 
     return result.rows.map(mapDBToModelArticles)[0];
   }
 
-  async editArticleById(id, {
-    title, author, category,
-  }) {
+  async getThumbnailById(id) {
     const query = {
-      text: 'UPDATE articles SET id = $1, title = $2, year = $3, author = $4, category = $5, duration = $6, album_id = $7 WHERE id = $1 RETURNING id',
-      values: [id, title, author, category],
+      text: 'SELECT thumbnail FROM articles WHERE id = $1',
+      values: [id],
+    };
+    const result = await this._pool.query(query);
+    if (!result.rows[0]) {
+      throw new NotFoundError('Artikel tidak ditemukan');
+    }
+
+    return result.rows[0].thumbnail;
+  }
+
+  async editArticleById(id, {
+    title, author, body, tags, category, thumbnail, creditThumbnail,
+  }) {
+    const updatedAt = new Date().toISOString();
+    const query = {
+      text: 'UPDATE articles SET title=$2, author=$3, body=$4, tags=$5, category=$6, thumbnail=$7, credit_thumbnail=$8, updated_at=$9 WHERE id = $1 RETURNING id',
+      values: [id, title, author, body, tags, category, thumbnail, creditThumbnail, updatedAt],
     };
     const result = await this._pool.query(query);
     if (!result.rows.length) {
-      throw new NotFoundError('Lagu gagal diubah. Id tidak ditemukan');
+      throw new NotFoundError('Artikel gagal diubah. Id tidak ditemukan');
     }
   }
 
@@ -82,7 +89,7 @@ class ArticlesService {
     };
     const result = await this._pool.query(query);
     if (!result.rows.length) {
-      throw new NotFoundError('Lagu gagal dihapus. Id tidak ditemukan');
+      throw new NotFoundError('Artikel gagal dihapus. Id tidak ditemukan');
     }
   }
 }

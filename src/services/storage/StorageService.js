@@ -21,6 +21,16 @@ class StorageService {
       file.on('end', () => resolve(filename));
     });
   }
+
+  deleteFile(fileName) {
+    const path = `${this._folder}/${fileName}`;
+    try {
+      fs.unlinkSync(path);
+      return 'Success';
+    } catch (err) {
+      return err;
+    }
+  }
 }
 
 module.exports = StorageService;

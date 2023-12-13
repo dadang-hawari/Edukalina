@@ -24,7 +24,7 @@ class ArticlesHandler {
 
       const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
       const articleId = await this._articlesService.addArticle({
-        title, author, body, tags, category, thumbnail: `http://${process.env.HOST}:${process.env.PORT}/articles/cover/${filename}`, creditThumbnail,
+        title, author, body, tags, category, thumbnail: `http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/${filename}`, creditThumbnail,
       });
 
       const response = h.response({
@@ -92,9 +92,24 @@ class ArticlesHandler {
 
   async putArticleByIdHandler(request, h) {
     try {
-      this._validator.validateArticlePayload(request.payload);
       const { id } = request.params;
-      await this._articlesService.editArticleById(id, request.payload);
+
+      this._validator.validateArticlePayload(request.payload);
+
+      const {
+        title, author, body, tags, category, thumbnail, creditThumbnail,
+      } = request.payload;
+
+      this._validator.validateArticlesHeaders(thumbnail.hapi.headers);
+
+      const oldThumbnail = await this._articlesService.getThumbnailById(id);
+      const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
+      const publicPath = `http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/`;
+      await this._storageService.deleteFile(oldThumbnail.split(publicPath)[1]);
+
+      await this._articlesService.editArticleById(id, {
+        title, author, body, tags, category, thumbnail: `${publicPath}${filename}`, creditThumbnail,
+      });
       return {
         status: 'success',
         message: 'Article berhasil diperbarui',
@@ -121,6 +136,8 @@ class ArticlesHandler {
   async deleteArticleByIdHandler(request, h) {
     try {
       const { id } = request.params;
+      const oldThumbnail = await this._articlesService.getThumbnailById(id);
+      await this._storageService.deleteFile(oldThumbnail.split(`http://${process.env.HOST}:${process.env.PORT}/articles/thumbnail/`)[1]);
       await this._articlesService.deleteArticleById(id);
 
       return {
@@ -133,101 +150,6 @@ class ArticlesHandler {
         message: error.message,
       });
       response.code(404);
-      return response;
-    }
-  }
-
-  async postArticleCoverHandler(request, h) {
-    try {
-      const { cover } = request.payload;
-      const { id } = request.params;
-      this._validator.validateImageHeaders(cover.hapi.headers);
-
-      const filename = await this._storageService.writeFile(cover, cover.hapi);
-      await this._articlesService.updateCoverUrl(id, `http://${process.env.HOST}:${process.env.PORT}/articles/cover/${filename}`);
-      const response = h.response({
-        status: 'success',
-        message: 'Sampul berhasil diunggah',
-      });
-      response.code(201);
-      return response;
-    } catch (error) {
-      if (error instanceof ClientError) {
-        const response = h.response({
-          status: 'fail',
-          message: error.message,
-        });
-        response.code(error.statusCode);
-        return response;
-      }
-
-      const response = h.response({
-        status: 'error',
-        message: 'Maaf, terjadi kegagalan pada server kami.',
-      });
-      response.code(500);
-      console.error(error);
-      return response;
-    }
-  }
-
-  async postUserArticleLikesHandler(request, h) {
-    try {
-      const { id } = request.params;
-      const { id: credentialId } = request.auth.credentials;
-      const { message, statusCode } = await this._articlesService.likeOrDislike(id, credentialId);
-      const response = h.response({
-        status: 'success',
-        message,
-      });
-      response.code(statusCode);
-      return response;
-    } catch (error) {
-      if (error instanceof ClientError) {
-        const response = h.response({
-          status: 'fail',
-          message: error.message,
-        });
-        response.code(error.statusCode);
-        return response;
-      }
-
-      const response = h.response({
-        status: 'error',
-        message: 'Maaf, terjadi kegagalan pada server kami.',
-      });
-      response.code(500);
-      console.error(error);
-      return response;
-    }
-  }
-
-  async getUserArticleLikesHandler(request, h) {
-    try {
-      const { id } = request.params;
-      const { mappedResult, dataSource = 'database' } = await this._articlesService.getNumberOfLikes(id);
-      const response = h.response({
-        status: 'success',
-        data: mappedResult,
-      });
-      response.header('X-Data-Source', dataSource);
-      return response;
-    } catch (error) {
-      if (error instanceof ClientError) {
-        const response = h.response({
-          status: 'fail',
-          message: error.message,
-        });
-        response.code(error.statusCode);
-        return response;
-      }
-
-      const response = h.response({
-        status: 'error',
-        message: 'Maaf, terjadi kegagalan pada server kami.',
-      });
-      response.code(500);
-      console.error(error);
       return response;
     }
   }

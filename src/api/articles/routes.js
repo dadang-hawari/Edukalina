@@ -28,16 +28,6 @@ const routes = (handler) => [
     method: 'PUT',
     path: '/articles/{id}',
     handler: handler.putArticleByIdHandler,
-  },
-  {
-    method: 'DELETE',
-    path: '/articles/{id}',
-    handler: handler.deleteArticleByIdHandler,
-  },
-  {
-    method: 'POST',
-    path: '/articles/{id}/covers',
-    handler: handler.postArticleCoverHandler,
     options: {
       payload: {
         allow: 'multipart/form-data',
@@ -48,26 +38,18 @@ const routes = (handler) => [
     },
   },
   {
+    method: 'DELETE',
+    path: '/articles/{id}',
+    handler: handler.deleteArticleByIdHandler,
+  },
+  {
     method: 'GET',
-    path: '/articles/cover/{filename}',
+    path: '/articles/thumbnail/{filename}',
     handler: {
       directory: {
         path: path.resolve(__dirname, '../uploads/file/images'),
       },
     },
-  },
-  {
-    method: 'POST',
-    path: '/articles/{id}/likes',
-    handler: handler.postUserArticleLikesHandler,
-    options: {
-      auth: 'edukalinaapp_jwt',
-    },
-  },
-  {
-    method: 'GET',
-    path: '/articles/{id}/likes',
-    handler: handler.getUserArticleLikesHandler,
   },
 ];
 
