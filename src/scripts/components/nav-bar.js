@@ -13,7 +13,7 @@ class NavBar extends HTMLElement {
     const userData = JSON.parse(localStorage.getItem('user'));
     const loggedIn = userData !== null;
     this.innerHTML = `
-    <a class="skip-link" id="toContent" href='#main'>To Content</a>
+    <a class="skip-link" id="toContent" href='#mainContent'>To Content</a>
             <div class="logo">
                 <a href="#/beranda">
                     <svg width="110" viewBox="0 0 215 89" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -160,8 +160,8 @@ class NavBar extends HTMLElement {
 
       navbar.classList.remove('open');
       listItem.classList.remove('hidden');
-      window.location.hash = '#/login';
       location.reload();
+      window.location.hash = '#/login';
     });
   }
 }

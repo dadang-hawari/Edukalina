@@ -20,36 +20,24 @@ const loginWithGoogle = () => {
 
   signInWithPopup(auth, provider)
     .then(async (result) => {
-      // This gives you a Google Access Token.
-      // You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
 
       // The signed-in user info.
       const { user } = result;
 
-      // Handle your logic after successful Google login
-      // For example, you can save user data to Firebase Realtime Database
-      const userRef = ref(database, `users/${user.uid}`);
-      const snapshot = await get(userRef);
-
-      // Additional user information
       const additionalUserInfo = {
         email: user.email,
         name: user.displayName,
         userId: user.uid,
-        verified: user.emailVerified,
       };
 
-      // Combine additional info with data from the database
+      const userRef = ref(database, `users/${additionalUserInfo}`);
 
       localStorage.setItem('user', JSON.stringify(additionalUserInfo));
-
-      // Redirect to the root page
       location.assign('/');
     })
     .catch((error) => {
-      // Handle errors during Google login
       const errorCode = error.code;
       const errorMessage = error.message;
       console.error('Error during Google login:', errorCode, errorMessage);
@@ -65,7 +53,6 @@ const login = () => {
   if (email.length === 0 || password.length === 0) {
     divElement.innerHTML = emptyField;
 
-    // eslint-disable-next-line max-len
     if (Array.from(inputPassword.children).some((child) => child.innerHTML === divElement.innerHTML)) {
       return;
     }
