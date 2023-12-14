@@ -100,6 +100,7 @@ class NavBar extends HTMLElement {
       const logoutBtn = this.querySelector('#logoutBtn');
       logoutBtn.addEventListener('click', () => {
         this.handleLogout();
+        localStorage.removeItem('user');
         location.assign('/#/login');
       });
     } else if (!loggedIn) {
@@ -149,7 +150,18 @@ class NavBar extends HTMLElement {
 
     const loginBtn = loggedIn ? this.querySelector('#logoutBtn') : this.querySelector('#loginBtn');
     loginBtn.addEventListener('click', () => {
+      const navbar = document.querySelector('nav-bar');
+      const listItem = document.querySelector('.list-nav');
+      const svgMenu = document.querySelector('.menu');
+      const svgTimes = document.querySelector('.times');
+
+      svgMenu.classList.toggle('hidden-menu');
+      svgTimes.classList.toggle('hidden-menu');
+
+      navbar.classList.remove('open');
+      listItem.classList.remove('hidden');
       window.location.hash = '#/login';
+      location.reload();
     });
   }
 }

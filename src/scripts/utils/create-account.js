@@ -1,7 +1,7 @@
 // Import necessary functions from Firebase
 import { getDatabase, ref, set } from 'firebase/database';
 import {
-  getAuth, createUserWithEmailAndPassword, sendEmailVerification, signInWithEmailAndPassword,
+  getAuth, createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import {
   successPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, infoPopUp,
@@ -113,12 +113,11 @@ const register = () => {
         uid: user.uid,
       };
 
-      localStorage.setItem('user', JSON.stringify(userData));
+      set(ref(database, `users/${user.uid}`), userData);
 
       // Gunakan user.uid sebagai bagian dari path di database
-      set(ref(database, `users/${user.uid}`), userData);
-      sendEmailVerification(auth.currentUser);
-      signInWithEmailAndPassword(auth, email, password);
+      // sendEmailVerification(auth.currentUser);
+      // signInWithEmailAndPassword(auth, email, password);
     })
     .then(() => {
       wrapper.innerHTML += successPopUp;
@@ -126,7 +125,7 @@ const register = () => {
       if (inputPassword.innerHTML.includes(divElement)) { inputPassword.removeChild(divElement); }
       if (inputEmail.innerHTML.includes(divElement)) { inputEmail.removeChild(divElement); }
       setTimeout(() => {
-        if (auth) { navBar.render(); location.assign('/'); }
+        if (auth) { navBar.render(); location.assign('/#/login'); }
       }, 2000);
     }).catch((error) => {
       inputUsername.value = data.usernameInput;
