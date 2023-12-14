@@ -1,7 +1,7 @@
 // Import necessary functions from Firebase
 import { getDatabase, ref, set } from 'firebase/database';
 import {
-  getAuth, createUserWithEmailAndPassword,
+  getAuth, createUserWithEmailAndPassword, updateProfile,
 } from 'firebase/auth';
 import {
   successPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, infoPopUp,
@@ -113,11 +113,9 @@ const register = () => {
         uid: user.uid,
       };
 
-      set(ref(database, `users/${user.uid}`), userData);
+      updateProfile(user, { displayName: name });
 
-      // Gunakan user.uid sebagai bagian dari path di database
-      // sendEmailVerification(auth.currentUser);
-      // signInWithEmailAndPassword(auth, email, password);
+      set(ref(database, `users/${user.uid}`), userData);
     })
     .then(() => {
       wrapper.innerHTML += successPopUp;
