@@ -32,7 +32,7 @@ const loginWithGoogle = () => {
         userId: user.uid,
       };
 
-      const userRef = ref(database, `users/${additionalUserInfo}`);
+      const userRef = ref(database, `users/${user.uid}`);
 
       localStorage.setItem('user', JSON.stringify(additionalUserInfo));
       location.assign('/');
