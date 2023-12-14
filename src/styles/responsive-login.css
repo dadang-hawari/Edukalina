@@ -1,0 +1,68 @@
+@media screen and (max-width: 1200px) {
+    .imgSide {
+        display: none;
+    }
+
+    button#pwEyeLogin{
+     top: 40px;
+    }
+
+    .login {
+        justify-content: center;
+        text-align: center;
+        padding-left: 0;
+    }
+
+    .login.formSide {
+        text-align: left;
+    }
+
+    div.login div.formSide form div.input label {
+        text-align: left;
+        width: 100%;
+        display: block;
+        margin-bottom: -30px;
+    }
+
+
+    .formRegister {
+        padding: unset;
+    }
+
+    .bungkus h2,
+    .formSide h2,
+    .bungkus h3,
+    .formSide h3 {
+        text-align: center;
+    }
+
+    .sideRegister {
+        display: none;
+    }
+
+    .flexForm {
+        justify-content: center;
+    }
+
+    .register {
+        width: auto;
+    }
+
+    .btnRegister {
+        width: 441.6px;
+    }
+
+    .containerBtnRegister {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+    }
+
+    button.btnRegister {
+        margin: 10px 0;
+    }
+
+    button.btnRegisterGoogle {
+        margin: 10px 0;
+    }
+}

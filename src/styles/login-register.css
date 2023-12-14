@@ -1,0 +1,274 @@
+.bungkus h2,
+.formSide h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 40px;
+    text-align: left;
+}
+
+.bungkus h3,
+.formSide h3 {
+    font-size: 40px;
+    color: #00A9FF;
+    margin-bottom: 25px;
+    text-align: left;
+}
+
+button#pwEye{
+    position: absolute; right: 0; top: 34px; padding-inline: 15px; padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEye svg.hidenSvg {
+    display: none;
+}
+
+button#pwEyeLogin{
+    position: absolute; right: 0; padding-inline: 15px; padding-block: 20px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEyeLogin svg.hidenSvg {
+    display: none;
+}
+
+
+.input {
+    width: 100%;
+}
+
+label{
+    font-size: 24px;    
+    margin-bottom: 15px;
+}
+
+input, button {
+    font-family: inherit;
+}
+
+input{
+    border: #00A9FF solid 1px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    color: black;
+    width: 100%;
+    height: 57px;
+    max-width: 400px;
+    font-size: 17px;
+    margin: 10px 0 15px 0;
+}
+
+.formRegister {
+    padding-left: 50px;
+}
+
+input.input-register {
+    width: 400px;
+    margin-top: 5px;
+    max-height: 50px;
+    font-size: 15px;
+}
+
+.input.pw-login {
+    position: relative;
+}
+
+.input.relative {
+    position: relative;
+}
+
+.formRegister .input label {
+    font-size: 19px;
+}
+
+button.btnRegister {
+    background-color: #00A9FF;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 40px;
+    padding: 10px;
+    font-size: 22px;
+    border: none;
+    margin: 20px 0;
+    color: white;
+    cursor: pointer;
+}
+
+button.btnRegisterGoogle {
+    background-color: white;
+    max-width: 300px;
+    width: 100%;
+    border-radius: 40px;
+    padding: 10px;
+    font-size: 22px;
+    border: none;
+    margin: 20px 0;
+    color: black;
+    cursor: pointer;
+    border: 2px #00A9FF solid;
+}
+
+.btnLogin { 
+    background-color: #00A9FF;
+    max-width: 441.8px;
+    width: 100%;
+    height: 55px;
+    border-radius: 40px;
+    padding: 5px 20px;
+    font-size: 24px;
+    border: none;
+    margin: 20px 0;
+    color: white;
+    cursor: pointer;
+}
+
+.btnLoginGoogle { 
+    background-color: white;
+    max-width: 441.8px;
+    width: 100%;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 40px;
+    padding: 5px 20px;
+    font-size: 24px;
+    border: none;
+    margin: 20px 0;
+    color: black;
+    cursor: pointer;
+    border: 2px #00A9FF solid;
+}
+
+.google-name {
+    position: absolute;
+    text-align: center;
+}
+
+.google {
+    margin-right: auto;
+}
+
+/* Login */
+
+.login {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    text-align: left;
+    position: relative;
+    margin: 0 auto;
+    margin-bottom: 57px;
+    margin-top: 90px;
+    padding-left: 160px;
+}
+
+.bgLogin {
+    z-index: -1;
+    right: -168px;
+    top: -100px;
+    width: 55%;
+    height: 750px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+}
+
+.formSide > p {
+    text-align: center;
+    font-size: 18px;
+}
+
+form p {
+    text-align: center;
+}
+
+.spanLogin {
+    color: #00A9FF;
+}
+
+.register {
+    margin-top: 100px;
+    max-width: 1000px;
+    width: 100%;
+    text-align: left;
+    background-color: #CDF5FD;
+    border-radius: 40px;
+    padding: 40px 40px 20px 40px; 
+    margin-inline: auto;
+    margin-block: 70px 40px;
+    
+}
+
+.register p {
+    text-align: center;
+}
+
+.sideRegister img {
+    max-width: 350px;
+}
+
+.flexForm {
+    align-items: center;
+    display: flex;
+}
+
+.sideRegister{
+    width: 100%;
+    text-align: center;
+}
+
+.formSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgSide {
+    margin: 0 100px;
+}
+
+.imgSide img {
+    max-height: 500px;
+    margin-top: -30px;
+}
+
+.imgRegister {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    justify-items: center;
+}
+
+p a {
+    padding-block: 10px;
+}
+
+.containerBtnRegister {
+    width: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+}
+
+.bungkus h3 {
+    margin-top: 80px;
+    margin-bottom: -30px;
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-left: 40px;
+}
+
+.bungkus {
+    position: relative;
+    margin-top: 100px;
+}

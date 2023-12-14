@@ -1,0 +1,842 @@
+@use 'animation.scss';
+
+:root {
+    --main: #00A9FF;
+    --secondary: #CDF5FD;
+    --oranye: #FDEDCD;
+    --scroll-bg: #ffffffd1;
+    --success: #50f050;
+}
+
+// Transparant untuk warna highlight saat button dan anchor diklik
+details, button, a {
+    -webkit-tap-highlight-color: transparent;
+    -moz-tap-highlight-color: transparent; 
+}
+  
+
+*:not(nav-bar) {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    margin: 0 auto;
+    min-height: 100vh;
+    display: flex;
+    min-width: 250px;
+    flex-direction: column;
+}
+
+a.skip-link {
+    position: absolute;
+    z-index: 9999;
+    top: -300px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--main);
+    color: white;
+    padding: 15px 10px;
+    }
+
+a.skip-link:focus {
+    top: 80px;
+}
+
+.logo {
+    padding-top: 2px;
+}
+
+header {
+    position: fixed;
+    width: 100%;
+    z-index: 9999;
+    backdrop-filter: blur(16px);
+    background-color: var(--scroll-bg);
+    box-shadow: 0px 1px 1px 0 #ababab;
+    transition: 0.4s ease-out;
+}
+
+nav-bar {
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    padding: 5px 5px 5px 15px;
+    justify-content: space-between;
+    height: 50px;
+    transition: height 0.3s;
+}
+
+nav-bar.open {
+    height: 100vh;
+}
+
+nav-bar ul.list-nav {
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    margin-top: 80px;
+}
+
+.hidden-menu {
+    display: none;
+}
+
+.hidden {
+    display: flex!important;
+}
+
+ul.list-nav li {
+    margin-bottom: 20px;
+}
+
+ul li {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: unset;
+    color: unset;
+}
+
+ul li a {
+    color: black;
+    text-decoration: none;
+}
+
+button#btnMenu {
+    position: absolute;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    top: 10px;
+    right: 15px;
+    min-width: 44px;
+    min-height: 44px;
+}
+.main-btn {
+    background-color: var(--main);
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+
+main {
+    text-align: center;
+    flex: 1;
+    margin-top: -10px;
+}
+
+.ma-min-3 {
+    margin-top: -25px;
+}
+
+.ma-1 {
+    margin-top: 10px;
+}
+
+.ma-2 {
+    margin-top: 15px;
+}
+
+.blue {
+    margin-bottom: 53px;
+    color: var(--main);
+}
+
+.img-hero-container {
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+}
+
+.img-hero {
+    max-width: 450px;
+}
+
+.hero {
+    margin: 0 auto;
+    max-width: 1200px;
+    margin-top: 90px;
+    padding: 10px 0 10px 0;
+    flex-wrap: wrap-reverse;
+    display: flex;
+    width: 100%;
+}
+
+.hero-p {
+    width: 90%;
+    text-align: left;
+    padding: 0 50px 80px 50px;
+}
+
+.hero-p h1 {
+    font-weight: normal;
+}
+
+.hero-btn {
+    background-color: var(--main);
+    max-width: 100px;
+    width: 100%;
+    padding: 10px 20px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    border: 1px solid transparent;
+    color: white;
+}
+
+#mainContent {
+    position: relative;
+    width: 100%;
+    background: var(--oranye);
+    z-index: 1;
+    padding-bottom: 50px;
+}
+
+.edukalina {
+    display: flex;
+    height: fit-content;
+    padding: 50px 0;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.edukalina img {
+    width: 200px;
+    margin-inline: auto;
+    border-radius: 40px;
+}
+
+.edukalina h2 {
+    font-weight: 800!important;
+    font-size: 30px;
+}
+
+.edukalina-desk p {
+    background-color: rgba(255, 255, 255, 0.495);
+    border-radius: 10px;
+    width: 100%;
+    font-size: 1em !important;
+    font-weight: 500;
+    box-sizing: border-box;
+    padding: 20px;
+    font-size: 29px;
+}
+
+.pendidikan-indonesia {
+    position: relative;
+    background: url(../public/images/home/wave.png) no-repeat;
+    background-position: center;
+    background-size: cover;
+    z-index: 2;
+    margin-top: -240px;
+    padding-block: 800px 300px;
+}
+
+.pendidikan-content {
+    display: flex; max-height: 216px; max-width: 1200px; margin: 0 auto; justify-content: space-around; align-items: center
+}
+
+.pendidikan-desk {
+    font-size: 22px;
+}
+
+.pendidikan-p {
+    max-width: 1200px;
+    font-size: 30px;
+    margin: 0 auto;
+    display: block;
+    padding-inline: 20px;
+}
+
+.pendidikan-indonesia h2 {
+    font-size: 50px;
+    padding-top: 200px;
+}
+
+.pendidikan-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+details{
+    position: relative;
+    max-width: 960px;
+    margin: 1rem auto;
+    background-color: #fff;
+    border-radius: 1rem;
+    box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    
+    summary {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 500;
+      gap: 5px;
+      padding: 5px;
+    }
+    
+    // Disable browser default marker
+    summary::-webkit-details-marker,
+    summary::marker{
+      content: "";
+      display: none;
+    }
+    
+    // Custom marker
+    summary::after{
+      font-size: 1rem;
+      font-weight: 400;
+      line-height: 1;
+      content: url(../public/chevron-down.svg);
+      margin-right: 1rem;
+      cursor: pointer;
+    }
+    
+    .content{
+      width: 100%;
+      background-color: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 .25rem 1rem rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      text-align: center;
+      top: 40px;
+      z-index: -99;
+      position: absolute;
+    }
+  }
+
+  
+  // Collapsible OPEN
+  details[open]{
+    
+    // Custom marker
+    summary::after{
+      content: url(../public/chevron-down.svg);
+    }
+    
+    .content{
+      animation-name: fold-out;
+      animation-duration: .2s;
+    }
+  }
+  
+.limit-icon {
+    background: url(../public/images/home/limit.svg) no-repeat;
+    background-size: 100%;
+    min-width: 80px;
+    max-width: 80px;
+    background-position: center;
+    min-height: 300px;
+}
+
+.pendidikan-container {
+    max-width: 1200px;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 50%; transform: translateX(-50%);
+}
+
+.membantu {
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.membantu-container {
+    display: flex;
+}
+
+.membantu-wrapper {
+    display: flex;
+    justify-content: center;
+    text-align: left;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+
+.membantu-wrapper img {
+    max-width: 180px;
+    width: 100%;
+    padding: 20px;
+}
+
+.membantu-desk {
+    text-align: center;
+    padding-bottom: 15px;
+}
+
+.membantu-desk {
+    border-bottom: 0.7px solid black;
+}
+
+.membantu-desk h3 {
+    font-size: 1.5em;
+    padding-bottom: 15px;
+}
+
+.membantu {
+    box-sizing: border-box;
+    padding-inline: 20px;
+}
+
+.membantu h2 {
+    font-size: 33px;
+}
+
+.last {
+    margin-bottom: 60px;
+}
+
+hr {
+    border-top: 1px solid black;
+    border-bottom: 0;
+}
+
+a.kembali-a {
+    display: block;
+    text-align: left;
+    margin-block: 90px 10px;
+    color: var(--main);
+    text-decoration: underline;
+    padding: 10px;
+    max-width: fit-content;
+}
+
+article h1 {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+article {
+    max-width: 800px;
+    text-align: justify;
+    margin: 0 auto;
+    padding-bottom: 30px;
+}
+
+article figure {
+    height: fit-content;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+figure img {
+    max-width: 800px;
+    width: 100%;
+    object-fit: cover;
+    max-height: 400px;
+}
+
+/* Diskusi */
+
+.diskusi-desk {
+    margin-top: 90px;
+    max-width: 1200px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left;
+    font-size: 22px;
+}
+
+.diskusi-form {
+    margin-inline: auto;
+    max-width: 1200px;
+    /* padding-inline: 20px; */
+    margin-bottom: 25px;
+}
+
+.diskusi-container {
+    margin-inline: auto;
+    max-width: 1200px;
+    margin-bottom: 25px;
+}
+
+.form-diskusi {
+    max-width: 1200px;
+    text-align: left;
+    padding: 25px 0 0 0;
+    margin: 0 auto; 
+}
+
+.form-diskusi label {
+    font-size: 1em;
+}
+
+.form-diskusi input, textarea {
+    justify-content: center;
+    margin-top: -8px;
+    max-width: 1200px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    font-family: inherit;
+    font-size: 1em;
+    border: 0.4px solid rgba(0, 0, 0, 0.693);
+    outline: none;
+    border-width: 0.4px;
+}
+
+.form-diskusi textarea {
+    resize: vertical;
+}
+
+.form-diskusi input:focus, .form-diskusi textarea:focus {
+    outline: none;
+    border-width: 0.4px;
+    border: 0.5px solid var(--main);
+}
+
+.form-diskusi label {
+    display: block;
+}
+
+.btn-diskusi {
+    max-width: 150px;
+    width: 100%;
+    background-color: var(--main);
+    padding: 10px;
+    font-family: inherit;
+    cursor: pointer;
+    border-radius: 20px;
+    font-size: 1.1em;
+    font-weight: 500;
+    border: 1px solid transparent;
+    color: white;
+    margin-block: 10px;
+}
+
+.formRegister button#pwEye{
+    position: absolute; 
+    right: 0; 
+    top: 33px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+form #pwEye {
+    position: absolute; 
+    right: 0; 
+    top: 50px; 
+    padding-inline: 15px; 
+    padding-block: 17px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: grid;
+    align-items: center;    
+}
+
+button#pwEye svg.hidenSvg {
+    display: none;
+}
+
+.diskusi-card {
+    max-width: 1200px;
+    width: 100%;
+    margin-inline: auto;
+    text-align: left; 
+    margin: 30px 0px
+}
+
+.diskusi-card {
+    padding: 15px;
+    box-shadow: 0 1px 3px 0.1px var(--main);
+    border-radius: 10px;
+}
+
+.profile {
+    margin-bottom: 5px;
+}
+
+.diskusi-point b {
+    display: block;
+    margin-bottom: 3px;
+}
+
+.diskusi-point {
+    margin-bottom: 10px;
+}
+
+.profile i {
+    color: grey;
+}
+
+.diskusi-card {
+    padding-inline: 30px;
+}
+
+/* footer */
+
+footer {
+    background-color: var(--secondary);
+    width: 100%;
+}
+
+footer h2 {
+    font-weight: 500;
+    color: var(--main);
+}
+
+footer ul li a, footer ul li {
+    padding-block: 10px;
+}
+
+app-footer > p {
+    text-align: center;
+    padding-block: 30px;
+}
+
+.flex-footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 20px;
+    flex-wrap: wrap;
+}
+
+.flex-footer h2 {
+    margin-bottom: 5px;
+}
+
+.navigasi-ft, .kontak-ft, .alamat-ft, .brand-footer {
+    margin-top: 10px;
+}
+
+.brand-footer {
+    text-align: center;
+    align-items: center;
+}
+
+.brand-footer h2 {
+    font-size: 2em;
+    font-weight: bold;
+}
+
+/* Tentang */
+
+.tentang {
+    margin-top: 90px;
+    max-width: 1200px;
+    margin-inline: auto;
+    width: 100%;
+    margin-bottom: 57px;
+    text-align: center;
+}
+
+.tentang h2 {
+    font-size: 48px;
+    color: #00A9FF;
+    margin-bottom: 50px;
+}
+
+.tentang > p {
+    font-size: 22px;
+    margin-bottom: 53px;
+    padding: 0px 100px;
+}
+
+.credit {
+    display: block;
+}
+
+.gropCardTentang {
+    width: 100%;
+    display: flex;
+    gap: 10px;
+}
+
+.cardTentang1, 
+.cardTentang2,
+.cardTentang3,
+.cardTentang4,
+.cardTentang5 {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.credit {
+    display: block;
+}
+
+.imageTentang{
+    height: 200px;
+    width: 200px;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+    border-radius: 50%;
+}
+
+.imageTentang > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+#diskusi {
+    font-size: 44px;
+}
+
+.cardTentang > p {
+    height: 20px;
+    margin-top: 10px;
+}
+
+.sosmedTentang{
+    display: flex;
+    color: #00A9FF;
+    padding: 10px;
+}
+
+.sosmedTentang > a {
+    margin: 0 10px;
+}
+
+/* Login */
+
+.login{
+    width: 100%;
+    width: 1200px;
+    display: flex;
+    text-align: left;
+    position: relative;
+    margin-bottom: 57px;
+}
+
+.bgLogin {
+    z-index: -1;
+    right: -168px;
+    top: -100px;
+    width: 55%;
+    height: 750px;
+    position: absolute;
+    background: linear-gradient(180deg, rgba(0, 169, 255, 0.7) 0%, rgba(0, 169, 255, 0) 100%);
+}
+
+.formSide > p {
+    text-align: center;
+}
+
+.spanLogin {
+    color: #00A9FF;
+}
+
+/* Register */
+
+.register {
+    width: 1100px;
+    text-align: left;
+    background-color: #CDF5FD;
+    border-radius: 40px;
+    padding: 40px 40px 20px 40px; 
+    margin-bottom: 57px;
+}
+
+.flexForm {
+    display: flex;
+}
+
+.sideRegister{
+    width: 100%;
+    text-align: center;
+}
+
+.formSide {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgSide {
+    margin: 0 100px;
+}
+
+.imgRegister {
+    position: absolute;
+    right: 100px;
+    top: 200px;
+    justify-items: center;
+}
+
+.btnRegister {
+    width: 600px;
+}
+
+.containerBtnRegister {
+    width: 100%;
+    text-align: center;
+}
+
+.success-container {  
+    min-width: 100px;
+    z-index: 999;
+    position: absolute;
+    display: flex;
+    right: 10px;
+    top: 20px;
+    animation: myFade 3s ease-out;
+    border-radius: 20px;
+    box-shadow: 0 0 3px 1px #c7c7c7;
+    background-color: white;
+    padding: 20px 20px;
+    font-weight: lighter;
+    align-items: center;
+    justify-content: center;
+    color: var(--success);
+    opacity: 0;
+}
+
+.success-icon {
+    padding-inline: 3px;
+    border: 2px solid  var(--success);
+    border-radius: 100px;
+}
+
+.success-p p {
+    display: flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.success-p {
+    min-width: 150px;
+}
+
+.info-icon {
+    margin-right: 5px;
+}
+
+.info-p p {
+    color: var(--main);
+}
+
+.error {
+    color: red;
+}

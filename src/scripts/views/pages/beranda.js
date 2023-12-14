@@ -3,9 +3,9 @@ const Beranda = {
     return `
   <section class="hero">
     <div class="hero-p">
-        <h1>Mari belajar bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
-        <p class="ma-1">Bergabung bersama kami dengan daftar secara gratis</p>
-        <button class="hero-btn ma-2">Daftar</button>
+        <h1>Mari bergabung bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
+        <p class="ma-1" id="join">Bergabung bersama kami dengan daftar secara gratis</p>
+        <button class="hero-btn ma-2" id=daftarBtn>Daftar</button>
     </div>
     <div class="img-hero-container">
       <img src="./images/hero.svg" alt="" class="img-hero ma-min-3" >
@@ -13,8 +13,8 @@ const Beranda = {
   </section>
  
 
-<div id="mainContent">
-  <div class="edukalina">
+<div id="mainContent" tabindex=0>
+  <div class="edukalina" id="edukalina">
     <div class="edukalina-img">
       <h2>Apa itu <span class="blue">EDUKALINA<span></h2>
       <img src="./images/home/apa-itu-edukalina.png" alt="">
@@ -41,7 +41,7 @@ const Beranda = {
       <img src="./images/home/teacher.png" class="icon-section">
     </div>
     </div>
-    <p class="pendidikan-p">Dengan banyaknya peserta didik maka tentunya diperlukan juga pengajar-pengajar berkualitas.</p>
+    <p class="pendidikan-p">Dengan banyaknya peserta didik maka tentunya diperlukan juga pengajar yang berkualitas.</p>
   </div>
 </div>
 
@@ -61,7 +61,7 @@ const Beranda = {
       <img src="./images/home/event.png" alt="Event">
       <div class="membantu-desk">
         <h3><u>Event</u></h3>
-        <p>Megninfokan berbagai macam Event atau kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
+        <p>Menginfokan berbagai macam Event atau  kegiatan yang berkaitan dengan tenaga pengajar untuk meningkatkan pemahaman dalam menjadi tenaga pengajar.</p>
       </div>
     </div>
   </div>
@@ -75,15 +75,36 @@ const Beranda = {
     </div>
   </div>
 </div>
-
-
-
-
     `;
   },
 
   async afterRender() {
-    '';
+    const userData = JSON.parse(localStorage.getItem('user'));
+    const loggedIn = userData !== null;
+    const daftarBtn = document.getElementById('daftarBtn');
+    const join = document.getElementById('join');
+
+    if (loggedIn) {
+      daftarBtn.innerHTML = 'Telusuri';
+      join.innerHTML = 'klik telusuri untuk mengenal lebih edukalina';
+
+      daftarBtn.addEventListener('click', () => {
+        // Menggunakan properti CSS untuk membuat scroll smooth
+        document.documentElement.style.scrollBehavior = 'smooth';
+
+        // Scroll ke posisi tertentu (misalnya, 700 pixel dari bagian atas)
+        window.scrollTo(0, 700);
+
+        // Mengembalikan scroll behavior ke nilai default setelah selesai scrolling
+        setTimeout(() => {
+          document.documentElement.style.scrollBehavior = 'auto';
+        }, 1000); // Sesuaikan timeout sesuai kebutuhan Anda
+      });
+    } else {
+      daftarBtn.addEventListener('click', () => {
+        window.location.href = '#/daftar';
+      });
+    }
   },
 };
 
