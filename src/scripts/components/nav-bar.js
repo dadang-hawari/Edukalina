@@ -1,3 +1,8 @@
+import { getAuth, signOut } from 'firebase/auth';
+import firebase from '../global/DB_CONFIG';
+
+const auth = getAuth(firebase);
+
 class NavBar extends HTMLElement {
   connectedCallback() {
     this.render();
@@ -8,7 +13,7 @@ class NavBar extends HTMLElement {
     const userData = JSON.parse(localStorage.getItem('user'));
     const loggedIn = userData !== null;
     this.innerHTML = `
-    <a class="skip-link" id="toContent" href='#main'>To Content</a>
+    <a class="skip-link" id="toContent" href='#mainContent'>To Content</a>
             <div class="logo">
                 <a href="#/beranda">
                     <svg width="110" viewBox="0 0 215 89" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,23 +77,22 @@ class NavBar extends HTMLElement {
                 </svg>
             </button>
             <ul class='list-nav'>
-                <li><a href="#/beranda">Beranda</a></li>
-                <li><a href="#/tips">Tips</a></li>
-                <li><a href="#/event">Event</a></li>
-                <li><a href="#/diskusi">Diskusi</a></li>
-                <li><a href="#/tentang">Tentang</a></li>
+                <li><a id="beranda" href="#/beranda">Beranda</a></li>
+                <li><a id="tips" href="#/tips">Tips</a></li>
+                <li><a id="event" href="#/event">Event</a></li>
+                <li><a id="diskusii" href="#/diskusi">Diskusi</a></li>
+                <li><a id="tentang" href="#/tentang">Tentang</a></li>
 
                 ${loggedIn ? `<li><details class="user-login">
                 <summary> 
-                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2);">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2); min-width: 40px">
                     <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
                     </svg>
-                    ${userData.username}
+                    ${userData.name}
                 </summary>
                 <div class="content">
                     <button type="button" id="logoutBtn" class="main-btn">Logout</button></details></li>
-                </div>`
-                : '<li><button type="button" id="loginBtn" class="main-btn">Login</button></li>'}
+                </div>` : '<li><button type="button" id="loginBtn" class="main-btn">Login</button></li>'}
             </ul>
    `;
 
@@ -96,29 +100,67 @@ class NavBar extends HTMLElement {
       const logoutBtn = this.querySelector('#logoutBtn');
       logoutBtn.addEventListener('click', () => {
         this.handleLogout();
+        localStorage.removeItem('user');
         location.assign('/#/login');
-      }); 4;
+      });
     } else if (!loggedIn) {
       const loginBtn = this.querySelector('#loginBtn');
       loginBtn.addEventListener('click', () => this.handleLogin());
     }
+
+    const loginBtn = loggedIn ? 'logoutBtn' : 'loginBtn';
+
+    const elementIds = ['event', 'tips', 'beranda', 'diskusii', 'tentang', loginBtn];
+
+    elementIds.forEach((elementId) => {
+      const element = document.querySelector(`#${elementId}`);
+      element.addEventListener('click', () => {
+        const navbar = document.querySelector('nav-bar');
+        const listItem = document.querySelector('.list-nav');
+        const svgMenu = document.querySelector('.menu');
+        const svgTimes = document.querySelector('.times');
+
+        svgMenu.classList.toggle('hidden-menu');
+        svgTimes.classList.toggle('hidden-menu');
+
+        navbar.classList.remove('open');
+        listItem.classList.remove('hidden');
+      });
+    });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   handleLogin() {
     window.location.hash = '#/login';
-    this.render();
   }
 
   handleLogout() {
-    localStorage.removeItem('user');
-    this.render();
+    signOut(auth).then(() => {
+      localStorage.removeItem('user');
+      this.render();
+    })
+      .catch((e) => {
+        console.error('Error during logout:', e.code, e.message);
+      });
   }
 
   setupEventListeners() {
     const userData = JSON.parse(localStorage.getItem('user'));
     const loggedIn = userData !== null;
+
     const loginBtn = loggedIn ? this.querySelector('#logoutBtn') : this.querySelector('#loginBtn');
     loginBtn.addEventListener('click', () => {
+      const navbar = document.querySelector('nav-bar');
+      const listItem = document.querySelector('.list-nav');
+      const svgMenu = document.querySelector('.menu');
+      const svgTimes = document.querySelector('.times');
+
+      svgMenu.classList.toggle('hidden-menu');
+      svgTimes.classList.toggle('hidden-menu');
+
+      navbar.classList.remove('open');
+      listItem.classList.remove('hidden');
+      location.reload();
       window.location.hash = '#/login';
     });
   }

@@ -1,14 +1,47 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
-import { emptyField, wrongFormatEmail, wrongFormatUsername } from '../views/templates/page-creator';
-import firebase from '../global/DB_CONFIG';
+import {
+  getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
+} from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
+import { emptyField, wrongFormatEmail, wrongEmailOrPass } from '../views/templates/page-creator';
+import firebase from '../global/DB_CONFIG';
 
 const auth = getAuth(firebase);
 const database = getDatabase(firebase);
 
+const divElement = document.createElement('div');
+
 const validateEmail = (email) => {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
   return expression.test(email);
+};
+
+const loginWithGoogle = () => {
+  const provider = new GoogleAuthProvider();
+
+  signInWithPopup(auth, provider)
+    .then(async (result) => {
+      const credential = GoogleAuthProvider.credentialFromResult(result);
+      const token = credential.accessToken;
+
+      // The signed-in user info.
+      const { user } = result;
+
+      const additionalUserInfo = {
+        email: user.email,
+        name: user.displayName,
+        userId: user.uid,
+      };
+
+      const userRef = ref(database, `users/${additionalUserInfo}`);
+
+      localStorage.setItem('user', JSON.stringify(additionalUserInfo));
+      location.assign('/');
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error('Error during Google login:', errorCode, errorMessage);
+    });
 };
 
 const login = () => {
@@ -16,8 +49,6 @@ const login = () => {
   const inputEmail = document.getElementById('inputEmail');
   const password = document.getElementById('password').value;
   const inputPassword = document.getElementById('inputPassword');
-  const divElement = document.createElement('div');
-  console.log(`email anda ${email}`);
 
   if (email.length === 0 || password.length === 0) {
     divElement.innerHTML = emptyField;
@@ -45,10 +76,10 @@ const login = () => {
     return;
   }
 
-  // Melakukan proses autentikasi menggunakan Firebase
   signInWithEmailAndPassword(auth, email, password)
     .then(async (userCredential) => {
       const { user } = userCredential;
+      console.log(user);
 
       const userRef = ref(database, `users/${user.uid}`);
       const snapshot = await get(userRef);
@@ -58,19 +89,16 @@ const login = () => {
       location.assign('/');
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
 
-      if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
-        divElement.innerHTML = wrongFormatEmail;
+      if (errorMessage === 'Firebase: Error (auth/invalid-credential).') {
+        divElement.innerHTML = wrongEmailOrPass;
         inputPassword.appendChild(divElement);
         setTimeout(() => {
           inputPassword.removeChild(divElement);
         }, 4000);
-      } else {
-        console.error('Error during login:', errorCode, errorMessage);
       }
     });
 };
 
-export default login;
+export { loginWithGoogle, login };

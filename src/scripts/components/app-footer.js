@@ -13,20 +13,21 @@ class AppFooter extends HTMLElement {
     <div class="navigasi-ft">
         <h2>Navigasi</h2>
         <ul>
-            <li><a href="">Beranda</a></li>
-            <li><a href="">Tips</a></li>
-            <li><a href="">Diskusi</a></li>
-            <li><a href="">Tentang</a></li>
+            <li><a href="#/beranda">Beranda</a></li>
+            <li><a href="#/tips">Tips</a></li>
+            <li><a href="#/diskusi">Diskusi</a></li>
+            <li><a href="#/tentang">Tentang</a></li>
         </ul>
     </div>
     <div class="kontak-ft">
         <h2>Kontak</h2>
         <ul>
-            <li><a href="">Dadang</a></li>
-            <li><a href="">Aryandhi</a></li>
-            <li><a href="">Azzam</a></li>
-            <li><a href="">Mario</a></li>
-            <li><a href="">Rama</a></li>
+            <li><a href="https://www.linkedin.com/in/muh-dadang-hawari/" rel="noreffer" target="_blank">Dadang</a></li>
+            <li><a href="https://www.linkedin.com/in/aryandhi-alhaqam-patompo-144634281/" rel="noreffer" target="_blank">Aryandhi</a></li>
+            <li><a href="https://www.linkedin.com/in/azzam-al-husaini-1ba19b209/" rel="noreffer" target="_blank">Azzam</a></li>
+            <li><a href="https://www.linkedin.com/in/malba-mario/" rel="noreffer" target="_blank">Mario</a></li>
+            <li><a href="https://www.linkedin.com/in/rama-indrawan-53875b279/" rel="noreffer"  target="_blank">
+            Rama</a></li>
         </ul>
     </div>
     <div class="alamat-ft">

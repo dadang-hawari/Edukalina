@@ -35,6 +35,10 @@ const emptyField = `
     <div class="error">Mohon untuk mengisi seluruh field</div>
 `;
 
+const wrongEmailOrPass = `
+    <div class="error">Periksa kembali email dan password Anda</div>
+`;
+
 export {
-  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField,
+  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass,
 };
