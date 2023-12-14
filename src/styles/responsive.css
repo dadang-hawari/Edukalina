@@ -121,6 +121,10 @@
         flex-wrap: wrap;
     }
 
+    .main-btn {
+        margin-inline: 0!important;
+    }
+
     .pendidikan-container h2 {
         margin-top: 29px;
         padding-inline: 10px;

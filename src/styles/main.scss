@@ -448,6 +448,11 @@ figure img {
 
 /* Diskusi */
 
+.diskusi-desk, .diskusi-form, .diskusi-container {
+    padding-inline: 20px;
+}
+
+
 .diskusi-desk {
     margin-top: 90px;
     max-width: 1200px;
@@ -496,8 +501,13 @@ figure img {
     border-width: 0.4px;
 }
 
+.form-diskusi input {
+    height: 44px;
+}
+
 .form-diskusi textarea {
     resize: vertical;
+    min-height: 50px;
 }
 
 .form-diskusi input:focus, .form-diskusi textarea:focus {
@@ -522,7 +532,7 @@ figure img {
     font-weight: 500;
     border: 1px solid transparent;
     color: white;
-    margin-block: 10px;
+    margin-block: 20px;
 }
 
 .formRegister button#pwEye{

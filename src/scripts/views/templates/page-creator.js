@@ -39,6 +39,10 @@ const wrongEmailOrPass = `
     <div class="error">Periksa kembali email dan password Anda</div>
 `;
 
+const notLoginDiscuss = `
+<div class="error">Anda harus login terlebih dahulu agar dapat berdiskusi</div>
+`;
+
 export {
-  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass,
+  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss,
 };
