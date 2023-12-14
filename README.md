@@ -51,7 +51,8 @@
                                 <stop offset="1" stop-color="#00A9FF" />
                             </linearGradient>
                         </defs>
-                    </svg> @sample.svg) 
+                    </svg> 
+                    @sample.svg) 
 # About Edukalina
 ...
 
