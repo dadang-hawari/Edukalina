@@ -2,11 +2,13 @@ import {
   getAuth, signInWithEmailAndPassword, signInWithPopup, GoogleAuthProvider,
 } from 'firebase/auth';
 import { getDatabase, ref, get } from 'firebase/database';
-import { emptyField, wrongFormatEmail, wrongFormatUsername } from '../views/templates/page-creator';
+import { emptyField, wrongFormatEmail, wrongEmailOrPass } from '../views/templates/page-creator';
 import firebase from '../global/DB_CONFIG';
 
 const auth = getAuth(firebase);
 const database = getDatabase(firebase);
+
+const divElement = document.createElement('div');
 
 const validateEmail = (email) => {
   const expression = /^[^@]+@\w+(\.\w+)+\w$/;
@@ -25,7 +27,6 @@ const loginWithGoogle = () => {
 
       // The signed-in user info.
       const { user } = result;
-      console.log(user);
 
       // Handle your logic after successful Google login
       // For example, you can save user data to Firebase Realtime Database
@@ -39,8 +40,6 @@ const loginWithGoogle = () => {
         userId: user.uid,
         verified: user.emailVerified,
       };
-
-      console.log(additionalUserInfo);
 
       // Combine additional info with data from the database
 
@@ -62,7 +61,6 @@ const login = () => {
   const inputEmail = document.getElementById('inputEmail');
   const password = document.getElementById('password').value;
   const inputPassword = document.getElementById('inputPassword');
-  const divElement = document.createElement('div');
 
   if (email.length === 0 || password.length === 0) {
     divElement.innerHTML = emptyField;
@@ -104,17 +102,14 @@ const login = () => {
       location.assign('/');
     })
     .catch((error) => {
-      const errorCode = error.code;
       const errorMessage = error.message;
 
-      if (errorCode === 'auth/user-not-found' || errorCode === 'auth/wrong-password') {
-        divElement.innerHTML = wrongFormatEmail;
+      if (errorMessage === 'Firebase: Error (auth/invalid-credential).') {
+        divElement.innerHTML = wrongEmailOrPass;
         inputPassword.appendChild(divElement);
         setTimeout(() => {
           inputPassword.removeChild(divElement);
         }, 4000);
-      } else {
-        console.error('Error during login:', errorCode, errorMessage);
       }
     });
 };

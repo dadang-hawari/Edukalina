@@ -2,14 +2,16 @@ import { initializeApp } from 'firebase/app';
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_KEY,
-  authDomain: 'edukalina-account.firebaseapp.com',
-  databaseURL: 'https://edukalina-account-default-rtdb.asia-southeast1.firebasedatabase.app',
-  projectId: 'edukalina-account',
-  storageBucket: 'edukalina-account.appspot.com',
-  messagingSenderId: '80187260169',
-  appId: '1:80187260169:web:9c41f92dd4d405285567d8',
-  measurementId: 'G-4Q1XSJKKC1',
+  authDomain: process.env.AUTH_DOMAIN,
+  databaseURL: process.env.DB_URL,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID,
 };
+
+console.log(firebaseConfig.authDomain);
 
 const firebase = initializeApp(firebaseConfig);
 
