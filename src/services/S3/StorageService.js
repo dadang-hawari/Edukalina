@@ -19,19 +19,20 @@ class StorageService {
         if (error) {
           return reject(error);
         }
-        console.log('resolve', data.Location);
         return resolve(data.Location);
       });
     });
   }
 
   deleteFile(uri) {
-    const { bucket, key } = AmazonS3URI(uri);
-    const parameter = { Bucket: bucket, Key: key };
+    const { key } = AmazonS3URI(uri);
+    const parameter = { Bucket: process.env.AWS_BUCKET_NAME, Key: key };
     return new Promise((resolve, reject) => {
       this._S3.deleteObject(parameter, (error, data) => {
-        if (error) return reject(error);
-        console.log('resolve', data);
+        if (error) {
+          console.log(error);
+          return reject(error);
+        }
         return resolve();
       });
     });

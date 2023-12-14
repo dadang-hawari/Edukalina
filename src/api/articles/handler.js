@@ -7,6 +7,7 @@ class ArticlesHandler {
     this._validator = validator;
     this.postArticleHandler = this.postArticleHandler.bind(this);
     this.getAllArticlesHandler = this.getAllArticlesHandler.bind(this);
+    this.getAllArticlesByCatHandler = this.getAllArticlesByCatHandler.bind(this);
     this.getArticleByIdHandler = this.getArticleByIdHandler.bind(this);
     this.putArticleByIdHandler = this.putArticleByIdHandler.bind(this);
     this.deleteArticleByIdHandler = this.deleteArticleByIdHandler.bind(this);
@@ -23,7 +24,7 @@ class ArticlesHandler {
       this._validator.validateArticlesHeaders(thumbnail.hapi.headers);
 
       const filename = await this._storageService.writeFile(thumbnail, thumbnail.hapi);
-      const articleId = await this._articlesService.addArticle({
+      const article = await this._articlesService.addArticle({
         title, author, body, tags, category, thumbnail: filename, creditThumbnail,
       });
 
@@ -31,7 +32,7 @@ class ArticlesHandler {
         status: 'success',
         message: 'Article berhasil ditambahkan',
         data: {
-          articleId,
+          article,
         },
       });
       response.code(201);
@@ -60,8 +61,25 @@ class ArticlesHandler {
     try {
       this._validator.validateArticlesPayload(request.payload);
       const { title, author } = request.query;
-      console.log('get article working');
       const articles = await this._articlesService.getArticles({ title, author });
+      return {
+        status: 'success',
+        data: {
+          articles,
+        },
+      };
+    } catch (err) {
+      console.error(err);
+      return err;
+    }
+  }
+
+  async getAllArticlesByCatHandler(request) {
+    try {
+      this._validator.validateArticlesPayload(request.payload);
+      const { category } = request.params;
+      const { title, author } = request.query;
+      const articles = await this._articlesService.getArticlesByCategory({ title, author, category });
       return {
         status: 'success',
         data: {

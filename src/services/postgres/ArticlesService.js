@@ -16,7 +16,7 @@ class ArticlesService {
     const createdAt = new Date().toISOString();
     const updatedAt = createdAt;
     const query = {
-      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id',
+      text: 'INSERT INTO articles VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING id, category',
       values: [
         id, title, author, body, tags, category, thumbnail, creditThumbnail, createdAt, updatedAt,
       ],
@@ -26,7 +26,7 @@ class ArticlesService {
       throw new InvariantError('Artikel gagal ditambahkan');
     }
 
-    return result.rows[0].id;
+    return result.rows[0];
   }
 
   async getArticles({ title, author }) {
@@ -37,6 +37,19 @@ class ArticlesService {
       query = `SELECT * FROM articles WHERE LOWER(author) LIKE LOWER('%${author}%')`;
     } else if (title && author) {
       query = `SELECT * FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(author) LIKE LOWER('%${author}%')`;
+    }
+    const result = await this._pool.query(query);
+    return result.rows.map(mapDBToModelArticles);
+  }
+
+  async getArticlesByCategory({ title, author, category }) {
+    let query = `SELECT * FROM articles WHERE LOWER(category)=LOWER('${category}')`;
+    if (title && !author) {
+      query = `SELECT * FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(category)=LOWER('${category}')`;
+    } else if (author && !title) {
+      query = `SELECT * FROM articles WHERE LOWER(author) LIKE LOWER('%${author}%') AND LOWER(category)=LOWER('${category}')`;
+    } else if (title && author) {
+      query = `SELECT * FROM articles WHERE LOWER(title) LIKE LOWER('%${title}%') AND LOWER(author) LIKE LOWER('%${author}%') AND LOWER(category)=LOWER('${category}')`;
     }
     const result = await this._pool.query(query);
     return result.rows.map(mapDBToModelArticles);
