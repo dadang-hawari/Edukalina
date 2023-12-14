@@ -85,7 +85,6 @@ const login = () => {
       const snapshot = await get(userRef);
 
       localStorage.setItem('user', JSON.stringify(snapshot.val()));
-
       location.assign('/');
     })
     .catch((error) => {

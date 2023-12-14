@@ -11,8 +11,6 @@ const firebaseConfig = {
   measurementId: process.env.MEASUREMENT_ID,
 };
 
-console.log(firebaseConfig.authDomain);
-
 const firebase = initializeApp(firebaseConfig);
 
 export default firebase;
