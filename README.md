@@ -2,7 +2,7 @@
 
 # About Edukalina
 Pendidikan adalah salah satu sektor kunci dalam membangun suatu negara.
-Sistem pendidikan yang kuat dan efisien sangat penting dalam melahirkan generasi
+Sistem pendidikan yang kuat dan efisien sangat penting dalam menghasilkan generasi
 muda yang terampil dan siap bersaing di era globalisasi.
 Dengan latar belakang ini, pengembangan sistem tenaga pengajar berbasis
 website “EDUKALINA” dapat menjadi solusi yang efektif untuk membantu tenaga
