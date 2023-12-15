@@ -31,7 +31,8 @@ Anggota Kelompok :
 
 ## Beranda
 
-![Beranda](https://github.com/dadang-hawari/edukalina/assets/118704549/734cd58a-fdf3-44cb-b94b-181fe2261d26)
+![Beranda](https://github.com/dadang-hawari/edukalina/assets/118704549/f2903a7c-44ac-47cd-bd2c-576311566025)
+
 
 ## Tips
 
