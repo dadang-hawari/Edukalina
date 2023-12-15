@@ -1,4 +1,5 @@
-![Beranda](src/public/logo.jpg)
+![Beranda](https://github.com/dadang-hawari/edukalina/assets/118704549/f338998c-9852-4f4e-b091-35f50767a90a)
+
 # About Edukalina
 Pendidikan adalah salah satu sektor kunci dalam membangun suatu negara.
 Sistem pendidikan yang kuat dan efisien sangat penting dalam melahirkan generasi
@@ -30,20 +31,21 @@ Anggota Kelompok :
 
 ## Beranda
 
-![Beranda](src/public/beranda.png)
+![Beranda](https://github.com/dadang-hawari/edukalina/assets/118704549/734cd58a-fdf3-44cb-b94b-181fe2261d26)
 
 ## Tips
 
-![Tips](src/public/tips.png)
+![Tips]()
 
 ## Event
 
-![Event](src/public/event.png)
+![Event]()
 
 ## Diskusi
 
-![Diskusi](src/public/diskusi.png)
+![Diskusi]()
 
 ## Tentang Kami
 
-![Tentang Kami](src/public/tentang.png)
+![Tentang Kami](https://github.com/dadang-hawari/edukalina/assets/118704549/6f86c00a-f53a-431b-b039-e1efec802426)
+
