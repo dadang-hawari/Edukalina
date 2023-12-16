@@ -4,7 +4,7 @@ import firebase from '../../global/DB_CONFIG';
 import {
   notLoginDiscuss, createDiscussionCard, emptyField, successDiscuss,
 } from '../templates/page-creator';
-import addQuestion from '../../utils/diskusi-handler';
+import { addQuestion } from '../../utils/diskusi-handler';
 
 const auth = getAuth(firebase);
 const Diskusi = {
@@ -16,7 +16,7 @@ const Diskusi = {
         ataupun bertanya mengenai hal-hal yang memerlukan pandangan dari banyak orang.</p>
       </div>
       <div class="diskusi-form">
-        <form action="" class="form-diskusi">
+        <form class="form-diskusi">
           <label for="title">Subjek</label>
           <input type="text" id="title" placeholder="Judul pertanyaan">
           <label for="pertanyaan">Pertanyaan</label>

@@ -45,4 +45,4 @@ const addQuestion = async (title, pertanyaan) => {
   }
 };
 
-export default addQuestion;
+export { addQuestion, formattedString };

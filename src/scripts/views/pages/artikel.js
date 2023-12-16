@@ -2,7 +2,7 @@ const Artikel = {
   async render() {
     return `
     <article>
-    <a href="#" class="kembali-a">< Kembali</a>
+    <a href="#" class="kembali-a"> < Kembali</a>
         <h1>Pembuatan Materi Menggunakan Microsoft Power Point</h1>
         <figure>
             <img src="./images/article/powerpoint.png" alt="Deskripsi Gambar 1">

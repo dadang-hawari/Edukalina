@@ -55,8 +55,11 @@ const createDiscussionCard = (data) => {
   const innerHTML = `
     <div class="diskusi-card">
       <div class="profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2); min-width: 40px">
+        <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
+      </svg>
         <b id="userName">${data.userName}</b>
-        <span>${data.timestamp}WIB</span>
+        <span>${data.timestamp} WIB</span>
       </div>
       <div class="diskusi-body">
         <b>${data.title}</b>
@@ -72,33 +75,77 @@ const createDiscussionCard = (data) => {
   return discussionCard;
 };
 
-const createDiscussionPembahasan = (data) => {
+const createDiscussionPembahasan = (data, onReplySubmit) => {
   const discussionCard = document.createElement('div');
   discussionCard.classList.add('diskusi-item');
 
   const innerHTML = `
     <div class="diskusi-card">
+      <a href="#/diskusi" class="kembali-a"> < Kembali</a>
       <div class="profile">
         <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2); min-width: 40px">
           <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
         </svg>
         <b id="userName">${data.userName}</b>
-        <span>${data.timestamp}WIB</span>
+        <span>${data.timestamp} WIB</span>
       </div>
       <div class="diskusi-body">
         <b>${data.title}</b>
         <p>${data.pertanyaan}</p>
       </div>
-      <div class="sum-pembahasan">
-        <h4>5 Pembahasan</h4>
-      </div>
+      <form class="form-diskusi" id="replyForm">
+        <label for="replyText">Balasan</label>
+        <textarea type="text" id="replyText" rows="4" placeholder="Masukkan Balasan Anda"></textarea>
+        <div class="info-diskusi"></div>
+        <button class="btn-diskusi">Balas</button>
+      </form>
     </div>
   `;
 
   discussionCard.innerHTML = innerHTML;
+
+  const replyForm = discussionCard.querySelector('#replyForm');
+  const replyText = discussionCard.querySelector('#replyText');
+
+  replyForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    if (onReplySubmit) {
+      onReplySubmit(replyText.value);
+    }
+  });
+
   return discussionCard;
 };
 
+const createReplyCard = (data) => {
+  const replyCard = document.createElement('div');
+  replyCard.classList.add('diskusi-item');
+
+  const innerHTML = `
+    <div class="diskusi-card">
+      <div class="profile">
+      <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2); min-width: 40px">
+        <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
+      </svg>
+        <b id="userName">${data.userName}</b>
+        <span>${data.timestamp} WIB</span>
+      </div>
+      <div class="diskusi-body">
+        <p>${data.text}</p>
+      </div>
+      <div class="balas-reply">
+      <textarea type="text" id="balasReply" style="margin-top: 20px" rows="3" placeholder="Balasan.."></textarea>
+        <button class="btn-balas">Balas</button>
+      </div>
+    </div>
+  `;
+  console.log(data);
+
+  replyCard.innerHTML = innerHTML;
+  return replyCard;
+};
+
 export {
-  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss, createDiscussionCard, createDiscussionPembahasan, successDiscuss,
+  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss, createDiscussionCard, createDiscussionPembahasan, successDiscuss, createReplyCard,
 };
