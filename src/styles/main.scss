@@ -451,8 +451,11 @@ figure img {
     padding-inline: 20px;
 }
 
-.discussion-
-
+.diskusi-content {
+    max-width: 800px;
+    margin-inline: auto;
+    margin-top: 40px;
+}
 
 .diskusi-desk {
     margin-top: 90px;
@@ -580,9 +583,6 @@ button#pwEye svg.hidenSvg {
 }
 
 .profile {
-    display: flex;
-    align-items: center;
-    gap: 5px;
     margin-bottom: 5px;
 }
 
@@ -597,13 +597,6 @@ button#pwEye svg.hidenSvg {
 
 .profile i {
     color: grey;
-}
-
-.diskusi-content {
-    max-width: 800px;
-    margin-inline: auto;
-    padding: 20px;
-    margin-top: 40px;
 }
 
 .diskusi-card {
