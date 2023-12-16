@@ -6,6 +6,7 @@
     --oranye: #FDEDCD;
     --scroll-bg: #ffffffd1;
     --success: #50f050;
+    --success-discuss: #32c432;
 }
 
 // Transparant untuk warna highlight saat button dan anchor diklik
@@ -446,11 +447,11 @@ figure img {
     max-height: 400px;
 }
 
-/* Diskusi */
-
-.diskusi-desk, .diskusi-form, .diskusi-container {
+.diskusi-desk, .diskusi-form, .diskusi-list {
     padding-inline: 20px;
 }
+
+.discussion-
 
 
 .diskusi-desk {
@@ -465,11 +466,10 @@ figure img {
 .diskusi-form {
     margin-inline: auto;
     max-width: 1200px;
-    /* padding-inline: 20px; */
     margin-bottom: 25px;
 }
 
-.diskusi-container {
+.diskusi-list {
     margin-inline: auto;
     max-width: 1200px;
     margin-bottom: 25px;
@@ -580,6 +580,9 @@ button#pwEye svg.hidenSvg {
 }
 
 .profile {
+    display: flex;
+    align-items: center;
+    gap: 5px;
     margin-bottom: 5px;
 }
 
@@ -594,6 +597,13 @@ button#pwEye svg.hidenSvg {
 
 .profile i {
     color: grey;
+}
+
+.diskusi-content {
+    max-width: 800px;
+    margin-inline: auto;
+    padding: 20px;
+    margin-top: 40px;
 }
 
 .diskusi-card {
@@ -850,3 +860,8 @@ app-footer > p {
 .error {
     color: red;
 }
+
+.success {
+    color: var(--success-discuss);
+}
+ 

@@ -40,9 +40,65 @@ const wrongEmailOrPass = `
 `;
 
 const notLoginDiscuss = `
-<div class="error">Anda harus login terlebih dahulu agar dapat berdiskusi</div>
+    <div class="error">Anda harus login terlebih dahulu agar dapat berdiskusi</div>
 `;
 
+const successDiscuss = `
+    <div class="success">Pertanyaan berhasil dikirim</div>
+`;
+
+const createDiscussionCard = (data) => {
+  const discussionCard = document.createElement('a');
+  discussionCard.href = `#/pembahasan/${data.questionId}`;
+  discussionCard.classList.add('diskusi-item');
+
+  const innerHTML = `
+    <div class="diskusi-card">
+      <div class="profile">
+        <b id="userName">${data.userName}</b>
+        <span>${data.timestamp}WIB</span>
+      </div>
+      <div class="diskusi-body">
+        <b>${data.title}</b>
+        <p>${data.pertanyaan}</p>
+      </div>
+      <div class="sum-pembahasan">
+        <h4>5 Pembahasan</h4>
+      </div>
+    </div>
+  `;
+
+  discussionCard.innerHTML = innerHTML;
+  return discussionCard;
+};
+
+const createDiscussionPembahasan = (data) => {
+  const discussionCard = document.createElement('div');
+  discussionCard.classList.add('diskusi-item');
+
+  const innerHTML = `
+    <div class="diskusi-card">
+      <div class="profile">
+        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" style="fill: rgba(0, 0, 0, 0.2); min-width: 40px">
+          <path d="M12 2C6.579 2 2 6.579 2 12s4.579 10 10 10 10-4.579 10-10S17.421 2 12 2zm0 5c1.727 0 3 1.272 3 3s-1.273 3-3 3c-1.726 0-3-1.272-3-3s1.274-3 3-3zm-5.106 9.772c.897-1.32 2.393-2.2 4.106-2.2h2c1.714 0 3.209.88 4.106 2.2C15.828 18.14 14.015 19 12 19s-3.828-.86-5.106-2.228z"></path>
+        </svg>
+        <b id="userName">${data.userName}</b>
+        <span>${data.timestamp}WIB</span>
+      </div>
+      <div class="diskusi-body">
+        <b>${data.title}</b>
+        <p>${data.pertanyaan}</p>
+      </div>
+      <div class="sum-pembahasan">
+        <h4>5 Pembahasan</h4>
+      </div>
+    </div>
+  `;
+
+  discussionCard.innerHTML = innerHTML;
+  return discussionCard;
+};
+
 export {
-  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss,
+  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss, createDiscussionCard, createDiscussionPembahasan, successDiscuss,
 };
