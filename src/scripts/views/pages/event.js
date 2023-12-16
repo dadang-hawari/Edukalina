@@ -5,34 +5,70 @@ const Event = {
           <h2>Event</h2>
           <p>Pada fitur ini kita akan membagikan info-info dari berbagai macam kegiatan yang berkaitan dengan tenaga pengajar</p>
           <div class="gropCardEvent">
-              <div class="cardEvent">
-                  <div class="imageEvent"></div>
-                  <div class="descGropEvent">
-                      <h3>Peran Guru dalam Mengembangkan Pembelajaran Jarak Jauh Menyikapi NEW NORMAL</h3>
-                      <p>perubahan paradigma pendidikan akibat new normal, mengatasi tantangan dalam pembelajaran jarak jauh, memahami perkembangan teknologi, meningkatkan kualitas pembelajaran, memberikan dukungan kepada guru, mengatasi kesenjangan pendidikan, dan mendorong inovasi pendidikan.</p>
-                  </div>
-              </div>
-              <div class="cardEvent">
-                  <div class="imageEvent"></div>
-                  <div class="descGropEvent">
-                      <h3>Peran Guru dalam Mengembangkan Pembelajaran Jarak Jauh Menyikapi NEW NORMAL</h3>
-                      <p>perubahan paradigma pendidikan akibat new normal, mengatasi tantangan dalam pembelajaran jarak jauh, memahami perkembangan teknologi, meningkatkan kualitas pembelajaran, memberikan dukungan kepada guru, mengatasi kesenjangan pendidikan, dan mendorong inovasi pendidikan. perubahan paradigma pendidikan akibat new normal, mengatasi tantangan dalam pembelajaran jarak jauh, memahami perkembangan teknologi, meningkatkan kualitas pembelajaran, memberikan dukungan kepada guru, mengatasi kesenjangan pendidikan, dan mendorong inovasi pendidikan.</p>
-                  </div>
-              </div>
-              <div class="cardEvent">
-                  <div class="imageEvent"></div>
-                  <div class="descGropEvent">
-                      <h3>Peran Guru dalam Mengembangkan Pembelajaran Jarak Jauh Menyikapi NEW NORMAL</h3>
-                      <p>awikwok</p>
-                  </div>
-              </div>
           </div>
       </div>
     `;
   },
 
   async afterRender() {
-    console.log('halaman event');
+    const cardList = document.querySelector('.gropCardEvent');
+
+    const apiEndPointEvent = 'http://13.212.75.217:5000/articles/event';
+    let eventValueAPI;
+
+    function getApiEventValue() {
+      return fetch(apiEndPointEvent)
+        .then((result) => result.json())
+        .then((responseJson) => responseJson.data.articles)
+        .then((value) => {
+          eventValueAPI = value; // Menyimpan nilai ke variabel global
+          // console.log(eventValueAPI);
+        });
+    }
+
+    function renderContent() {
+      eventValueAPI.forEach((element) => {
+        // console.log(element);
+
+        const cardEvent = document.createElement('div');
+        cardEvent.classList.add('cardEvent');
+
+        const imageEvent = document.createElement('div');
+        imageEvent.classList.add('imageEvent');
+        imageEvent.setAttribute('style', `background-image: url('${element.thumbnail}');`);
+        cardEvent.appendChild(imageEvent);
+
+        const descGropEvent = document.createElement('div');
+        descGropEvent.classList.add('descGropEvent');
+        cardEvent.appendChild(descGropEvent);
+
+        const h3 = document.createElement('h3');
+        h3.setAttribute('id', `${element.id}`);
+        h3.setAttribute('tanda', `${element.category}`);
+        h3.addEventListener('click', (e) => {
+          // Dapatkan ID artikel dari href
+          const articleId = e.target.getAttribute('id');
+          const articleClass = e.target.getAttribute('tanda');
+
+          // Simpan ID artikel di penyimpanan sesi
+          localStorage.setItem('selectedArticleId', articleId);
+          localStorage.setItem('selectedArticleClass', articleClass);
+
+          window.location.href = '#/artikel';
+        });
+        h3.innerText = `${element.title}`;
+        descGropEvent.appendChild(h3);
+
+        const p = document.createElement('p');
+        p.innerText = `${element.body}`;
+        descGropEvent.appendChild(p);
+
+        cardList.appendChild(cardEvent);
+      });
+    }
+
+    getApiEventValue()
+      .then(renderContent);
   },
 };
 
