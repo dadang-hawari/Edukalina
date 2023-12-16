@@ -18,11 +18,18 @@ const Event = {
 
     function getApiEventValue() {
       return fetch(apiEndPointEvent)
-        .then((result) => result.json())
+        .then((result) => {
+          if (!result.ok) {
+            throw new Error(`Failed to fetch: ${result.status}`);
+          }
+          return result.json();
+        })
         .then((responseJson) => responseJson.data.articles)
         .then((value) => {
-          eventValueAPI = value; // Menyimpan nilai ke variabel global
-          // console.log(eventValueAPI);
+          eventValueAPI = value;
+        })
+        .catch((error) => {
+          console.error(error);
         });
     }
 
