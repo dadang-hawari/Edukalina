@@ -3,7 +3,7 @@ const Beranda = {
     return `
   <section class="hero">
     <div class="hero-p">
-        <h1>Mari bergabung bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
+        <h1 style="font-weight: normal">Mari bergabung bersama kami agar menjadi <span class="blue"> tenaga pengajar </span>yang up to date</h1>
         <p class="ma-1" id="join">Bergabung bersama kami dengan daftar secara gratis</p>
         <button class="hero-btn ma-2" id=daftarBtn>Daftar</button>
     </div>

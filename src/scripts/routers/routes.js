@@ -6,6 +6,7 @@ import Diskusi from '../views/pages/diskusi';
 import Artikel from '../views/pages/artikel';
 import Login from '../views/pages/login';
 import Daftar from '../views/pages/daftar';
+import Pembahasan from '../views/pages/diskusi-pembahasan';
 
 const routes = {
   '/': Beranda,
@@ -17,6 +18,7 @@ const routes = {
   '/artikel': Artikel,
   '/login': Login,
   '/daftar': Daftar,
+  '/diskusi/:id': Pembahasan,
 };
 
 export default routes;

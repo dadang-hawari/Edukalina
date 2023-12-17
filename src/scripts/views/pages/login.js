@@ -22,7 +22,7 @@ const Login = {
                 </button>
             </div>   
             <button class="btnLogin" type="button">Masuk</button>
-            <p>---------- atau ----------</p>
+            <p>atau</p>
             <button class="btnLoginGoogle" type="button">
             <svg class="google" width="24" height="24" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M19.9998 16.3633V24.1087H30.7633C30.2907 26.5996 28.8723 28.7088 26.7451 30.127L33.236 35.1634C37.0178 31.6726 39.1996 26.5453 39.1996 20.4544C39.1996 19.0362 39.0724 17.6725 38.8359 16.3635L19.9998 16.3633Z" fill="#4285F4"/>

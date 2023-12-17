@@ -89,8 +89,7 @@ const login = () => {
     })
     .catch((error) => {
       const errorMessage = error.message;
-
-      if (errorMessage === 'Firebase: Error (auth/invalid-credential).') {
+      if (errorMessage) {
         divElement.innerHTML = wrongEmailOrPass;
         inputPassword.appendChild(divElement);
         setTimeout(() => {
