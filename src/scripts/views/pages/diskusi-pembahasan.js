@@ -42,7 +42,7 @@ async function addReply(questionId, replyText, userName, parentId = null) {
 function displayReplies(replies) {
   const replySection = document.getElementById('reply-section');
   const jawaban = document.getElementById('replyText');
-  replySection.innerHTML = '<h3>Replies:</h3>';
+  replySection.innerHTML = '<h3>Diskusi :</h3>';
 
   if (replies) {
     Object.keys(replies).forEach((replyId) => {
@@ -51,7 +51,7 @@ function displayReplies(replies) {
       jawaban.value = '';
     });
   } else {
-    replySection.innerHTML += '<p>No replies yet.</p>';
+    replySection.innerHTML += '<p>Belum ada balasan.</p>';
   }
 }
 
@@ -68,10 +68,8 @@ const Pembahasan = {
   async afterRender() {
     const discussionContent = document.querySelector('.diskusi-content');
     const discussionCardContainer = document.getElementById('discussion-card');
-    const replySection = document.getElementById('reply-section');
 
     const questionId = window.location.hash.substring(10);
-    console.log(questionId);
 
     if (questionId) {
       const discussionData = await getDiscussionData(questionId);
@@ -80,7 +78,6 @@ const Pembahasan = {
           auth.onAuthStateChanged(async (user) => {
             if (user) {
               await addReply(questionId, replyText, user.displayName);
-              // Wait for the reply to be added before updating the display
               const updatedDiscussionData = await getDiscussionData(questionId);
               displayReplies(updatedDiscussionData.replies);
             } else {

@@ -1,3 +1,8 @@
+import { getAuth } from '@firebase/auth';
+import firebase from '../../global/DB_CONFIG';
+
+const auth = getAuth(firebase);
+
 const successPopUp = `
     <div class="success-container">
     <div class="success-icon">
@@ -35,6 +40,10 @@ const emptyField = `
     <div class="error">Mohon untuk mengisi seluruh field</div>
 `;
 
+const emptyFieldd = `
+    <div class="error">Mohon untuk mengisi field</div>
+`;
+
 const wrongEmailOrPass = `
     <div class="error">Periksa kembali email dan password Anda</div>
 `;
@@ -45,6 +54,10 @@ const notLoginDiscuss = `
 
 const successDiscuss = `
     <div class="success">Pertanyaan berhasil dikirim</div>
+`;
+
+const successReplyDiscuss = `
+    <div class="success">Balasan berhasil dikirim</div>
 `;
 
 const createDiscussionCard = (data) => {
@@ -63,9 +76,7 @@ const createDiscussionCard = (data) => {
       <div class="diskusi-body">
         <b>${data.title}</b>
         <p>${data.pertanyaan}</p>
-      </div>
-      <div class="sum-pembahasan">
-        <h4>5 Pembahasan</h4>
+        <i class="lihat-diskusi">Lihat diskusi..............</i>
       </div>
     </div>
   `;
@@ -76,6 +87,7 @@ const createDiscussionCard = (data) => {
 
 const createDiscussionPembahasan = (data, onReplySubmit) => {
   const discussionCard = document.createElement('div');
+  const div = document.createElement('div');
   discussionCard.classList.add('diskusi-item');
 
   const innerHTML = `
@@ -96,7 +108,7 @@ const createDiscussionPembahasan = (data, onReplySubmit) => {
         <label for="replyText">Balasan</label>
         <textarea type="text" id="replyText" rows="4" placeholder="Masukkan Balasan Anda"></textarea>
         <div class="info-diskusi"></div>
-        <button class="btn-diskusi">Balas</button>
+        <button class="btn-diskusi" disabled>Balas</button>
       </form>
     </div>
   `;
@@ -105,12 +117,38 @@ const createDiscussionPembahasan = (data, onReplySubmit) => {
 
   const replyForm = discussionCard.querySelector('#replyForm');
   const replyText = discussionCard.querySelector('#replyText');
+  const infoDiskusi = discussionCard.querySelector('.info-diskusi');
+  const btnDiskusi = discussionCard.querySelector('.btn-diskusi');
 
-  replyForm.addEventListener('submit', (e) => {
-    e.preventDefault();
+  btnDiskusi.addEventListener('click', () => {
+    replyText.focus();
+  });
 
-    if (onReplySubmit) {
-      onReplySubmit(replyText.value);
+  auth.onAuthStateChanged(async (user) => {
+    if (user) {
+      btnDiskusi.removeAttribute('disabled');
+      replyForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (replyText && replyText.value.trim() !== '') {
+          if (onReplySubmit) {
+            onReplySubmit(replyText.value);
+            div.innerHTML = successReplyDiscuss;
+            infoDiskusi.appendChild(div);
+            setTimeout(() => {
+              infoDiskusi.removeChild(div);
+            }, 2000);
+          }
+        } else {
+          div.innerHTML = emptyField;
+          infoDiskusi.appendChild(div);
+          setTimeout(() => {
+            infoDiskusi.removeChild(div);
+          }, 2000);
+        }
+      });
+    } else {
+      div.innerHTML = notLoginDiscuss;
+      infoDiskusi.appendChild(div);
     }
   });
 
@@ -133,18 +171,14 @@ const createReplyCard = (data) => {
       <div class="diskusi-body">
         <p>${data.text}</p>
       </div>
-      <div class="balas-reply">
-      <textarea type="text" id="balasReply" style="margin-top: 20px" rows="3" placeholder="Balasan.."></textarea>
-        <button class="btn-balas">Balas</button>
-      </div>
     </div>
   `;
-  console.log(data);
 
   replyCard.innerHTML = innerHTML;
+
   return replyCard;
 };
 
 export {
-  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss, createDiscussionCard, createDiscussionPembahasan, successDiscuss, createReplyCard,
+  successPopUp, infoPopUp, wrongFormatPass, wrongFormatEmail, wrongFormatUsername, emptyField, wrongEmailOrPass, notLoginDiscuss, createDiscussionCard, createDiscussionPembahasan, successDiscuss, createReplyCard, successReplyDiscuss,
 };

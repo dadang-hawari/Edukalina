@@ -159,7 +159,7 @@ main {
 }
 
 .blue {
-    margin-bottom: 53px;
+    margin-bottom: 20px;
     color: var(--main);
 }
 
@@ -221,6 +221,12 @@ main {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
+}
+
+i.lihat-diskusi {
+    color: #00A9FF;
+    display: block;
+    margin-top: 10px;
 }
 
 .edukalina img {
@@ -454,12 +460,17 @@ figure img {
     max-height: 400px;
 }
 
+.diskusi-section {
+    max-width: 900px;
+    margin-inline: auto;
+
+}
+
 .diskusi-desk, .diskusi-form, .diskusi-list {
     padding-inline: 20px;
 }
 
 .diskusi-content {
-    max-width: 800px;
     margin-inline: auto;
     margin-top: 40px;
     padding: 20px;
@@ -467,11 +478,8 @@ figure img {
 
 .diskusi-desk {
     margin-top: 90px;
-    max-width: 1200px;
-    width: 100%;
-    margin-inline: auto;
     text-align: left;
-    font-size: 22px;
+    font-size: 1.2em;
 }
 
 .diskusi-form {
@@ -589,10 +597,6 @@ b {
     color: #323232;
 }
 
-.diskusi-body {
-    padding-left:10px;
-}
-
 .diskusi-card a.kembali-a {
     margin-block: 0 5px;
 }
@@ -609,9 +613,10 @@ b {
 }
 
 .profile {
+    margin-left: -5px;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 8px;
     margin-bottom: 5px;
 }
 
@@ -744,7 +749,7 @@ app-footer > p {
 }
 
 #diskusi {
-    font-size: 44px;
+    font-size: 1.8em;
 }
 
 .cardTentang > p {

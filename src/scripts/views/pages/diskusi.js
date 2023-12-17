@@ -10,6 +10,7 @@ const auth = getAuth(firebase);
 const Diskusi = {
   async render() {
     return `
+    <div class="diskusi-section">
       <div class="diskusi-desk">
         <h2 class="blue" id="diskusi">Diskusi</h2>
         <p>Silahkan melakukan diskusi jika Anda memiliki pertanyaan, seperti bertanya mengenai masalah saat mengajar
@@ -27,6 +28,7 @@ const Diskusi = {
       </div>
       <div class="diskusi-list">
       </div>
+    </div>
       `;
   },
 
