@@ -5,6 +5,7 @@ import {
 import { getAuth } from 'firebase/auth';
 import { async } from 'regenerator-runtime';
 import { createDiscussionPembahasan, createReplyCard } from '../templates/page-creator';
+import { formattedString } from '../../utils/diskusi-handler';
 import firebase from '../../global/DB_CONFIG';
 
 const auth = getAuth(firebase);
@@ -30,7 +31,7 @@ async function addReply(questionId, replyText, userName, parentId = null) {
 
     await set(newReplyRef, {
       text: replyText,
-      timestamp: new Date().toISOString(),
+      timestamp: formattedString,
       userName,
     });
   } catch (error) {
@@ -69,7 +70,9 @@ const Pembahasan = {
     const discussionCardContainer = document.getElementById('discussion-card');
     const replySection = document.getElementById('reply-section');
 
-    const questionId = window.location.hash.substring(13);
+    const questionId = window.location.hash.substring(10);
+    console.log(questionId);
+
     if (questionId) {
       const discussionData = await getDiscussionData(questionId);
       if (discussionData) {

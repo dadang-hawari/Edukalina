@@ -49,9 +49,8 @@ const successDiscuss = `
 
 const createDiscussionCard = (data) => {
   const discussionCard = document.createElement('a');
-  discussionCard.href = `#/pembahasan/${data.questionId}`;
+  discussionCard.href = `#/diskusi/${data.questionId}`;
   discussionCard.classList.add('diskusi-item');
-
   const innerHTML = `
     <div class="diskusi-card">
       <div class="profile">
