@@ -22,7 +22,7 @@ const Tips = {
       cardEvent.classList.add('cardEvent');
 
       const imageEvent = document.createElement('div');
-      imageEvent.classList.add('imageTips');
+      imageEvent.classList.add('imageEvent');
       imageEvent.setAttribute('style', `background-image: url('${eventData.thumbnail}');`);
       cardEvent.appendChild(imageEvent);
 
