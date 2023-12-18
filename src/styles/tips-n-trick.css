@@ -1,22 +1,22 @@
 .tipsTrick, 
 .event {
     margin-inline: auto;
-    max-width: 1200px;
-    width: 90%;
-    margin-top: 90px;
+    max-width: 900px;
+    margin-top: 80px;
     text-align: left;
     box-sizing: border-box;
+    padding: 20px;
 }
 
 .tipsTrick h2, .event h2 {
-    font-size: 48px;
+    font-size: 2.2em;
     color: #00A9FF;
-    margin-bottom: 53px;
+    margin-bottom: 10px;
 }
 
 .tipsTrick > p, .event > p {
-    font-size: 22px;
-    margin-bottom: 53px;
+    font-size: 1.2em;
+    margin-bottom: 40px;
 }
 
 .gropCardTipsTrick, .gropCardEvent{
@@ -27,20 +27,22 @@
     width: 100%;
     display: flex;
     border-radius: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     overflow: hidden;
     box-shadow: 2px 4px 10px rgba(0, 169, 255, 0.40);
     min-height: 236px;
-    cursor: pointer;
+    cursor: default;
 }
 
-.imageTipsTrick{
-    width: 30%;
+.imageTips{
+    width: 40%;
+    height: auto;
     background-size:cover;
     background-position: center;
     background-repeat: no-repeat;
-    /* background-image: url('../public/powerPoint.png'); */
 }
+
+
 
 .descGropTipsTrick, .descGropEvent {
     width: 70%;
