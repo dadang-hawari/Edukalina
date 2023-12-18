@@ -111,17 +111,16 @@ class NavBar extends HTMLElement {
     const loginBtn = loggedIn ? 'logoutBtn' : 'loginBtn';
 
     const elementIds = ['event', 'tips', 'beranda', 'diskusii', 'tentang', loginBtn];
-
+    const svgMenu = document.querySelector('.menu');
+    const svgTimes = document.querySelector('.times');
     elementIds.forEach((elementId) => {
       const element = document.querySelector(`#${elementId}`);
       element.addEventListener('click', () => {
         const navbar = document.querySelector('nav-bar');
         const listItem = document.querySelector('.list-nav');
-        const svgMenu = document.querySelector('.menu');
-        const svgTimes = document.querySelector('.times');
 
-        svgMenu.classList.toggle('hidden-menu');
-        svgTimes.classList.toggle('hidden-menu');
+        svgMenu.classList.remove('hidden-menu');
+        svgTimes.classList.add('hidden-menu');
 
         navbar.classList.remove('open');
         listItem.classList.remove('hidden');

@@ -1,83 +1,71 @@
+import { getDatabase, ref, onValue } from 'firebase/database';
+import DOMPurify from 'dompurify';
+import firebase from '../../global/DB_CONFIG';
+
 const Tips = {
   async render() {
     return `
             <div class="tipsTrick">
-                <h2>Tips & Trick</h2>
-                <p>Fitur ini merupakan fitur yang akan membantu para tenaga pengajar dengan cara membagikan Tips & Trick terkait segala sesuatu yang berkaitan dengan tenaga pengajar</p>
+                <h2>Tips</h2>
+                <p>
+                Jelajahi berbagai artikel yang kami sediakan untuk mendapatkan tips terkait berbagai aspek dalam dunia pendidikan.
+                </p>
                 <div class="gropCardTipsTrick">
-                    
-                    
                 </div>
             </div>
     `;
   },
-
   async afterRender() {
     const cardList = document.querySelector('.gropCardTipsTrick');
+    const renderContent = (eventData) => {
+      const cardEvent = document.createElement('div');
+      cardEvent.classList.add('cardEvent');
 
-    const apiEndPointEvent = 'http://13.212.75.217:5000/articles/tips';
-    let eventValueAPI;
+      const imageEvent = document.createElement('div');
+      imageEvent.classList.add('imageTips');
+      imageEvent.setAttribute('style', `background-image: url('${eventData.thumbnail}');`);
+      cardEvent.appendChild(imageEvent);
 
-    function getApiEventValue() {
-      return fetch(apiEndPointEvent)
-        .then((result) => {
-          if (!result.ok) {
-            throw new Error(`Failed to fetch: ${result.status}`);
-          }
-          return result.json();
-        })
-        .then((responseJson) => responseJson.data.articles)
-        .then((value) => {
-          eventValueAPI = value;
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }
+      const descGropEvent = document.createElement('div');
+      descGropEvent.classList.add('descGropEvent');
+      cardEvent.appendChild(descGropEvent);
 
-    function renderContent() {
-      eventValueAPI.forEach((element) => {
-        // console.log(element);
+      const h3 = document.createElement('h3');
+      h3.setAttribute('id', `${eventData.id}`);
+      h3.setAttribute('tanda', `${eventData.category}`);
+      h3.setAttribute('class', 'title');
+      h3.addEventListener('click', (e) => {
+        const articleId = e.target.getAttribute('id');
+        const articleClass = e.target.getAttribute('tanda');
 
-        const cardEvent = document.createElement('div');
-        cardEvent.classList.add('cardTipsTrick');
+        localStorage.setItem('selectedArticleId', articleId);
+        localStorage.setItem('selectedArticleClass', articleClass);
 
-        const imageEvent = document.createElement('div');
-        imageEvent.classList.add('imageTipsTrick');
-        imageEvent.setAttribute('style', `background-image: url('${element.thumbnail}');`);
-        cardEvent.appendChild(imageEvent);
-
-        const descGropEvent = document.createElement('div');
-        descGropEvent.classList.add('descGropTipsTrick');
-        cardEvent.appendChild(descGropEvent);
-
-        const h3 = document.createElement('h3');
-        h3.setAttribute('id', `${element.id}`);
-        h3.setAttribute('tanda', `${element.category}`);
-        h3.addEventListener('click', (e) => {
-          // Dapatkan ID artikel dari href
-          const articleId = e.target.getAttribute('id');
-          const articleClass = e.target.getAttribute('tanda');
-
-          // Simpan ID artikel di penyimpanan sesi
-          localStorage.setItem('selectedArticleId', articleId);
-          localStorage.setItem('selectedArticleClass', articleClass);
-
-          window.location.href = '#/artikel';
-        });
-        h3.innerText = `${element.title}`;
-        descGropEvent.appendChild(h3);
-
-        const p = document.createElement('p');
-        p.innerText = `${element.body}`;
-        descGropEvent.appendChild(p);
-
-        cardList.appendChild(cardEvent);
+        window.location.href = '#/artikel';
       });
-    }
+      h3.innerText = `${eventData.title}`;
+      descGropEvent.appendChild(h3);
 
-    getApiEventValue()
-      .then(renderContent);
+      const sanitizedHTML = DOMPurify.sanitize(eventData.body);
+      const p = document.createElement('p');
+      p.innerHTML = sanitizedHTML;
+      descGropEvent.appendChild(p);
+
+      cardList.appendChild(cardEvent);
+    };
+
+    onValue(ref(getDatabase(firebase), 'tips'), (snapshot) => {
+      const events = snapshot.val();
+
+      if (events) {
+        const eventKeys = Object.keys(events).reverse();
+
+        eventKeys.forEach((eventId) => {
+          const eventData = events[eventId];
+          renderContent(eventData);
+        });
+      }
+    });
   },
 };
 

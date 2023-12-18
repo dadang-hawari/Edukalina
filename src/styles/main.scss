@@ -137,9 +137,6 @@ button#btnMenu {
     text-align: right;
 }
 
-.btn-balas {
-}
-
 main {
     text-align: center;
     flex: 1;
@@ -335,11 +332,7 @@ details{
     }
   }
 
-  
-  // Collapsible OPEN
   details[open]{
-    
-    // Custom marker
     summary::after{
       content: url(../public/chevron-down.svg);
     }
@@ -454,11 +447,13 @@ article figure {
 }
 
 figure img {
-    max-width: 800px;
-    width: 100%;
+    width: auto;
+    max-height: 500px;
+    height: 100%;
     object-fit: cover;
-    max-height: 400px;
+    transition: transform 0.6s;
 }
+
 
 .diskusi-section {
     max-width: 900px;
@@ -528,6 +523,11 @@ figure img {
 .form-diskusi textarea {
     resize: vertical;
     min-height: 50px;
+}
+
+.link-info {
+    color: var(--main);
+    text-decoration: underline;
 }
 
 .form-diskusi input:focus, .form-diskusi textarea:focus {
@@ -608,7 +608,7 @@ b {
 }
 
 .diskusi-card {
-    padding: 15px;
+    padding-block: 15px;
     box-shadow: 0 1px 3px 0.1px var(--main);
     border-radius: 10px;
 }
@@ -635,7 +635,7 @@ b {
 }
 
 .diskusi-card {
-    padding-inline: 30px;
+    padding-inline: 20px;
 }
 
 /* footer */
@@ -717,6 +717,11 @@ app-footer > p {
     width: 100%;
     display: flex;
     gap: 10px;
+}
+
+h3.title {
+    cursor: pointer;
+    padding-block: 10px;
 }
 
 .cardTentang1, 

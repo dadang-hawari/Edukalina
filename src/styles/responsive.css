@@ -297,12 +297,19 @@
     .tentang > p {
         font-size: 18px;
     }
+    figure img {
+        width: 100%;
+    }
 }
 
 @media screen and (min-width: 800px) {
     nav-bar.open {
         height: 50px;
     }
+      
+    /* figure img.zoom-in:hover {
+        transform: scale(1.6);
+    } */
 
     button#btnMenu {
         display: none;

@@ -1,45 +1,19 @@
+import { getDatabase, ref, onValue } from 'firebase/database';
+import firebase from '../../global/DB_CONFIG';
+
 const Artikel = {
   async render() {
     return `
-    <article class="coba">
-      <a href="#" class="kembali-a">< Kembali</a>
-      
-    </article>
-        `;
+      <article class="article">
+        <a href="#/event" class="kembali-a">< Kembali</a>
+      </article>
+    `;
   },
 
   async afterRender() {
-    const apiEndPointEvent = 'http://13.212.75.217:5000/articles/event';
-    const apiEndPointTipsTrick = 'http://13.212.75.217:5000/articles/tips';
-    let eventValueAPI;
-    let tipsTrickValueAPI;
-
-    function getApiEventValue() {
-      return fetch(apiEndPointEvent)
-        .then((result) => result.json())
-        .then((responseJson) => responseJson.data.articles)
-        .then((value) => {
-          eventValueAPI = value; // Menyimpan nilai ke variabel global
-          // console.log(eventValueAPI);
-        });
-    }
-
-    function getApiTipsTrickValue() {
-      return fetch(apiEndPointTipsTrick)
-        .then((result) => result.json())
-        .then((responseJson) => responseJson.data.articles)
-        .then((value) => {
-          tipsTrickValueAPI = value; // Menyimpan nilai ke variabel global
-          console.log(tipsTrickValueAPI);
-        });
-    }
-
     const selectedArticleId = localStorage.getItem('selectedArticleId');
-    const selectedArticleClass = localStorage.getItem('selectedArticleClass');
-
-    function renderItem(element) {
-      // console.log(element.id);
-      const artikel = document.querySelector('.coba');
+    const renderItem = (element) => {
+      const artikel = document.querySelector('.article');
 
       const h1 = document.createElement('h1');
       h1.innerText = `${element.title}`;
@@ -50,6 +24,8 @@ const Artikel = {
 
       const img = document.createElement('img');
       img.setAttribute('src', `${element.thumbnail}`);
+      img.setAttribute('alt', `${element.title}`);
+
       figure.appendChild(img);
 
       const figcaption = document.createElement('figcaption');
@@ -59,36 +35,36 @@ const Artikel = {
       const section = document.createElement('section');
       artikel.appendChild(section);
 
+      const bodyContent = element.body.replace(/\n/g, '<br>');
+
+      const bodyWithLinks = bodyContent;
+
       const p = document.createElement('p');
-      p.innerText = `${element.body}`;
+      p.innerHTML = bodyWithLinks;
+      const lines = bodyWithLinks.split('<dsn>');
+
+      p.innerHTML = lines.join('<br>');
+
       section.appendChild(p);
-    }
+    };
 
-    function renderEvent() {
-      eventValueAPI.forEach((element) => {
-        // console.log(selectedArticleId);
-        if (element.id === selectedArticleId) {
-          renderItem(element);
+    const articleRef = ref(getDatabase(firebase), `event/${selectedArticleId}`);
+    onValue(articleRef, (snapshot) => {
+      const selectedArticleData = snapshot.val();
+      if (selectedArticleData) {
+        renderItem(selectedArticleData);
+      }
+    });
+    const articleTipsRef = ref(getDatabase(firebase), `tips/${selectedArticleId}`);
+    onValue(articleTipsRef, (snapshot) => {
+      const selectedArticleData = snapshot.val();
+      if (selectedArticleData) {
+        if (selectedArticleData.category === 'tips') {
+          document.querySelector('a.kembali-a').setAttribute('href', '#/tips');
         }
-      });
-    }
-
-    function renderTips() {
-      tipsTrickValueAPI.forEach((element) => {
-        // console.log(selectedArticleId);
-        if (element.id === selectedArticleId) {
-          renderItem(element);
-        }
-      });
-    }
-
-    if (selectedArticleClass === 'tips') {
-      getApiTipsTrickValue()
-        .then(renderTips);
-    } else {
-      getApiEventValue()
-        .then(renderEvent);
-    }
+        renderItem(selectedArticleData);
+      }
+    });
   },
 };
 
