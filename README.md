@@ -43,7 +43,8 @@ Anggota Kelompok :
 
 ## Diskusi
 
-![Diskusi]()
+![Diskusi](https://github.com/dadang-hawari/edukalina/assets/118704549/261ee89a-2bd2-418e-a46f-f7a0bd0d0a77)
+
 
 ## Tentang Kami
 
