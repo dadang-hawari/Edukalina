@@ -27,6 +27,15 @@ Anggota Kelompok :
 - F253YA258 – Mario Alfredo Bawu
 - S253YA462 – Rama Indrawan
 
+# Configure
+```cmd
+git clone https://github.com/dadang-hawari/edukalina.git
+```
+
+Script
+- `npm run start-dev` - start in dev mode
+- `npm run build` - build into dist
+
 # Screenshots
 
 ## Beranda
