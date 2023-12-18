@@ -35,16 +35,15 @@ Anggota Kelompok :
 
 ## Tips
 
-![Tips]()
+![Tips](https://github.com/dadang-hawari/edukalina/assets/118704549/f385e7f7-71c1-4ee4-981f-47e4ef61d61a)
 
 ## Event
 
-![Event]()
+![Event](https://github.com/dadang-hawari/edukalina/assets/118704549/81a4dd2a-c7e1-496a-80f4-5a905124f034)
 
 ## Diskusi
 
 ![Diskusi](https://github.com/dadang-hawari/edukalina/assets/118704549/261ee89a-2bd2-418e-a46f-f7a0bd0d0a77)
-
 
 ## Tentang Kami
 
