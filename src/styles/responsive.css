@@ -295,6 +295,7 @@
     }
 
     .tentang > p {
+        padding-inline: 20px;
         font-size: 18px;
     }
     figure img {
