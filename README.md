@@ -33,6 +33,7 @@ git clone https://github.com/dadang-hawari/edukalina.git
 ```
 
 Script
+- `npm run install` - to install module
 - `npm run start-dev` - start in dev mode
 - `npm run build` - build into dist
 
