@@ -36,7 +36,7 @@ class AppFooter extends HTMLElement {
     </div>
 </div>
 <hr>
-<p>Copyright © ${new Date().getFullYear()} - EDUKALINA. All Rights Reserved.</p>
+<p>Copyright © ${new Date().getFullYear()}  - EDUKALINA. All Rights Reserved.</p>
       `;
   }
 }
